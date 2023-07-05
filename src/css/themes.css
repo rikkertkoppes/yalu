@@ -45,6 +45,17 @@
     --bkg: var(--lcars-black);
 }
 
+.lcars-tng {
+    --signal: var(--lcars-golden-tanoi);
+    --signal2: var(--lcars-pale-canary);
+    --bright: var(--lcars-neon-carrot);
+    --light: var(--lcars-danub);
+    --medium: var(--lcars-red-damask);
+    --dim: var(--lcars-chestnut-rose);
+    --dark: var(--lcars-medium-carmine);
+}
+
+.lcars-voy,
 .lcars-blue {
     --bright: var(--lcars-periwinkle);
     --light: var(--lcars-dodger-blue);
@@ -84,6 +95,7 @@
     --dim: var(--lcars-gray) !important;
     --dark: var(--lcars-gray) !important;
 }
+.lcars-pic,
 .lcars-picard {
     --bright: #FF9900;
     --light: #90BFBD;
