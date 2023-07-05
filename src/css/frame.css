@@ -107,6 +107,8 @@
     grid-row: 1;
     --local-height: var(--size-top);
     z-index: 3;
+    margin-left: var(--start-space);
+    margin-right: var(--end-space);
 }
 .lcars-framebottom {
     background: var(--bkg);
@@ -117,6 +119,8 @@
     grid-row: 5;
     --local-height: var(--size-bottom);
     z-index: 3;
+    margin-left: var(--start-space);
+    margin-right: var(--end-space);
 }
 .lcars-frameleft {
     background: var(--bkg);
@@ -127,6 +131,8 @@
     grid-row: 3;
     --local-width: var(--size-left);
     z-index: 3;
+    margin-top: var(--start-space);
+    margin-bottom: var(--end-space);
 }
 .lcars-frameright {
     background: var(--bkg);
@@ -137,6 +143,8 @@
     grid-row: 3;
     --local-width: var(--size-right);
     z-index: 3;
+    margin-top: var(--start-space);
+    margin-bottom: var(--end-space);
 }
 
 /** frame corners */

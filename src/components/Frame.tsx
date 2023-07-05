@@ -62,7 +62,6 @@ export function Frame({
     let specials = childElements.filter(isSpecial);
     let regulars = childElements.filter((c) => !specials.includes(c));
     let [t, r, b, l] = parsePadding(border);
-    console.log(childElements);
     return (
         <div
             className={classNames("lcars-frame", className, {
@@ -92,17 +91,54 @@ export function Frame({
     );
 }
 
-export function Top({ children }) {
-    return <div className="lcars-frametop lcars-buttonrow">{children}</div>;
+interface SideProps {
+    children?: React.ReactNode;
+    startSpace?: number;
+    endSpace?: number;
 }
-export function Right({ children }) {
-    return <div className="lcars-frameright lcars-buttoncol">{children}</div>;
+export function Top({ children, startSpace, endSpace }: SideProps) {
+    let style: any = {
+        "--start-space": startSpace && `${startSpace}px`,
+        "--end-space": endSpace && `${endSpace}px`,
+    };
+    return (
+        <div className="lcars-frametop lcars-buttonrow" style={style}>
+            {children}
+        </div>
+    );
 }
-export function Bottom({ children }) {
-    return <div className="lcars-framebottom lcars-buttonrow">{children}</div>;
+export function Right({ children, startSpace, endSpace }: SideProps) {
+    let style: any = {
+        "--start-space": startSpace && `${startSpace}px`,
+        "--end-space": endSpace && `${endSpace}px`,
+    };
+    return (
+        <div className="lcars-frameright lcars-buttoncol" style={style}>
+            {children}
+        </div>
+    );
 }
-export function Left({ children }) {
-    return <div className="lcars-frameleft lcars-buttoncol">{children}</div>;
+export function Bottom({ children, startSpace, endSpace }: SideProps) {
+    let style: any = {
+        "--start-space": startSpace && `${startSpace}px`,
+        "--end-space": endSpace && `${endSpace}px`,
+    };
+    return (
+        <div className="lcars-framebottom lcars-buttonrow" style={style}>
+            {children}
+        </div>
+    );
+}
+export function Left({ children, startSpace, endSpace }: SideProps) {
+    let style: any = {
+        "--start-space": startSpace && `${startSpace}px`,
+        "--end-space": endSpace && `${endSpace}px`,
+    };
+    return (
+        <div className="lcars-frameleft lcars-buttoncol" style={style}>
+            {children}
+        </div>
+    );
 }
 
 interface CornerProps {
