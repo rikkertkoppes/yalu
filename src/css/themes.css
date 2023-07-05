@@ -1,0 +1,117 @@
+:root {
+    --lcars-gray: #234;
+    --lcars-white: #fff;
+    --lcars-black: #000;
+    --lcars-pale-canary: #ff9;
+    --lcars-golden-tanoi: #fc6;
+    --lcars-neon-carrot: #f93;
+    --lcars-eggplant: #646;
+    --lcars-lilac: #c9c;
+    --lcars-anakiwa: #9cf;
+    --lcars-mariner: #36c;
+    --lcars-bahama-blue: #069;
+    --lcars-red-alert: #e10;
+    --lcars-blue-bell: #99c;
+    --lcars-melrose: #99f;
+    --lcars-hopbush: #c69;
+    --lcars-chestnut-rose: #c66;
+    --lcars-orange-peel: #f96;
+    --lcars-atomic-tangerine: #f90;
+    --lcars-danub: #68c;
+    --lcars-indigo: #45b;
+    --lcars-lavender-purple: #97a;
+    --lcars-cosmic: #746;
+    --lcars-red-damask: #d64;
+    --lcars-medium-carmine: #a53;
+    --lcars-bourbon: #b62;
+    --lcars-sandy-brown: #e95;
+    --lcars-periwinkle: #cdf;
+    --lcars-dodger-blue: #59f;
+    --lcars-dodger-blue-alt: #36f;
+    --lcars-blue: #01e;
+    --lcars-navy-blue: #008;
+    --lcars-husk: #ba5;
+    --lcars-rust: #b41;
+    --lcars-tamarillo: #821;
+    
+    /** default colors a mix */
+    --signal: #E9452A;
+    --signal2: #FF846D;
+    --bright: var(--lcars-pale-canary);
+    --light: var(--lcars-golden-tanoi);
+    --medium: var(--lcars-neon-carrot);
+    --dim: var(--lcars-red-damask);
+    --dark: var(--lcars-rust);
+    --bkg: var(--lcars-black);
+}
+
+.lcars-blue {
+    --bright: var(--lcars-periwinkle);
+    --light: var(--lcars-dodger-blue);
+    --medium: var(--lcars-dodger-blue-alt);
+    --dim: var(--lcars-blue);
+    --dark: var(--lcars-navy-blue);
+}
+
+.lcars-yellow {
+    --bright: var(--lcars-pale-canary);
+    --light: var(--lcars-golden-tanoi);
+    --medium: var(--lcars-neon-carrot);
+    --dim: var(--lcars-red-damask);
+    --dark: var(--lcars-rust);
+}
+
+.lcars-lavender {
+    --bright: var(--lcars-lilac);
+    --light: var(--lcars-lavender-purple);
+    --medium: var(--lcars-hopbush);
+    --dim: var(--lcars-cosmic);
+    --dark: var(--lcars-eggplant);
+}
+
+.lcars-alert {
+    --bright: var(--lcars-white);
+    --light: var(--lcars-white);
+    --medium: var(--lcars-red-alert);
+    --dim: var(--lcars-red-alert);
+    --dark: var(--lcars-red-alert);
+}
+
+.lcars-disabled {
+    --bright: var(--lcars-gray) !important;
+    --light: var(--lcars-gray) !important;
+    --medium: var(--lcars-gray) !important;
+    --dim: var(--lcars-gray) !important;
+    --dark: var(--lcars-gray) !important;
+}
+.lcars-picard {
+    --bright: #FF9900;
+    --light: #90BFBD;
+    --medium: #46AAB3;
+    --medium: #2B698F;
+    --medium:#0C3752;
+    --dim: #0C3752;
+    --dim: #46AAB3;
+    --dark:#0C3752;
+    /* --bkg: #061321; */
+}
+
+.lcars-gray {
+    /* colors copied from screenshots */
+    --bright: #E9452A;
+    --light: #57B6E5;
+    --medium: #919DBB;
+    --dim:#71748D;
+    --dark: #31384A;
+}
+
+.lcars-gray {
+    /* colors adjusted for waveshare screen */
+    --signal: #E9452A;
+    --signal2: #FF846D;
+    --bright: #E9452A;
+    --light: #57B6E5;
+    --medium: #919194;
+    --dim:#717174;
+    --dark: #313138;
+}

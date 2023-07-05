@@ -1,0 +1,71 @@
+@keyframes boot_rect {
+    0% {
+        clip-path: polygon(0 0, 0 var(--size-top), 0 var(--size-top), 0 0);
+    }
+    50% {
+        clip-path: polygon(0 0, 0 var(--size-top), 100% var(--size-top), 100% 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+}
+@keyframes row {
+    0% {
+        clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+}
+@keyframes column {
+    0% {
+        clip-path: polygon(0 0, 0 0, 100% 0, 100% 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+}
+@keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* frame boot loop */
+
+.lcars-frame::before {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    animation: var(--boot-time) linear var(--boot-wait) boot_rect forwards;
+}
+
+.lcars-filler {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    animation: var(--boot-time) linear var(--boot-wait) var(--local-direction) forwards;
+}
+.lcars-button {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    animation: var(--boot-time) linear var(--boot-wait) row forwards;
+}
+.lcars-cap {
+    opacity: 0;
+    --boot-wait: 0.5s;
+    animation: var(--boot-time) linear var(--boot-wait) flicker forwards;
+}

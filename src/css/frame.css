@@ -1,0 +1,181 @@
+.lcars-frame {
+    position: relative;
+    --color: var(--medium);
+    /* background-color: var(--color); */
+    min-height: 200px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 0px 0px auto 0px 0px;
+    grid-template-rows: 0px 0px auto 0px 0px;
+    /* overflow: hidden; */
+    /* box-shadow: var(--shadow); */
+}
+.lcars-frame::before {
+    content: "";
+    position: absolute;
+    background-color: var(--color);
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* box-shadow: var(--shadow); */
+}
+
+.lcars-framecontent {
+    background-color: black;
+    grid-column: 2 / span 3;
+    grid-row: 2 / span 3;
+    background: var(--bkg);
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--inset-shadow);
+    z-index: 2;
+}
+
+
+/** outer corners */
+.lcars-frame.left.top::before {
+    border-top-left-radius: var(--outerr);
+}
+.lcars-frame.right.top::before {
+    border-top-right-radius: var(--outerr);
+}
+.lcars-frame.left.bottom::before {
+    border-bottom-left-radius: var(--outerr);
+}
+.lcars-frame.right.bottom::before {
+    border-bottom-right-radius: var(--outerr);
+}
+
+/** inner corners */
+.lcars-frame.left.top > .lcars-framecontent {
+    border-top-left-radius: var(--innerr);
+}
+.lcars-frame.right.top > .lcars-framecontent {
+    border-top-right-radius: var(--innerr);
+}
+.lcars-frame.left.bottom > .lcars-framecontent {
+    border-bottom-left-radius: var(--innerr);
+}
+.lcars-frame.right.bottom > .lcars-framecontent {
+    border-bottom-right-radius: var(--innerr);
+}
+
+/** grid template setup */
+.lcars-frame.left {
+    grid-template-columns: var(--size-left) var(--innerr) auto 0px 0px;
+}
+.lcars-frame.right {
+    grid-template-columns: 0px 0px auto var(--innerr) var(--size-right);
+}
+.lcars-frame.left.right {
+    grid-template-columns: var(--size-left) var(--innerr) auto var(--innerr) var(--size-right);
+}
+.lcars-frame.top {
+    grid-template-rows: var(--size-top) var(--innerr) auto 0px 0px;
+}
+.lcars-frame.bottom {
+    grid-template-rows: 0px 0px auto var(--innerr) var(--size-bottom);
+}
+.lcars-frame.top.bottom {
+    grid-template-rows: var(--size-top) var(--innerr) auto var(--innerr) var(--size-bottom);
+}
+
+/** content padding */
+.lcars-frame.left > .lcars-framecontent {
+    padding-left: var(--content-padding);
+}
+.lcars-frame.right > .lcars-framecontent {
+    padding-right: var(--content-padding);
+}
+.lcars-frame.top > .lcars-framecontent {
+    padding-top: var(--content-padding);
+}
+.lcars-frame.bottom > .lcars-framecontent {
+    padding-bottom: var(--content-padding);
+}
+
+/** frame side elements */
+.lcars-frametop {
+    background: var(--bkg);
+    font-size: 21px;
+    line-height: 16px;
+    text-transform: uppercase;
+    grid-column: 3;
+    grid-row: 1;
+    --local-height: var(--size-top);
+    z-index: 3;
+}
+.lcars-framebottom {
+    background: var(--bkg);
+    font-size: 21px;
+    line-height: 16px;
+    text-transform: uppercase;
+    grid-column: 3;
+    grid-row: 5;
+    --local-height: var(--size-bottom);
+    z-index: 3;
+}
+.lcars-frameleft {
+    background: var(--bkg);
+    font-size: 21px;
+    line-height: 16px;
+    gap: 4px;
+    grid-column: 1;
+    grid-row: 3;
+    --local-width: var(--size-left);
+    z-index: 3;
+}
+.lcars-frameright {
+    background: var(--bkg);
+    font-size: 21px;
+    line-height: 16px;
+    gap: 4px;
+    grid-column: 5;
+    grid-row: 3;
+    --local-width: var(--size-right);
+    z-index: 3;
+}
+
+/** frame corners */
+.lcars-framebottomleft {
+    background: var(--color);
+    grid-column: 1 / span 2;
+    grid-row: 4 / span 2;
+    border-bottom-left-radius: var(--outerr);
+    --local-width: var(--size-left);
+    --local-height: var(--size-bottom);
+    z-index: 2;
+}
+.lcars-framebottomright {
+    background: var(--color);
+    grid-column: 4 / span 2;
+    grid-row: 4 / span 2;
+    border-bottom-right-radius: var(--outerr);
+    --local-width: var(--size-right);
+    --local-height: var(--size-bottom);
+    z-index: 2;
+}
+.lcars-frameart {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 5;
+    position: relative;
+}
+.lcars-frame.left > .lcars-frametop,
+.lcars-frame.left > .lcars-framebottom {
+    padding-left: 4px;
+}
+.lcars-frame.right > .lcars-frametop,
+.lcars-frame.right > .lcars-framebottom {
+    padding-right: 4px;
+}
+.lcars-frame.top > .lcars-frameleft,
+.lcars-frame.top > .lcars-frameright {
+    padding-top: 4px;
+}
+.lcars-frame.bottom > .lcars-frameleft,
+.lcars-frame.bottom > .lcars-frameright {
+    padding-bottom: 4px;
+}
