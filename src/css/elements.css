@@ -39,9 +39,9 @@
     font-family: var(--button-font-family);
     box-sizing: border-box;
 }
-.lcars-button:hover {
+/* .lcars-button:hover {
     background-color: var(--bright);
-}
+} */
 .lcars-button.selected {
     background-color: var(--bright);
 }
