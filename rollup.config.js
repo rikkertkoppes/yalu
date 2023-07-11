@@ -27,6 +27,9 @@ export default [
             typescript({ tsconfig: "./tsconfig.json" }),
             postcss({
                 plugins: [postcssImport()],
+                include: "src/css/index.css",
+                extract: "index.css",
+                minimize: true,
             }),
         ],
     },

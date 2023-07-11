@@ -1,6 +1,6 @@
 {
-    "name": "@rikkertkoppes/yalu",
-    "version": "0.0.1",
+    "name": "@rkmodules/yalu",
+    "version": "0.0.9",
     "description": "",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,8 +15,13 @@
         "rollup": "rm -rf dist && rollup -c",
         "prepare": "npm run rollup"
     },
-    "author": "",
+    "author": "rikkert@rikkertkoppes.com",
     "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rikkertkoppes/yalu"
+    },
+    "homepage": "https://github.com/rikkertkoppes/yalu#readme",
     "peerDependencies": {
         "react": ">=17.0.1",
         "react-dom": ">=17.0.1"
