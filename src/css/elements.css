@@ -6,7 +6,8 @@
     color: black;
     /* min-height: 16px; */
     box-shadow: var(--shadow);
-    font-family: 'Swiss 911';
+    font-family: var(--button-font-family);
+    box-sizing: border-box;
 }
 
 .lcars-buttonrow {
@@ -35,7 +36,8 @@
     text-align: right;
     box-shadow: var(--shadow);
     /* font-weight: bold; */
-    font-family: 'Swiss 911';
+    font-family: var(--button-font-family);
+    box-sizing: border-box;
 }
 .lcars-button:hover {
     background-color: var(--bright);

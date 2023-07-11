@@ -1,0 +1,25 @@
+:root {
+    --bkg: #111;
+    /* --bkg: black; */
+    --outerr: 32px;
+    --innerr: 16px;
+    --size-left: 80px;
+    --size-right: 80px;
+    --size-top: 16px;
+    --size-bottom: 16px;
+    --content-padding: 4px;
+    /* --shadow: 1px 3px 5px rgba(0, 0, 0, 0.5); */
+    --inset-shadow: inset var(--shadow);
+    --boot-time: 0.5s;
+    --boot-wait: 0s;
+    --local-height: 32px;
+    --local-width: 32px;
+    --button-font-family: 'Swiss 911';
+}
+
+body {
+    background: var(--bkg);
+    color: white;
+}
+
+
