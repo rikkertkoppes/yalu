@@ -9,7 +9,10 @@ function isSpecial(node: React.ReactNode) {
         Right,
         Bottom,
         Left,
+        TopLeft,
+        TopRight,
         BottomLeft,
+        BottomRight,
         Art,
     ];
     return specials.includes(node.type);
@@ -141,18 +144,30 @@ export function Left({ children, startSpace, endSpace }: SideProps) {
     );
 }
 
-interface CornerProps {
+interface CornerProps extends React.HTMLAttributes<HTMLDivElement> {
     color?: string;
 }
-export function BottomLeft({ color }: CornerProps) {
-    let style: any = { "--color": color };
-    return <div className="lcars-framebottomleft" style={style}></div>;
-}
-export function BottomRight({ color }: CornerProps) {
-    let style: any = { "--color": color };
-    return <div className="lcars-framebottomright" style={style}></div>;
-}
 
+export function TopLeft({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return <div className="lcars-frametopleft" style={style} {...props}></div>;
+}
+export function TopRight({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return <div className="lcars-frametopright" style={style} {...props}></div>;
+}
+export function BottomLeft({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return (
+        <div className="lcars-framebottomleft" style={style} {...props}></div>
+    );
+}
+export function BottomRight({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return (
+        <div className="lcars-framebottomright" style={style} {...props}></div>
+    );
+}
 export function Art({ children }) {
     return <div className="lcars-frameart buttoncol">{children}</div>;
 }
