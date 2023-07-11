@@ -11,11 +11,10 @@
 }
 
 .lcars-buttonrow {
-    --local-height: var(--local-height, 32px);
     display: flex;
     /* align-items: center; */
     gap: 4px;
-    height: var(--local-height);
+    min-height: var(--local-height);
     --local-direction: row;
 }
 
