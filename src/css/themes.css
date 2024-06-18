@@ -11,6 +11,7 @@
     --lcars-mariner: #36c;
     --lcars-bahama-blue: #069;
     --lcars-red-alert: #e10;
+    --lcars-dim-alert: #e10c;
     --lcars-blue-bell: #99c;
     --lcars-melrose: #99f;
     --lcars-hopbush: #c69;
@@ -82,10 +83,29 @@
 
 .lcars-alert {
     --bright: var(--lcars-white);
-    --light: var(--lcars-white);
+    --light: var(--lcars-red-alert);
     --medium: var(--lcars-red-alert);
-    --dim: var(--lcars-red-alert);
-    --dark: var(--lcars-red-alert);
+    --dim: var(--lcars-dim-alert);
+    --dark: var(--lcars-dim-alert);
+}
+@keyframes alert_strobe {
+    0% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+.lcars-alert-strobe {
+    animation: 2s alert_strobe infinite;
+    --bright: var(--lcars-white);
+    --light: var(--lcars-red-alert);
+    --medium: var(--lcars-red-alert);
+    --dim: var(--lcars-dim-alert);
+    --dark: var(--lcars-dim-alert);
 }
 
 .lcars-disabled {
