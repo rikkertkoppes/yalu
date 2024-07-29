@@ -47,6 +47,35 @@ export function Filler({
     );
 }
 
+export function Cutout({
+    children,
+    className,
+    flex,
+    width,
+    height,
+    color,
+    offset,
+    style = {},
+}: FillerProps) {
+    let wait = Math.random();
+    let divStyle: any = {
+        width,
+        height,
+        "--color": color,
+        "--boot-wait": `${wait}s`,
+        transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
+        ...style,
+    };
+    return (
+        <div
+            className={classNames("lcars-cutout", className, { flex })}
+            style={divStyle}
+        >
+            {children}
+        </div>
+    );
+}
+
 export interface ButtonProps extends FlexWrapperProps {
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
