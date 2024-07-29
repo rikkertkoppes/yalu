@@ -5,24 +5,33 @@
     50% {
         clip-path: polygon(0 0, 0 var(--size-top), 100% var(--size-top), 100% 0);
     }
-    100% {
+    99% {
         clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+    100% {
+        clip-path: none;
     }
 }
 @keyframes row {
     0% {
         clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
     }
-    100% {
+    99% {
         clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+    100% {
+        clip-path: none;
     }
 }
 @keyframes column {
     0% {
         clip-path: polygon(0 0, 0 0, 100% 0, 100% 0);
     }
-    100% {
+    99% {
         clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+    100% {
+        clip-path: none;
     }
 }
 @keyframes flicker {
