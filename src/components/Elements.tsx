@@ -133,9 +133,13 @@ export function ButtonCol({
     children,
     className,
     flex,
+    color,
     style = {},
 }: FillerProps) {
-    let divStyle: any = { ...style };
+    let divStyle: any = {
+        "--color": color,
+        ...style,
+    };
     return (
         <div
             className={classNames("lcars-buttoncol", className, { flex })}
@@ -171,10 +175,14 @@ export function Gap({
 
 interface CapProps {
     wide?: boolean;
+    color?: string;
     style?: React.CSSProperties;
 }
-export function Cap({ wide, style = {} }: CapProps) {
-    let divStyle: any = { ...style };
+export function Cap({ wide, color, style = {} }: CapProps) {
+    let divStyle: any = {
+        "--color": color,
+        ...style,
+    };
     return (
         <div
             className={classNames("lcars-cap", { wide })}

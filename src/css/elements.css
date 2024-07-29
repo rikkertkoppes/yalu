@@ -38,7 +38,7 @@
 }
 
 .lcars-button {
-    background-color: var(--light);
+    background-color: var(--color, --light);
     color: black;
     padding: 8px;
     cursor: pointer;
@@ -72,7 +72,7 @@
 .lcars-cap {
     width: 16px;
     width: calc(var(--local-height) / 2);
-    background-color: var(--dim);
+    background-color: var(--color, --dim);
     box-shadow: var(--shadow);
 }
 .lcars-cap.wide {
