@@ -46,6 +46,8 @@ interface FrameProps {
     innerradius?: number;
     outerradius?: number;
     color?: string;
+    height?: number;
+    width?: number;
 }
 export function Frame({
     children,
@@ -55,6 +57,8 @@ export function Frame({
     bottom,
     left,
     flex,
+    width,
+    height,
     border = [],
     padding,
     innerradius,
@@ -76,6 +80,8 @@ export function Frame({
             })}
             style={
                 {
+                    width,
+                    height,
                     "--size-top": t && `${t}px`,
                     "--size-left": l && `${l}px`,
                     "--size-bottom": b && `${b}px`,
