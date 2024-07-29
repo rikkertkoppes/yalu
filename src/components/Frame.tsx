@@ -45,6 +45,8 @@ interface FrameProps {
     padding?: number;
     innerradius?: number;
     outerradius?: number;
+    ir?: number;
+    or?: number;
     color?: string;
     height?: number;
     width?: number;
@@ -61,8 +63,10 @@ export function Frame({
     height,
     border = [],
     padding,
-    innerradius,
-    outerradius,
+    ir,
+    or,
+    innerradius = ir,
+    outerradius = or,
     color,
 }: FrameProps) {
     let childElements = new Array<React.ReactNode>().concat(children);
