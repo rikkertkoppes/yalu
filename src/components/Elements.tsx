@@ -156,11 +156,13 @@ export function Gap({
     flex,
     width,
     height,
+    offset,
     style = {},
 }: FillerProps) {
     let divStyle: any = {
         height: height && `${height}px`,
         width: width && `${width}px`,
+        transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
         ...style,
     };
     return (
