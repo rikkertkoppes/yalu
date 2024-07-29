@@ -14,6 +14,8 @@ interface FillerProps extends FlexWrapperProps {
     height?: number;
     width?: number;
     color?: string;
+    offset?: [number, number];
+    style?: React.CSSProperties;
 }
 
 export function Filler({
@@ -23,18 +25,22 @@ export function Filler({
     width,
     height,
     color,
+    offset,
+    style = {},
 }: FillerProps) {
     let wait = Math.random();
-    let style: any = {
+    let divStyle: any = {
         width,
         height,
         "--color": color,
         "--boot-wait": `${wait}s`,
+        transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
+        ...style,
     };
     return (
         <div
             className={classNames("lcars-filler", className, { flex })}
-            style={style}
+            style={divStyle}
         >
             {children}
         </div>
@@ -44,6 +50,7 @@ export function Filler({
 export interface ButtonProps extends FlexWrapperProps {
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
+    style?: React.CSSProperties;
 }
 export function Button({
     children,
@@ -51,16 +58,17 @@ export function Button({
     flex,
     selected,
     onClick,
+    style = {},
 }: ButtonProps) {
     let wait = Math.random();
-    let style: any = { "--boot-wait": `${wait}s` };
+    let divStyle: any = { "--boot-wait": `${wait}s`, ...style };
     return (
         <div
             className={classNames("lcars-button", className, {
                 flex,
                 selected,
             })}
-            style={style}
+            style={divStyle}
             onClick={onClick}
         >
             {children}
@@ -75,38 +83,57 @@ export function ButtonRow({
     height,
     width,
     color,
+    style = {},
 }: FillerProps) {
-    let style: any = {
+    let divStyle: any = {
         "--local-height": height && `${height}px`,
         "--local-width": width && `${width}px`,
         "--color": color,
+        ...style,
     };
     return (
         <div
             className={classNames("lcars-buttonrow", className, { flex })}
-            style={style}
+            style={divStyle}
         >
             {children}
         </div>
     );
 }
-export function ButtonCol({ children, className, flex }: FillerProps) {
+export function ButtonCol({
+    children,
+    className,
+    flex,
+    style = {},
+}: FillerProps) {
+    let divStyle: any = { ...style };
     return (
-        <div className={classNames("lcars-buttoncol", className, { flex })}>
+        <div
+            className={classNames("lcars-buttoncol", className, { flex })}
+            style={divStyle}
+        >
             {children}
         </div>
     );
 }
 
-export function Gap({ children, className, flex, width, height }: FillerProps) {
-    let style: any = {
+export function Gap({
+    children,
+    className,
+    flex,
+    width,
+    height,
+    style = {},
+}: FillerProps) {
+    let divStyle: any = {
         height: height && `${height}px`,
         width: width && `${width}px`,
+        ...style,
     };
     return (
         <div
             className={classNames("lcars-gap", className, { flex })}
-            style={style}
+            style={divStyle}
         >
             {children}
         </div>
@@ -115,7 +142,14 @@ export function Gap({ children, className, flex, width, height }: FillerProps) {
 
 interface CapProps {
     wide?: boolean;
+    style?: React.CSSProperties;
 }
-export function Cap({ wide }: CapProps) {
-    return <div className={classNames("lcars-cap", { wide })}></div>;
+export function Cap({ wide, style = {} }: CapProps) {
+    let divStyle: any = { ...style };
+    return (
+        <div
+            className={classNames("lcars-cap", { wide })}
+            style={divStyle}
+        ></div>
+    );
 }
