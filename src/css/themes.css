@@ -120,10 +120,11 @@
     --bright: #FF9900;
     --light: #90BFBD;
     --medium: #46AAB3;
-    --medium: #2B698F;
-    --medium:#0C3752;
-    --dim: #0C3752;
-    --dim: #46AAB3;
+    /* --medium: #2B698F; */
+    /* --medium:#0C3752; */
+    /* --dim: #0C3752; */
+    /* --dim: #46AAB3; */
+    --dim: #2B698F;
     --dark:#0C3752;
     /* --bkg: #061321; */
 }
