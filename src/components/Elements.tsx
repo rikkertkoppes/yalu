@@ -77,12 +77,17 @@ export function Cutout({
 }
 
 export interface ButtonProps extends FlexWrapperProps {
+    height?: number;
+    width?: number;
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
     color?: string;
     style?: React.CSSProperties;
+    outline?: boolean;
 }
 export function Button({
+    height,
+    width,
     children,
     className,
     flex,
@@ -90,9 +95,12 @@ export function Button({
     onClick,
     color,
     style = {},
+    outline = false,
 }: ButtonProps) {
     let wait = Math.random();
     let divStyle: any = {
+        width,
+        height,
         "--button-color": color,
         "--boot-wait": `${wait}s`,
         ...style,
@@ -102,6 +110,7 @@ export function Button({
             className={classNames("lcars-button", className, {
                 flex,
                 selected,
+                outline,
             })}
             style={divStyle}
             onClick={onClick}
