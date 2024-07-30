@@ -36,6 +36,7 @@ interface FrameProps {
     color?: string;
     height?: number;
     width?: number;
+    style?: React.CSSProperties;
 }
 export function Frame({
     children,
@@ -51,6 +52,7 @@ export function Frame({
     ri,
     ro,
     color,
+    style,
 }: FrameProps) {
     let noSides = [top, right, bottom, left].every((s) => s === undefined);
     if (noSides) {
@@ -81,6 +83,7 @@ export function Frame({
                     "--content-padding": padding && `${padding}px`,
                     flex: isN(flex) && `${flex} 1 0%`,
                     "--color": color,
+                    ...style,
                 } as any
             }
         >
