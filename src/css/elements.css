@@ -57,8 +57,9 @@
 }
 .lcars-button.outline {
     background: none;
-    color: inherit;
+    color: var(--button-color, var(--light, currentColor));
     border: 2px solid var(--button-color, var(--light));
+    border-radius: 2px;
 }
 
 .lcars-gap {
