@@ -18,30 +18,14 @@ function isSpecial(node: React.ReactNode) {
     return specials.includes(node.type);
 }
 
-function parsePadding(padding: number | number[]) {
-    let p = padding;
-    if (typeof p === "number") {
-        p = [p, p, p, p];
-    }
-    if (p.length === 1) {
-        p = [p[0], p[0], p[0], p[0]];
-    } else if (p.length === 2) {
-        p = [p[0], p[1], p[0], p[1]];
-    } else if (p.length === 3) {
-        p = [p[0], p[1], p[2], p[1]];
-    }
-    return p;
-}
-
 interface FrameProps {
     children?: React.ReactNode;
     className?: string;
-    top?: boolean;
-    right?: boolean;
-    bottom?: boolean;
-    left?: boolean;
+    top?: boolean | number;
+    right?: boolean | number;
+    bottom?: boolean | number;
+    left?: boolean | number;
     flex?: boolean | number;
-    border?: number | number[];
     padding?: number;
     ri?: number;
     ro?: number;
@@ -59,16 +43,22 @@ export function Frame({
     flex,
     width,
     height,
-    border = [],
     padding,
     ri,
     ro,
     color,
 }: FrameProps) {
+    let noSides = [top, right, bottom, left].every((s) => s === undefined);
+    if (noSides) {
+        top = right = bottom = left = true;
+    }
+    let t = typeof top === "number" && top;
+    let l = typeof left === "number" && left;
+    let b = typeof bottom === "number" && bottom;
+    let r = typeof right === "number" && right;
     let childElements = new Array<React.ReactNode>().concat(children);
     let specials = childElements.filter(isSpecial);
     let regulars = childElements.filter((c) => !specials.includes(c));
-    let [t, r, b, l] = parsePadding(border);
     return (
         <div
             className={classNames("lcars-frame", className, {
