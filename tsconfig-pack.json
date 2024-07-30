@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "jsx": "preserve",
+        "jsx": "react",
         "target": "es5",
         "module": "esnext",
         "declaration": true,
@@ -12,13 +12,7 @@
         "downlevelIteration": true,
         "plugins": [],
         "moduleResolution": "node",
-        "allowJs": true,
-        "skipLibCheck": true,
-        "noEmit": true,
-        "incremental": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true
+        "emitDeclarationOnly": true
     },
-    "exclude": ["dist", "src/tests"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+    "exclude": ["dist", "src/tests"]
 }

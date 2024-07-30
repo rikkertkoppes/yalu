@@ -24,7 +24,7 @@ export default [
         plugins: [
             nodeResolve(),
             commonjs(),
-            typescript({ tsconfig: "./tsconfig.json" }),
+            typescript({ tsconfig: "./tsconfig-pack.json" }),
             postcss({
                 plugins: [postcssImport()],
                 include: "src/css/index.css",

@@ -9,11 +9,12 @@
     ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "watch": "tsc -w",
-        "build:ts": "tsc",
+        "watch": "tsc -w --project tsconfig-pack.json",
+        "build:ts": "tsc --project tsconfig-pack.json",
         "build": "npm run rollup",
         "rollup": "rm -rf dist && rollup -c",
-        "prepare": "npm run rollup"
+        "prepare": "npm run rollup",
+        "dev": "next dev"
     },
     "author": "rikkert@rikkertkoppes.com",
     "license": "ISC",
@@ -30,9 +31,11 @@
         "@rollup/plugin-commonjs": "^25.0.2",
         "@rollup/plugin-node-resolve": "^15.1.0",
         "@rollup/plugin-typescript": "^8.5.0",
+        "@types/node": "22.0.0",
         "@types/react": "^18.2.14",
         "@types/react-dom": "^18.2.6",
         "classnames": "^2.3.2",
+        "next": "^14.2.5",
         "postcss-import": "^15.1.0",
         "rollup": "^2.79.1",
         "rollup-plugin-postcss": "^4.0.2",

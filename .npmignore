@@ -1,0 +1,7 @@
+.next/
+dist/
+src/pages/
+node_modules/
+.npmrc
+.vscode
+next.config.js
