@@ -22,4 +22,7 @@ body {
     color: white;
 }
 
-
+.flex {
+    flex: 1 0 auto;
+    flex-shrink: 0;
+}
