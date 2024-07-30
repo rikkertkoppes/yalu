@@ -1,9 +1,9 @@
 @keyframes boot_rect {
     0% {
-        clip-path: polygon(0 0, 0 var(--size-top), 0 var(--size-top), 0 0);
+        clip-path: polygon(0 0, 0 var(--bt), 0 var(--bt), 0 0);
     }
     50% {
-        clip-path: polygon(0 0, 0 var(--size-top), 100% var(--size-top), 100% 0);
+        clip-path: polygon(0 0, 0 var(--bt), 100% var(--bt), 100% 0);
     }
     99% {
         clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);

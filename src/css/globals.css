@@ -3,10 +3,10 @@
     /* --bkg: black; */
     --ro: 32px;
     --ri: 16px;
-    --size-left: 80px;
-    --size-right: 80px;
-    --size-top: 16px;
-    --size-bottom: 16px;
+    --bl: 80px;
+    --br: 80px;
+    --bt: 16px;
+    --bb: 16px;
     --content-padding: 4px;
     /* --shadow: 1px 3px 5px rgba(0, 0, 0, 0.5); */
     --inset-shadow: inset var(--shadow);

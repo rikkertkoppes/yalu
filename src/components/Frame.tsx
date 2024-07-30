@@ -18,6 +18,10 @@ function isSpecial(node: React.ReactNode) {
     return specials.includes(node.type);
 }
 
+function isN(n: any): n is number {
+    return typeof n === "number";
+}
+
 interface FrameProps {
     children?: React.ReactNode;
     className?: string;
@@ -52,10 +56,6 @@ export function Frame({
     if (noSides) {
         top = right = bottom = left = true;
     }
-    let t = typeof top === "number" && top;
-    let l = typeof left === "number" && left;
-    let b = typeof bottom === "number" && bottom;
-    let r = typeof right === "number" && right;
     let childElements = new Array<React.ReactNode>().concat(children);
     let specials = childElements.filter(isSpecial);
     let regulars = childElements.filter((c) => !specials.includes(c));
@@ -72,14 +72,14 @@ export function Frame({
                 {
                     width,
                     height,
-                    "--size-top": t && `${t}px`,
-                    "--size-left": l && `${l}px`,
-                    "--size-bottom": b && `${b}px`,
-                    "--size-right": r && `${r}px`,
+                    "--bt": isN(top) && `${top}px`,
+                    "--bl": isN(left) && `${left}px`,
+                    "--bb": isN(bottom) && `${bottom}px`,
+                    "--br": isN(right) && `${right}px`,
                     "--ri": ri && `${ri}px`,
                     "--ro": ro && `${ro}px`,
                     "--content-padding": padding && `${padding}px`,
-                    flex: typeof flex === "number" && `${flex} 1 0%`,
+                    flex: isN(flex) && `${flex} 1 0%`,
                     "--color": color,
                 } as any
             }

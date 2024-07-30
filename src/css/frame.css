@@ -65,22 +65,22 @@
 
 /** grid template setup */
 .lcars-frame.left {
-    grid-template-columns: var(--size-left) var(--ri) auto 0px 0px;
+    grid-template-columns: var(--bl) var(--ri) auto 0px 0px;
 }
 .lcars-frame.right {
-    grid-template-columns: 0px 0px auto var(--ri) var(--size-right);
+    grid-template-columns: 0px 0px auto var(--ri) var(--br);
 }
 .lcars-frame.left.right {
-    grid-template-columns: var(--size-left) var(--ri) auto var(--ri) var(--size-right);
+    grid-template-columns: var(--bl) var(--ri) auto var(--ri) var(--br);
 }
 .lcars-frame.top {
-    grid-template-rows: var(--size-top) var(--ri) auto 0px 0px;
+    grid-template-rows: var(--bt) var(--ri) auto 0px 0px;
 }
 .lcars-frame.bottom {
-    grid-template-rows: 0px 0px auto var(--ri) var(--size-bottom);
+    grid-template-rows: 0px 0px auto var(--ri) var(--bb);
 }
 .lcars-frame.top.bottom {
-    grid-template-rows: var(--size-top) var(--ri) auto var(--ri) var(--size-bottom);
+    grid-template-rows: var(--bt) var(--ri) auto var(--ri) var(--bb);
 }
 
 /** content padding */
@@ -105,7 +105,7 @@
     text-transform: uppercase;
     grid-column: 3;
     grid-row: 1;
-    --local-height: var(--size-top);
+    --local-height: var(--bt);
     z-index: 3;
     margin-left: var(--start-space);
     margin-right: var(--end-space);
@@ -117,7 +117,7 @@
     text-transform: uppercase;
     grid-column: 3;
     grid-row: 5;
-    --local-height: var(--size-bottom);
+    --local-height: var(--bb);
     z-index: 3;
     margin-left: var(--start-space);
     margin-right: var(--end-space);
@@ -129,7 +129,7 @@
     gap: 4px;
     grid-column: 1;
     grid-row: 3;
-    --local-width: var(--size-left);
+    --local-width: var(--bl);
     z-index: 3;
     margin-top: var(--start-space);
     margin-bottom: var(--end-space);
@@ -141,7 +141,7 @@
     gap: 4px;
     grid-column: 5;
     grid-row: 3;
-    --local-width: var(--size-right);
+    --local-width: var(--br);
     z-index: 3;
     margin-top: var(--start-space);
     margin-bottom: var(--end-space);
@@ -153,8 +153,8 @@
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
     border-top-left-radius: var(--ro);
-    --local-width: var(--size-left);
-    --local-height: var(--size-bottom);
+    --local-width: var(--bl);
+    --local-height: var(--bb);
     z-index: 2;
     cursor: pointer;
 }
@@ -163,8 +163,8 @@
     grid-column: 4 / span 2;
     grid-row: 1 / span 2;
     border-top-right-radius: var(--ro);
-    --local-width: var(--size-right);
-    --local-height: var(--size-bottom);
+    --local-width: var(--br);
+    --local-height: var(--bb);
     z-index: 2;
 }
 .lcars-framebottomleft {
@@ -172,8 +172,8 @@
     grid-column: 1 / span 2;
     grid-row: 4 / span 2;
     border-bottom-left-radius: var(--ro);
-    --local-width: var(--size-left);
-    --local-height: var(--size-bottom);
+    --local-width: var(--bl);
+    --local-height: var(--bb);
     z-index: 2;
 }
 .lcars-framebottomright {
@@ -181,8 +181,8 @@
     grid-column: 4 / span 2;
     grid-row: 4 / span 2;
     border-bottom-right-radius: var(--ro);
-    --local-width: var(--size-right);
-    --local-height: var(--size-bottom);
+    --local-width: var(--br);
+    --local-height: var(--bb);
     z-index: 2;
 }
 .lcars-frameart {
