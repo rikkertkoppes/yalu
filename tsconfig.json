@@ -20,5 +20,11 @@
         "isolatedModules": true
     },
     "exclude": ["dist", "src/tests"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "next.config.js",
+        "src/pages/index.mdx"
+    ]
 }
