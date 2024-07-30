@@ -64,10 +64,10 @@ export function Frame({
     return (
         <div
             className={classNames("lcars-frame", className, {
-                top,
-                right,
-                bottom,
-                left,
+                top: top || isN(top),
+                right: right || isN(right),
+                bottom: bottom || isN(bottom),
+                left: left || isN(left),
                 flex,
             })}
             style={
