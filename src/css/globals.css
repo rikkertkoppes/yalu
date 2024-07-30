@@ -1,8 +1,8 @@
 :root {
     --bkg: #111;
     /* --bkg: black; */
-    --outerr: 32px;
-    --innerr: 16px;
+    --ro: 32px;
+    --ri: 16px;
     --size-left: 80px;
     --size-right: 80px;
     --size-top: 16px;

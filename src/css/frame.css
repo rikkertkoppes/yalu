@@ -37,50 +37,50 @@
 
 /** outer corners */
 .lcars-frame.left.top::before {
-    border-top-left-radius: var(--outerr);
+    border-top-left-radius: var(--ro);
 }
 .lcars-frame.right.top::before {
-    border-top-right-radius: var(--outerr);
+    border-top-right-radius: var(--ro);
 }
 .lcars-frame.left.bottom::before {
-    border-bottom-left-radius: var(--outerr);
+    border-bottom-left-radius: var(--ro);
 }
 .lcars-frame.right.bottom::before {
-    border-bottom-right-radius: var(--outerr);
+    border-bottom-right-radius: var(--ro);
 }
 
 /** inner corners */
 .lcars-frame.left.top > .lcars-framecontent {
-    border-top-left-radius: var(--innerr);
+    border-top-left-radius: var(--ri);
 }
 .lcars-frame.right.top > .lcars-framecontent {
-    border-top-right-radius: var(--innerr);
+    border-top-right-radius: var(--ri);
 }
 .lcars-frame.left.bottom > .lcars-framecontent {
-    border-bottom-left-radius: var(--innerr);
+    border-bottom-left-radius: var(--ri);
 }
 .lcars-frame.right.bottom > .lcars-framecontent {
-    border-bottom-right-radius: var(--innerr);
+    border-bottom-right-radius: var(--ri);
 }
 
 /** grid template setup */
 .lcars-frame.left {
-    grid-template-columns: var(--size-left) var(--innerr) auto 0px 0px;
+    grid-template-columns: var(--size-left) var(--ri) auto 0px 0px;
 }
 .lcars-frame.right {
-    grid-template-columns: 0px 0px auto var(--innerr) var(--size-right);
+    grid-template-columns: 0px 0px auto var(--ri) var(--size-right);
 }
 .lcars-frame.left.right {
-    grid-template-columns: var(--size-left) var(--innerr) auto var(--innerr) var(--size-right);
+    grid-template-columns: var(--size-left) var(--ri) auto var(--ri) var(--size-right);
 }
 .lcars-frame.top {
-    grid-template-rows: var(--size-top) var(--innerr) auto 0px 0px;
+    grid-template-rows: var(--size-top) var(--ri) auto 0px 0px;
 }
 .lcars-frame.bottom {
-    grid-template-rows: 0px 0px auto var(--innerr) var(--size-bottom);
+    grid-template-rows: 0px 0px auto var(--ri) var(--size-bottom);
 }
 .lcars-frame.top.bottom {
-    grid-template-rows: var(--size-top) var(--innerr) auto var(--innerr) var(--size-bottom);
+    grid-template-rows: var(--size-top) var(--ri) auto var(--ri) var(--size-bottom);
 }
 
 /** content padding */
@@ -152,7 +152,7 @@
     background: var(--color);
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
-    border-top-left-radius: var(--outerr);
+    border-top-left-radius: var(--ro);
     --local-width: var(--size-left);
     --local-height: var(--size-bottom);
     z-index: 2;
@@ -162,7 +162,7 @@
     background: var(--color);
     grid-column: 4 / span 2;
     grid-row: 1 / span 2;
-    border-top-right-radius: var(--outerr);
+    border-top-right-radius: var(--ro);
     --local-width: var(--size-right);
     --local-height: var(--size-bottom);
     z-index: 2;
@@ -171,7 +171,7 @@
     background: var(--color);
     grid-column: 1 / span 2;
     grid-row: 4 / span 2;
-    border-bottom-left-radius: var(--outerr);
+    border-bottom-left-radius: var(--ro);
     --local-width: var(--size-left);
     --local-height: var(--size-bottom);
     z-index: 2;
@@ -180,7 +180,7 @@
     background: var(--color);
     grid-column: 4 / span 2;
     grid-row: 4 / span 2;
-    border-bottom-right-radius: var(--outerr);
+    border-bottom-right-radius: var(--ro);
     --local-width: var(--size-right);
     --local-height: var(--size-bottom);
     z-index: 2;

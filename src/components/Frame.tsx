@@ -43,10 +43,8 @@ interface FrameProps {
     flex?: boolean | number;
     border?: number | number[];
     padding?: number;
-    innerradius?: number;
-    outerradius?: number;
-    ir?: number;
-    or?: number;
+    ri?: number;
+    ro?: number;
     color?: string;
     height?: number;
     width?: number;
@@ -63,10 +61,8 @@ export function Frame({
     height,
     border = [],
     padding,
-    ir,
-    or,
-    innerradius = ir,
-    outerradius = or,
+    ri,
+    ro,
     color,
 }: FrameProps) {
     let childElements = new Array<React.ReactNode>().concat(children);
@@ -90,8 +86,8 @@ export function Frame({
                     "--size-left": l && `${l}px`,
                     "--size-bottom": b && `${b}px`,
                     "--size-right": r && `${r}px`,
-                    "--innerr": innerradius && `${innerradius}px`,
-                    "--outerr": outerradius && `${outerradius}px`,
+                    "--ri": ri && `${ri}px`,
+                    "--ro": ro && `${ro}px`,
                     "--content-padding": padding && `${padding}px`,
                     flex: typeof flex === "number" && `${flex} 1 0%`,
                     "--color": color,
