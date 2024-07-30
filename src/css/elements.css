@@ -48,6 +48,15 @@
     /* font-weight: bold; */
     font-family: var(--button-font-family);
     box-sizing: border-box;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: var(--local-height);
+}
+.lcars-button.rounded {
+    border-radius: var(--local-height);
+    padding: 8px 16px;
 }
 /* .lcars-button:hover {
     background-color: var(--bright);
@@ -64,7 +73,6 @@
 
 .lcars-gap {
     font-size: 21px;
-    line-height: 16px;
     /* min-height: 16px; */
     text-transform: uppercase;
     background: var(--bkg);
