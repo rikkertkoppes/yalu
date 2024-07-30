@@ -207,3 +207,43 @@ export function Cap({ wide, color, style = {} }: CapProps) {
         ></div>
     );
 }
+
+interface GridProps {
+    width?: number;
+    height?: number;
+    flex?: number;
+    rows?: number;
+    cols?: number;
+    color?: string;
+    style?: React.CSSProperties;
+    className?: string;
+    children?: React.ReactNode;
+}
+export function Grid({
+    width,
+    height,
+    flex,
+    rows,
+    cols,
+    color,
+    style,
+    className,
+    children,
+}: GridProps) {
+    let divStyle: any = {
+        height: height && `${height}px`,
+        width: width && `${width}px`,
+        "--rows": rows || 1,
+        "--cols": cols || 1,
+        "--color": color,
+        ...style,
+    };
+    return (
+        <div
+            className={classNames("lcars-grid", className, { flex })}
+            style={divStyle}
+        >
+            {children}
+        </div>
+    );
+}

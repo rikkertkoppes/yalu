@@ -99,3 +99,12 @@
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
 }
+
+.lcars-grid {
+    background-size: calc(100% / var(--cols)) calc(100% / var(--rows));
+    background-image:
+        linear-gradient(to right, var(--color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color) 1px, transparent 1px);
+    border-right: 1px solid var(--color);
+    border-bottom: 1px solid var(--color);
+}
