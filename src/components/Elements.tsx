@@ -59,31 +59,24 @@ export interface ButtonProps extends CommonProps {
     rounded?: boolean;
     children: React.ReactNode;
 }
-export function Button({
-    height,
-    width,
-    children,
-    className,
-    flex,
-    selected,
-    onClick,
-    color,
-    style = {},
-    outline = false,
-    rounded = false,
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+    let {
+        children,
+        selected,
+        onClick,
+        outline = false,
+        rounded = false,
+    } = props;
     let wait = Math.random();
+    let { style, className } = getStyleProps(props);
     let divStyle: any = {
-        width,
-        height,
-        "--button-color": color,
+        "--button-color": style["--color"],
         "--boot-wait": `${wait}s`,
         ...style,
     };
     return (
         <div
             className={classNames("lcars-button", className, {
-                flex,
                 selected,
                 outline,
                 rounded,

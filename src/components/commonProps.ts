@@ -23,18 +23,18 @@ function isN(n: any): n is number {
 }
 
 /** gets the brightest shade defined in the props */
-function getShade(props: ShadeProps) {
+function getColor(props: CommonProps) {
+    if (props.color) return props.color;
     let shade = shades.findLast((shade) => props[shade]);
     return shade ? `var(--${shade})` : "";
 }
 
 export function getStyleProps(props: CommonProps) {
     let { flex, width, height, color, className } = props;
-    let shade = getShade(props);
     let style: any = {
         width,
         height,
-        "--color": color || shade,
+        "--color": getColor(props),
         flex: isN(flex) && `${flex} 1 0%`,
         ...(props.style || {}),
     };
