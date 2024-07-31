@@ -1,36 +1,23 @@
 import React from "react";
 import classNames from "classnames";
-import { LayoutProps, StyleProps } from "./commonProps";
+import { CommonProps, getStyleProps } from "./commonProps";
 
-interface FillerProps extends LayoutProps, StyleProps {
+interface FillerProps extends CommonProps {
     offset?: [number, number];
     children: React.ReactNode;
 }
 
-export function Filler({
-    children,
-    className,
-    flex,
-    width,
-    height,
-    color,
-    offset,
-    style = {},
-}: FillerProps) {
+export function Filler(props: FillerProps) {
     let wait = Math.random();
+    let { children, offset } = props;
+    let { style, className } = getStyleProps(props);
     let divStyle: any = {
-        width,
-        height,
-        "--color": color,
         "--boot-wait": `${wait}s`,
         transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
         ...style,
     };
     return (
-        <div
-            className={classNames("lcars-filler", className, { flex })}
-            style={divStyle}
-        >
+        <div className={classNames("lcars-filler", className)} style={divStyle}>
             {children}
         </div>
     );
@@ -65,7 +52,7 @@ export function Cutout({
     );
 }
 
-export interface ButtonProps extends LayoutProps, StyleProps {
+export interface ButtonProps extends CommonProps {
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
     outline?: boolean;
@@ -203,67 +190,39 @@ export function Cap({ wide, color, style = {} }: CapProps) {
     );
 }
 
-interface GridProps extends LayoutProps, StyleProps {
+interface GridProps extends CommonProps {
     rows?: number;
     cols?: number;
     strokeWidth?: number;
     children?: React.ReactNode;
 }
-export function Grid({
-    width,
-    height,
-    flex,
-    rows,
-    cols,
-    color,
-    strokeWidth = 1,
-    style,
-    className,
-    children,
-}: GridProps) {
+export function Grid(props: GridProps) {
+    let { rows, cols, strokeWidth = 1, children } = props;
+    let { style, className } = getStyleProps(props);
     let divStyle: any = {
-        height: height && `${height}px`,
-        width: width && `${width}px`,
         "--rows": rows || 1,
         "--cols": cols || 1,
-        "--color": color,
         "--sw": strokeWidth && `${strokeWidth}px`,
         ...style,
     };
     return (
-        <div
-            className={classNames("lcars-grid", className, { flex })}
-            style={divStyle}
-        >
+        <div className={classNames("lcars-grid", className)} style={divStyle}>
             {children}
         </div>
     );
 }
 
-interface GraphProps extends LayoutProps, StyleProps {
+interface GraphProps extends CommonProps {
     values: number[];
     min?: number;
     max?: number;
     strokeWidth?: number;
     children?: React.ReactNode;
 }
-export function Graph({
-    width,
-    height,
-    flex,
-    values,
-    min,
-    max,
-    color,
-    strokeWidth = 1,
-    style,
-    className,
-    children,
-}: GraphProps) {
+export function Graph(props: GraphProps) {
+    let { values, min, max, strokeWidth = 1, children } = props;
+    let { style, className } = getStyleProps(props);
     let divStyle: any = {
-        height: height && `${height}px`,
-        width: width && `${width}px`,
-        "--color": color,
         "--sw": strokeWidth && `${strokeWidth}px`,
         ...style,
     };
@@ -278,7 +237,7 @@ export function Graph({
         .join(" ");
     return (
         <svg
-            className={classNames("lcars-graph", className, { flex })}
+            className={classNames("lcars-graph", className)}
             style={divStyle}
             viewBox="0 0 100 100"
             preserveAspectRatio="none"

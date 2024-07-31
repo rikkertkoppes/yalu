@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { LayoutProps, StyleProps } from "./commonProps";
+import { CommonProps, getStyleProps } from "./commonProps";
 
 function isSpecial(node: React.ReactNode) {
     if (!React.isValidElement(node)) return false;
@@ -23,7 +23,7 @@ function isN(n: any): n is number {
     return typeof n === "number";
 }
 
-interface FrameProps extends LayoutProps, StyleProps {
+interface FrameProps extends CommonProps {
     children?: React.ReactNode;
     top?: boolean | number;
     right?: boolean | number;
@@ -351,11 +351,9 @@ export function Cell({ cell, end, children, padding, className }: CellProps) {
     }
     padding = padding || (type === "cc" ? 8 : 0);
     if (isN(padding)) padding = `${padding}px`;
-    console.log(rs, cs, rp, cp, type, padding);
     let divStyle: any = {
         gridRow: `${rs + 1} / span ${rp}`,
         gridColumn: `${cs + 1} / span ${cp}`,
-        // display: "flex",
         "--padding": padding,
     };
     className = classNames(
@@ -370,7 +368,7 @@ export function Cell({ cell, end, children, padding, className }: CellProps) {
     );
 }
 
-interface CompositeProps extends LayoutProps, StyleProps {
+interface CompositeProps extends CommonProps {
     def: string;
     dev?: boolean;
     ri?: number;
@@ -378,40 +376,26 @@ interface CompositeProps extends LayoutProps, StyleProps {
     children?: React.ReactNode;
 }
 
-export function Composite({
-    def = "",
-    color,
-    dev = false,
-    ri,
-    ro,
-    width,
-    height,
-    flex,
-    style,
-    className,
-    children,
-}: CompositeProps) {
+export function Composite(props: CompositeProps) {
+    let { def = "", dev = false, ri, ro, children } = props;
     let g = parseDef(def);
-    console.log(g);
+
+    let { style, className } = getStyleProps(props);
 
     let divStyle: any = {
-        width,
-        height,
-        minWidth: width,
-        minHeight: height,
+        minWidth: style.width,
+        minHeight: style.height,
         "--ri": isN(ri) && `${ri}px`,
         "--ro": isN(ro) && `${ro}px`,
-        "--color": color,
         gap: dev ? "2px" : "0px",
         gridTemplateColumns: g.cols,
         gridTemplateRows: g.rows,
-        flex: isN(flex) && `${flex} 1 0%`,
         ...style,
     };
     return (
         <CompositeContext.Provider value={g}>
             <div
-                className={classNames("lcars-composite", className, { flex })}
+                className={classNames("lcars-composite", className)}
                 style={divStyle}
             >
                 {g.cells.map((c) => (
@@ -481,22 +465,9 @@ function createDef(
     return { def, content };
 }
 
-export function Frame({
-    children,
-    className,
-    top,
-    right,
-    bottom,
-    left,
-    flex,
-    width,
-    height,
-    padding,
-    ri,
-    ro,
-    color,
-    style,
-}: FrameProps) {
+export function Frame(props: FrameProps) {
+    let { children, top, right, bottom, left, padding, ...compositeProps } =
+        props;
     let noSides = [top, right, bottom, left].every((s) => s === undefined);
     if (noSides) {
         top = right = bottom = left = true;
@@ -514,20 +485,8 @@ export function Frame({
             return "0";
         })
         .join(" ");
-    console.log(def, content);
     return (
-        <Composite
-            def={def}
-            color={color}
-            className={className}
-            width={width}
-            height={height}
-            flex={flex}
-            ri={ri}
-            ro={ro}
-            style={style}
-            // dev
-        >
+        <Composite def={def} {...compositeProps}>
             {specials}
             <Cell cell={content} padding={padding && padString}>
                 {regulars}
