@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { LayoutProps } from "./types";
+import { LayoutProps, StyleProps } from "./commonProps";
 
 function isSpecial(node: React.ReactNode) {
     if (!React.isValidElement(node)) return false;
@@ -23,9 +23,8 @@ function isN(n: any): n is number {
     return typeof n === "number";
 }
 
-interface FrameProps extends LayoutProps {
+interface FrameProps extends LayoutProps, StyleProps {
     children?: React.ReactNode;
-    className?: string;
     top?: boolean | number;
     right?: boolean | number;
     bottom?: boolean | number;
@@ -33,8 +32,6 @@ interface FrameProps extends LayoutProps {
     padding?: number;
     ri?: number;
     ro?: number;
-    color?: string;
-    style?: React.CSSProperties;
 }
 
 interface SideProps {
@@ -373,14 +370,11 @@ export function Cell({ cell, end, children, padding, className }: CellProps) {
     );
 }
 
-interface CompositeProps extends LayoutProps {
+interface CompositeProps extends LayoutProps, StyleProps {
     def: string;
-    color?: string;
     dev?: boolean;
     ri?: number;
     ro?: number;
-    style?: React.CSSProperties;
-    className?: string;
     children?: React.ReactNode;
 }
 

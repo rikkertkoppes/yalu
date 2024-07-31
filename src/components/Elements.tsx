@@ -1,16 +1,10 @@
 import React from "react";
 import classNames from "classnames";
-import { LayoutProps } from "./types";
+import { LayoutProps, StyleProps } from "./commonProps";
 
-interface FlexWrapperProps {
-    children?: React.ReactNode;
-    className?: string;
-}
-
-interface FillerProps extends FlexWrapperProps, LayoutProps {
-    color?: string;
+interface FillerProps extends LayoutProps, StyleProps {
     offset?: [number, number];
-    style?: React.CSSProperties;
+    children: React.ReactNode;
 }
 
 export function Filler({
@@ -71,13 +65,12 @@ export function Cutout({
     );
 }
 
-export interface ButtonProps extends FlexWrapperProps, LayoutProps {
+export interface ButtonProps extends LayoutProps, StyleProps {
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
-    color?: string;
-    style?: React.CSSProperties;
     outline?: boolean;
     rounded?: boolean;
+    children: React.ReactNode;
 }
 export function Button({
     height,
@@ -210,13 +203,10 @@ export function Cap({ wide, color, style = {} }: CapProps) {
     );
 }
 
-interface GridProps extends LayoutProps {
+interface GridProps extends LayoutProps, StyleProps {
     rows?: number;
     cols?: number;
-    color?: string;
     strokeWidth?: number;
-    style?: React.CSSProperties;
-    className?: string;
     children?: React.ReactNode;
 }
 export function Grid({
@@ -250,14 +240,11 @@ export function Grid({
     );
 }
 
-interface GraphProps extends LayoutProps {
+interface GraphProps extends LayoutProps, StyleProps {
     values: number[];
     min?: number;
     max?: number;
-    color?: string;
     strokeWidth?: number;
-    style?: React.CSSProperties;
-    className?: string;
     children?: React.ReactNode;
 }
 export function Graph({
