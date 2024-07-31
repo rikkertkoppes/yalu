@@ -49,6 +49,10 @@
     --medium: var(--lcars-neon-carrot);
     --dim: var(--lcars-red-damask);
     --dark: var(--lcars-rust);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-tng {
@@ -59,6 +63,10 @@
     --medium: var(--lcars-red-damask);
     --dim: var(--lcars-chestnut-rose);
     --dark: var(--lcars-medium-carmine);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-voy,
@@ -68,6 +76,10 @@
     --medium: var(--lcars-dodger-blue-alt);
     --dim: var(--lcars-blue);
     --dark: var(--lcars-navy-blue);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-yellow {
@@ -76,6 +88,10 @@
     --medium: var(--lcars-neon-carrot);
     --dim: var(--lcars-red-damask);
     --dark: var(--lcars-rust);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-lavender {
@@ -84,6 +100,10 @@
     --medium: var(--lcars-hopbush);
     --dim: var(--lcars-cosmic);
     --dark: var(--lcars-eggplant);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-alert {
@@ -92,6 +112,10 @@
     --medium: var(--lcars-red-alert);
     --dim: var(--lcars-dim-alert);
     --dark: var(--lcars-dim-alert);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 @keyframes alert_strobe {
     0% {
@@ -111,6 +135,10 @@
     --medium: var(--lcars-red-alert);
     --dim: var(--lcars-dim-alert);
     --dark: var(--lcars-dim-alert);
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-disabled {
@@ -119,6 +147,10 @@
     --medium: var(--lcars-gray) !important;
     --dim: var(--lcars-gray) !important;
     --dark: var(--lcars-gray) !important;
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 .lcars-pic,
 .lcars-picard {
@@ -132,6 +164,10 @@
     --dim: #2B698F;
     --dark:#0C3752;
     /* --bkg: #061321; */
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-gray {
@@ -141,6 +177,10 @@
     --medium: #919DBB;
     --dim:#71748D;
     --dark: #31384A;
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }
 
 .lcars-gray {
@@ -152,4 +192,8 @@
     --medium: #919194;
     --dim:#717174;
     --dark: #313138;
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
 }

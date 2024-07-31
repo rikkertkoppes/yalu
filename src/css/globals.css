@@ -29,3 +29,29 @@ body {
     flex: 1 0 auto;
     flex-shrink: 0;
 }
+
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+::-webkit-scrollbar-thumb { /* Foreground */
+    background: var(--scroll-thumb, var(--medium));
+}
+::-webkit-scrollbar-track { /* Background */
+    background: var(--scroll-track, black);
+}
+
+::-webkit-scrollbar-button:single-button {
+    height: 16px;
+    background: var(--scroll-button, var(--light));
+}
+::-webkit-scrollbar-button:vertical:single-button:vertical:decrement {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 2px solid var(--scroll-track, black);
+}
+::-webkit-scrollbar-button:vertical:single-button:vertical:increment {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top: 2px solid var(--scroll-track, black);
+}
