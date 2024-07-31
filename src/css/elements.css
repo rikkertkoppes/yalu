@@ -120,3 +120,6 @@
     display: block;
     vector-effect: non-scaling-stroke;
 }
+.lcars-graph * {
+    vector-effect: non-scaling-stroke;
+}
