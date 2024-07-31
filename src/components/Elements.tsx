@@ -84,6 +84,7 @@ export interface ButtonProps extends FlexWrapperProps {
     color?: string;
     style?: React.CSSProperties;
     outline?: boolean;
+    rounded?: boolean;
 }
 export function Button({
     height,
@@ -96,6 +97,7 @@ export function Button({
     color,
     style = {},
     outline = false,
+    rounded = false,
 }: ButtonProps) {
     let wait = Math.random();
     let divStyle: any = {
@@ -111,6 +113,7 @@ export function Button({
                 flex,
                 selected,
                 outline,
+                rounded,
             })}
             style={divStyle}
             onClick={onClick}
