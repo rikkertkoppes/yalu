@@ -214,7 +214,7 @@ export function Cap({ wide, color, style = {} }: CapProps) {
 interface GridProps {
     width?: number;
     height?: number;
-    flex?: number;
+    flex?: boolean | number;
     rows?: number;
     cols?: number;
     color?: string;
