@@ -108,3 +108,15 @@
         linear-gradient(to right, var(--color) var(--sw), transparent var(--sw)),
         linear-gradient(to bottom, var(--color) var(--sw), transparent var(--sw));
 }
+
+.lcars-graph {
+    stroke: var(--color);
+    stroke-width: var(--sw);
+    fill: none;
+    box-sizing: border-box;
+    min-height: 0;
+    width: auto;
+    min-width: 0;
+    display: block;
+    vector-effect: non-scaling-stroke;
+}

@@ -253,3 +253,58 @@ export function Grid({
         </div>
     );
 }
+
+interface GraphProps {
+    width?: number;
+    height?: number;
+    flex?: boolean | number;
+    values: number[];
+    min?: number;
+    max?: number;
+    color?: string;
+    strokeWidth?: number;
+    style?: React.CSSProperties;
+    className?: string;
+    children?: React.ReactNode;
+}
+export function Graph({
+    width,
+    height,
+    flex,
+    values,
+    min,
+    max,
+    color,
+    strokeWidth = 1,
+    style,
+    className,
+    children,
+}: GraphProps) {
+    let divStyle: any = {
+        height: height && `${height}px`,
+        width: width && `${width}px`,
+        "--color": color,
+        "--sw": strokeWidth && `${strokeWidth}px`,
+        ...style,
+    };
+    min = min || 0;
+    max = max || Math.max(...values);
+    let points = values
+        .map((y, i) => {
+            let x = (100 * i) / (values.length - 1);
+            y = 100 - (100 * (y - min!)) / (max! - min!);
+            return `${x},${y}`;
+        })
+        .join(" ");
+    return (
+        <svg
+            className={classNames("lcars-graph", className, { flex })}
+            style={divStyle}
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+        >
+            <polyline points={points} />
+            {children}
+        </svg>
+    );
+}
