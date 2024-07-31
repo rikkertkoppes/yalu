@@ -126,7 +126,7 @@ export function ButtonRow({
     style = {},
 }: FillerProps) {
     let divStyle: any = {
-        "--local-height": height && `${height}px`,
+        "--local-height": (height && `${height}px`) || "auto",
         "--local-width": width && `${width}px`,
         "--button-color": color,
         ...style,
