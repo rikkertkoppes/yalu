@@ -151,10 +151,16 @@ export function ButtonCol({
     children,
     className,
     flex,
+    height,
+    width,
     color,
     style = {},
 }: FillerProps) {
     let divStyle: any = {
+        height: height && `${height}px`,
+        width: width && `${width}px`,
+        // "--local-height": height && `${height}px`,
+        "--local-width": width && `${width}px`,
         "--button-color": color,
         ...style,
     };
