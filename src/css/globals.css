@@ -1,7 +1,5 @@
 .lcars-reset, 
 :root {
-    --bkg: #111;
-    /* --bkg: black; */
     --ro: 32px;
     --ri: 16px;
     --bl: 80px;
@@ -16,6 +14,10 @@
     --local-height: 32px;
     --local-width: 32px;
     --button-font-family: 'Swiss 911';
+}
+
+.lcars-reset {
+    display: contents;
 }
 
 body {
