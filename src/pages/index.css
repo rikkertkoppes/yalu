@@ -5,6 +5,9 @@ body {
     position: relative;
     height: 100%;
     box-sizing: border-box;
+    /* --bkg: fixed center/cover black
+        url("https://windows10spotlight.com/wp-content/uploads/2018/11/d46ff2b67b098bcf915398010d9e3e61.jpg"); */
+    
 }
 
 body {
@@ -20,4 +23,15 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+a {
+    /* text-decoration: none; */
+    color: inherit;
+}
+
+a button,
+a:has(.lcars-button), 
+a .lcars-button {
+    text-decoration: none;
 }
