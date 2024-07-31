@@ -1,0 +1,47 @@
+import Layout from '../pageComponents/layout';
+import { ButtonRow, ButtonCol, Button, Cap, Filler, Frame, Left } from "../components";
+
+Use `<ButtonRow>` and `<ButtonCol>` together with `<Filler>`, `<Button>`, `<Gap>` and `<Cap>` elements to create button rows and columns. You can also use the `flex` attribute to make the row or column fill the available space.
+
+```
+<ButtonCol width={150} height={200}>
+    <ButtonRow>
+        <Button flex>Engage</Button>
+        <Cap />
+    </ButtonRow>
+    <ButtonRow>
+        <Button flex>Disengage</Button>
+        <Cap />
+    </ButtonRow>
+    <ButtonRow flex>
+        <Filler flex>95-468</Filler>
+        <Cap />
+    </ButtonRow>
+</ButtonCol>
+```
+
+<ButtonCol width={150} height={200}>
+    <ButtonRow>
+        <Button flex>Engage</Button>
+        <Cap />
+    </ButtonRow>
+    <ButtonRow>
+        <Button flex>Disengage</Button>
+        <Cap />
+    </ButtonRow>
+    <ButtonRow flex>
+        <Filler flex>95-468</Filler>
+        <Cap />
+    </ButtonRow>
+</ButtonCol>
+
+ButtonRows can also be used for generic layouting
+
+<ButtonRow className="lcars-gray" height="10">
+    <Filler flex>87-268</Filler>
+    <Filler flex></Filler>
+</ButtonRow>
+
+export default function({children}) {
+    return <Layout title="Buttons">{children}</Layout>;
+}
