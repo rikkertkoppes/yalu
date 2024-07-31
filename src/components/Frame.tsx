@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { LayoutProps } from "./types";
 
 function isSpecial(node: React.ReactNode) {
     if (!React.isValidElement(node)) return false;
@@ -22,20 +23,17 @@ function isN(n: any): n is number {
     return typeof n === "number";
 }
 
-interface FrameProps {
+interface FrameProps extends LayoutProps {
     children?: React.ReactNode;
     className?: string;
     top?: boolean | number;
     right?: boolean | number;
     bottom?: boolean | number;
     left?: boolean | number;
-    flex?: boolean | number;
     padding?: number;
     ri?: number;
     ro?: number;
     color?: string;
-    height?: number;
-    width?: number;
     style?: React.CSSProperties;
 }
 
@@ -375,15 +373,12 @@ export function Cell({ cell, end, children, padding, className }: CellProps) {
     );
 }
 
-interface CompositeProps {
+interface CompositeProps extends LayoutProps {
     def: string;
     color?: string;
     dev?: boolean;
     ri?: number;
     ro?: number;
-    width?: number;
-    height?: number;
-    flex?: boolean | number;
     style?: React.CSSProperties;
     className?: string;
     children?: React.ReactNode;

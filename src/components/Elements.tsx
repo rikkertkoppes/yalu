@@ -1,18 +1,13 @@
 import React from "react";
 import classNames from "classnames";
+import { LayoutProps } from "./types";
 
-interface WrapperProps {
-    children?: React.ReactNode;
-}
 interface FlexWrapperProps {
     children?: React.ReactNode;
     className?: string;
-    flex?: boolean;
 }
 
-interface FillerProps extends FlexWrapperProps {
-    height?: number;
-    width?: number;
+interface FillerProps extends FlexWrapperProps, LayoutProps {
     color?: string;
     offset?: [number, number];
     style?: React.CSSProperties;
@@ -76,9 +71,7 @@ export function Cutout({
     );
 }
 
-export interface ButtonProps extends FlexWrapperProps {
-    height?: number;
-    width?: number;
+export interface ButtonProps extends FlexWrapperProps, LayoutProps {
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
     color?: string;
@@ -217,10 +210,7 @@ export function Cap({ wide, color, style = {} }: CapProps) {
     );
 }
 
-interface GridProps {
-    width?: number;
-    height?: number;
-    flex?: boolean | number;
+interface GridProps extends LayoutProps {
     rows?: number;
     cols?: number;
     color?: string;
@@ -260,10 +250,7 @@ export function Grid({
     );
 }
 
-interface GraphProps {
-    width?: number;
-    height?: number;
-    flex?: boolean | number;
+interface GraphProps extends LayoutProps {
     values: number[];
     min?: number;
     max?: number;
