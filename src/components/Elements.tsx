@@ -215,6 +215,7 @@ interface GridProps {
     rows?: number;
     cols?: number;
     color?: string;
+    strokeWidth?: number;
     style?: React.CSSProperties;
     className?: string;
     children?: React.ReactNode;
@@ -226,6 +227,7 @@ export function Grid({
     rows,
     cols,
     color,
+    strokeWidth = 1,
     style,
     className,
     children,
@@ -236,6 +238,7 @@ export function Grid({
         "--rows": rows || 1,
         "--cols": cols || 1,
         "--color": color,
+        "--sw": strokeWidth && `${strokeWidth}px`,
         ...style,
     };
     return (
