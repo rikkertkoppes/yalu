@@ -1,12 +1,16 @@
 import classNames from "classnames";
 
+let shades = ["dark", "dim", "medium", "light", "bright"] as const;
+type Shades = (typeof shades)[number];
+
+type ShadeProps = { [S in Shades]?: boolean };
 export interface LayoutProps {
     width?: number;
     height?: number;
     flex?: boolean | number;
 }
 
-export interface StyleProps {
+export interface StyleProps extends ShadeProps {
     color?: string;
     style?: React.CSSProperties;
     className?: string;
@@ -18,17 +22,24 @@ function isN(n: any): n is number {
     return typeof n === "number";
 }
 
+/** gets the brightest shade defined in the props */
+function getShade(props: ShadeProps) {
+    let shade = shades.findLast((shade) => props[shade]);
+    return shade ? `var(--${shade})` : "";
+}
+
 export function getStyleProps(props: CommonProps) {
     let { flex, width, height, color, className } = props;
+    let shade = getShade(props);
     let style: any = {
         width,
         height,
-        "--color": color,
+        "--color": color || shade,
         flex: isN(flex) && `${flex} 1 0%`,
         ...(props.style || {}),
     };
     return {
-        style,
+        style: style,
         className: classNames(className, { flex }),
     };
 }

@@ -32,7 +32,7 @@ export function Gauge() {
                 flex
                 ro={0}
                 ri={0}
-                color="var(--dim)"
+                dim
                 padding={4}
             >
                 <Grid flex rows={7} strokeWidth={3} />
@@ -45,7 +45,7 @@ export function Gauge() {
     <ButtonRow flex>
         <Frame flex={0.75} top={30} right={95} bottom={0} ro={60} ri={40} padding={4}>
             <Right>
-                <Filler height={116} color="var(--medium)" />
+                <Filler height={116} medium />
                 <Gap height={200} width={184} style={{alignSelf:"flex-end", zIndex: 2}}>
                     <ButtonRow flex>
                         <Gauge />
@@ -54,8 +54,8 @@ export function Gauge() {
                     </ButtonRow>
                 </Gap>
                 <Gap height={10} />
-                <Filler height={100} color="var(--medium)" />
-                <Filler height={75} color="var(--medium)" />
+                <Filler height={100} medium />
+                <Filler height={75} medium />
                 <ButtonCol>
                     <Button color="var(--light)">Engage</Button>
                     <Button color="var(--dark)">Engage</Button>
@@ -68,15 +68,15 @@ export function Gauge() {
                     <Button color="var(--dim)">Engage</Button>
                     <Button color="var(--light)">Engage</Button>
                 </ButtonCol>
-                <Filler flex color="var(--medium)" />
+                <Filler flex medium />
             </Right>
             <Frame flex top={5} right={80} bottom={20} color="var(--dim)" ro={36} padding={20}>
                 <Right>
-                    <Filler height={107} color="var(--medium)" />
-                    <Filler height={200} color="var(--medium)" />
+                    <Filler height={107} medium />
+                    <Filler height={200} medium />
                     <Gap height={10} />
-                    <Filler height={100} color="var(--medium)">427</Filler>
-                    <Filler height={75} color="var(--medium)">803</Filler>
+                    <Filler height={100} medium>427</Filler>
+                    <Filler height={75} medium>803</Filler>
                     <ButtonCol>
                         <Button color="var(--light)">Engage</Button>
                         <Button color="var(--light)">Engage</Button>
@@ -89,12 +89,12 @@ export function Gauge() {
                         <Button color="var(--dim)">Engage</Button>
                         <Button color="var(--bright)">Engage</Button>
                     </ButtonCol>
-                    <Filler flex color="var(--medium)" />
+                    <Filler flex medium />
                 </Right>
-                <Frame flex top={5} right={35} bottom={20} color="var(--dark)" padding={50}>
+                <Frame flex top={5} right={35} bottom={20} dark padding={50}>
                     <ButtonCol flex>
                         <ButtonRow flex>
-                            <Frame flex left={40} bottom={10} color="var(--dark)"  ro={32} ri={12} padding={8}>
+                            <Frame flex left={40} bottom={10} dark  ro={32} ri={12} padding={8}>
                                 <Grid flex rows={7} cols={7}>
                                     This example is based on the excellent work of LCARSLad London.
                                     
@@ -108,13 +108,13 @@ export function Gauge() {
                             <Filler width={150}>3765</Filler>
                         </ButtonRow>
                         <ButtonRow flex>
-                            <Frame flex left={40} top={20} bottom={10} color="var(--dark)" ro={32} ri={12} padding={8}>
-                                <Grid flex rows={7} cols={7} color="var(--dim)" />
+                            <Frame flex left={40} top={20} bottom={10} dark ro={32} ri={12} padding={8}>
+                                <Grid flex rows={7} cols={7} dim />
                             </Frame>
                             <Gap width={20} />
                             <ButtonCol>
                                 <Gap flex />
-                                <Frame width={150} height={80} top={4} right={4} bottom={4} left={30} color="var(--bright)" ro={0} ri={0} padding={4}>
+                                <Frame width={150} height={80} top={4} right={4} bottom={4} left={30} bright ro={0} ri={0} padding={4}>
                                     {/* <Left>
                                         <Filler flex color="var(--bright)" />
                                         <Filler flex color="var(--bright)" />
@@ -138,7 +138,7 @@ export function Gauge() {
                         </ButtonRow>
                         <Gap height={50} />
                         <ButtonRow flex>
-                            <Frame flex left={40} top={20} color="var(--dark)" ro={32} ri={12} padding={8}>
+                            <Frame flex left={40} top={20} dark ro={32} ri={12} padding={8}>
                                 <Grid flex rows={7} cols={7} />
                             </Frame>
                             <Gap width={170} />
@@ -150,13 +150,13 @@ export function Gauge() {
         <Gap width={20} />
         <Frame flex top={30} left={75} bottom ro={60} ri={40} padding={20}>
             <Left>
-                <Filler height={116} color="var(--medium)" />
+                <Filler height={116} medium />
                 <Gap height={200} width={75}>
                     <Gauge />
                 </Gap>
                 <Gap height={10} />
-                <Filler height={100} color="var(--medium)" />
-                <Filler height={75} color="var(--dark)" />
+                <Filler height={100} medium />
+                <Filler height={75} dark />
                 <ButtonCol>
                     <Button color="var(--light)">Engage</Button>
                     <Button color="var(--light)">Engage</Button>
@@ -169,36 +169,36 @@ export function Gauge() {
                     <Button color="var(--dim)">Engage</Button>
                     <Button color="var(--bright)">Engage</Button>
                 </ButtonCol>
-                <Filler flex color="var(--medium)" />
+                <Filler flex medium />
             </Left>
-            <Frame flex top={30} left={35} bottom color="var(--dark)" ro={36} padding={20}>
+            <Frame flex top={30} left={35} bottom dark ro={36} padding={20}>
                 <Left>
-                    <Filler height={66} color="var(--dark)" />
-                    <Filler height={200} color="var(--dark)" />
+                    <Filler height={66} dark />
+                    <Filler height={200} dark />
                     <Gap height={10} />
-                    <Filler height={100} color="var(--dark)" />
-                    <Filler height={75} color="var(--dark)" />
-                    <Filler flex color="var(--dark)" />
+                    <Filler height={100} dark />
+                    <Filler height={75} dark />
+                    <Filler flex dark />
                 </Left>
                 <ButtonRow height={130}>
                     <Gap flex />
-                    <Frame top={5} left={20} flex color="var(--dim)" ro={20} ri={10} padding={20}>
+                    <Frame top={5} left={20} flex dim ro={20} ri={10} padding={20}>
                         <Left>
-                            <Filler height={25} color="var(--dark)" />
-                            <Filler height={30} color="var(--medium)" />
-                            <Filler flex color="var(--dim)" />
+                            <Filler height={25} dark />
+                            <Filler height={30} medium />
+                            <Filler flex dim />
                         </Left>
                         <ButtonRow flex style={{
                             background: "center/cover url('https://motionarray.imgix.net/preview-1231063-48im9zP94W-high_0004.jpg')",
                             boxShadow: "inset 0 0 20px 10px black"
                         }}>
-                            <Grid rows={7} cols={7} flex  color="var(--dark)" />
+                            <Grid rows={7} cols={7} flex  dark />
                         </ButtonRow>
                     </Frame>
                 </ButtonRow>
                 <Gap height={20} />
                 <ButtonRow flex>
-                    <Composite flex height={300} color="var(--bright)" ri={24} def={`
+                    <Composite flex height={300} bright ri={24} def={`
                         g   *   400 200
                         20  *   *   .
                         *   .   *   .
@@ -206,17 +206,17 @@ export function Gauge() {
                     `}>
                         <Cell cell="A1">
                             <Filler width={75} />
-                            <Filler flex color="var(--bright)" />
+                            <Filler flex bright />
                         </Cell>
                         <Cell cell="A2">
-                            <Grid rows={10} cols={7} flex color="var(--dark)" />
+                            <Grid rows={10} cols={7} flex dark />
                         </Cell>
                         <Cell cell="A2">
                             <Graph
                                 values={[2, 3, 2, 5, 6, 4, 7, 2]}
                                 flex
                                 max={10}
-                                color="var(--light)"
+                                light
                             />
                         </Cell>
 
@@ -240,13 +240,13 @@ export function Gauge() {
                         </Cell>
                         <Cell cell="C3">
                             <Filler width={120} />
-                            <Filler flex color="var(--bright)" />
+                            <Filler flex bright />
                         </Cell>
                     </Composite>
                 </ButtonRow>
                 <Gap height={20} />
                 <ButtonRow flex={2}>
-                    <Frame top={15} right={100} flex height={300} color="var(--bright)" padding={20} style={{
+                    <Frame top={15} right={100} flex height={300} bright padding={20} style={{
                         transform: 'perspective(100px) rotateX(2deg)',
                         transformOrigin: 'bottom left'
                     }}>
@@ -266,7 +266,7 @@ export function Gauge() {
         </Frame>
     </ButtonRow>
     <ButtonRow>
-        <Filler width={10} color="var(--bright)" />
+        <Filler width={10} bright />
         <Button rounded width={100} color="var(--dim)">789536-5</Button>
         <Button rounded width={75}>789536-5</Button>
         <Gap width={75} />
