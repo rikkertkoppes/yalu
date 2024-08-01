@@ -4,7 +4,7 @@ import { CommonProps, getStyleProps } from "./commonProps";
 
 interface FillerProps extends CommonProps {
     offset?: [number, number];
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 export function Filler(props: FillerProps) {
