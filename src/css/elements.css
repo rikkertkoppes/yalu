@@ -70,6 +70,16 @@
     border-radius: var(--local-height);
     padding: 8px 16px;
 }
+.lcars-button.rounded-left {
+    border-top-left-radius: var(--local-height);
+    border-bottom-left-radius: var(--local-height);
+    padding-left: 16px;
+}
+.lcars-button.rounded-right {
+    border-top-right-radius: var(--local-height);
+    border-bottom-right-radius: var(--local-height);
+    padding-right: 16px;
+}
 /* .lcars-button:hover {
     background-color: var(--bright);
 } */

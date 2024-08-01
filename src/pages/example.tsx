@@ -206,22 +206,22 @@ function Page() {
                                             />
                                         </Frame>
                                         <Row height={25}>
-                                            <Button flex dim>
+                                            <Button flex dark>
                                                 Engage
                                             </Button>
-                                            <Button flex dim>
+                                            <Filler dark />
+                                            <Button flex dim rounded="right">
                                                 Engage
                                             </Button>
-                                            <Cap />
                                         </Row>
                                         <Row height={25}>
-                                            <Button flex dim>
+                                            <Button flex dark>
                                                 Engage
                                             </Button>
-                                            <Button flex dim>
+                                            <Filler dark />
+                                            <Button flex dim rounded="right">
                                                 Engage
                                             </Button>
-                                            <Cap />
                                         </Row>
                                         <Gap flex />
                                     </Col>

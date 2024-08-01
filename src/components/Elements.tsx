@@ -56,7 +56,7 @@ export interface ButtonProps extends CommonProps {
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
     outline?: boolean;
-    rounded?: boolean;
+    rounded?: boolean | "left" | "right";
     children: React.ReactNode;
 }
 export function Button(props: ButtonProps) {
@@ -74,12 +74,23 @@ export function Button(props: ButtonProps) {
         "--boot-wait": `${wait}s`,
         ...style,
     };
+    let roundclass = "";
+    switch (rounded) {
+        case "left":
+            roundclass = "rounded-left";
+            break;
+        case "right":
+            roundclass = "rounded-right";
+            break;
+        case true:
+            roundclass = "rounded";
+            break;
+    }
     return (
         <div
-            className={classNames("lcars-button", className, {
+            className={classNames("lcars-button", className, roundclass, {
                 selected,
                 outline,
-                rounded,
             })}
             style={divStyle}
             onClick={onClick}
@@ -94,7 +105,7 @@ export function Row(props: FillerProps) {
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
     let divStyle: any = {
-        "--local-height": (height && `${height}px`) || "auto",
+        "--local-height": (height && `${height}px`) || (props.flex && "auto"),
         "--local-width": width && `${width}px`,
         "--button-color": style["--color"],
         ...style,
