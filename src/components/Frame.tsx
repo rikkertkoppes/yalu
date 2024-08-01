@@ -168,27 +168,6 @@ const Joint = ({
     );
 };
 
-let def = `
-g   200  50   8   *   30
-8   *   *   *   *   *
-*   *   .   *   .   *
-8   *   .   *   *   *
-`;
-
-def = `
-g   *   300 *
-20  *   *   .
-*   .   *   .
-20  .   *   *
-`;
-
-def = `
-g   *   40  20  40  *
-20  *   *   .   *   *
-*   .   *   .   *   .
-20  *   *   .   *   *
-`;
-
 function parseHead(head: string) {
     if (head.match(/\*+/)) return "1fr";
     return head + "px";
@@ -476,6 +455,7 @@ export function Frame(props: FrameProps) {
         top = right = bottom = left = true;
     }
     let { def, content } = createDef(top, right, bottom, left);
+    console.log(def);
     let childElements = new Array<React.ReactNode>().concat(children);
     let specials = childElements.filter(isSpecial);
     let regulars = childElements.filter((c) => !specials.includes(c));

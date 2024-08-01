@@ -15,7 +15,16 @@ import {
     Cell,
     Graph,
     Bar,
+    Stack,
+    Array,
 } from "../components";
+
+function randomLengthNumber(length: number) {
+    let s = "";
+    let n = 1 + Math.floor(Math.random() * length);
+    while (n--) s += Math.floor(Math.random() * 10);
+    return parseInt(s, 10);
+}
 
 export function Gauge() {
     return (
@@ -224,7 +233,23 @@ function Page() {
                                         ri={12}
                                         padding={8}
                                     >
-                                        <Grid flex rows={7} cols={7} />
+                                        <Stack flex>
+                                            <Grid rows={7} cols={7} />
+                                            <Graph
+                                                values={[
+                                                    2, 3, 2, 5, 6, 4, 7, 2,
+                                                ]}
+                                                max={10}
+                                                light
+                                            />
+                                            <Graph
+                                                values={[
+                                                    4, 5, 7, 3, 8, 9, 8, 5,
+                                                ]}
+                                                max={10}
+                                                bright
+                                            />
+                                        </Stack>
                                     </Frame>
                                     <Gap width={170} />
                                 </Row>
@@ -413,8 +438,16 @@ function Page() {
                                     <Button outline>845-56</Button>
                                     <Filler flex />
                                 </Right>
-                                <Grid rows={7} cols={7} flex />
-                                Composite curves
+                                <Stack flex>
+                                    {/* <Grid rows={7} cols={7} /> */}
+                                    <Array rows={7} cols={7}>
+                                        {({ r, c }) => (
+                                            <div suppressHydrationWarning>
+                                                {randomLengthNumber(7)}
+                                            </div>
+                                        )}
+                                    </Array>
+                                </Stack>
                             </Frame>
                         </Row>
                         <Gap height={50} />

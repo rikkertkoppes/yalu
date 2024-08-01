@@ -123,6 +123,24 @@ export function Col(props: FillerProps) {
         </div>
     );
 }
+export function Stack(props: FillerProps) {
+    let { children } = props;
+    let { style, className } = getStyleProps(props);
+    let { width, height } = style;
+    let divStyle: any = {
+        height: height && `${height}px`,
+        width: width && `${width}px`,
+        "--local-height": height && `${height}px`,
+        "--local-width": width && `${width}px`,
+        // "--button-color": style["--color"],
+        ...style,
+    };
+    return (
+        <div className={classNames("lcars-stack", className)} style={divStyle}>
+            {children}
+        </div>
+    );
+}
 
 export function Gap({
     children,
@@ -264,13 +282,49 @@ export function Bar(props: BarProps) {
     );
 }
 
-/**
- * TODO: array
- * cols and rows as props
- * render with grid
- * when renderchild given, render child with cell rc as arguments
- * otherwise, render the children (expect cells, or fill up the grid)
- */
+interface ArrayProps extends CommonProps {
+    rows?: number;
+    cols?: number;
+    children?:
+        | React.ReactNode
+        | ((rc: { r: number; c: number }) => React.ReactNode);
+}
+export function Array(props: ArrayProps) {
+    let { children, rows = 1, cols = 1 } = props;
+    let { style, className } = getStyleProps(props);
+    if (typeof children === "function") {
+        let renderChild = children as (rc: {
+            r: number;
+            c: number;
+        }) => React.ReactNode;
+        let cells: React.ReactNode[] = [];
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                cells.push(
+                    <div
+                        key={`${r}-${c}`}
+                        style={{
+                            gridRow: r + 1,
+                            gridColumn: c + 1,
+                        }}
+                    >
+                        {renderChild({ r, c })}
+                    </div>
+                );
+            }
+        }
+        return (
+            <div className={classNames("lcars-array", className)} style={style}>
+                {cells}
+            </div>
+        );
+    }
+    return (
+        <div className={classNames("lcars-array", className)} style={style}>
+            {children}
+        </div>
+    );
+}
 
 /**
  * TODO: axis: use array helper and min and max per axis
