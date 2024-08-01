@@ -420,6 +420,7 @@ export function Composite(props: CompositeProps) {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     zIndex: 1000,
+                                    pointerEvents: "none",
                                 }}
                             >
                                 {c.cell}
