@@ -1,7 +1,7 @@
 import Layout from "../pageComponents/layout";
 import {
-    ButtonRow,
-    ButtonCol,
+    Row,
+    Col,
     Button,
     Cap,
     Filler,
@@ -19,7 +19,7 @@ import {
 
 export function Gauge() {
     return (
-        <ButtonRow flex>
+        <Row flex>
             <Frame top={3} right={3} bottom={3} flex ro={0} ri={0}>
                 <Right>
                     <Filler height={50} />
@@ -38,14 +38,14 @@ export function Gauge() {
             >
                 <Grid flex rows={7} strokeWidth={3} />
             </Frame>
-        </ButtonRow>
+        </Row>
     );
 }
 
 function Page() {
     return (
-        <ButtonCol flex className="lcars-gray">
-            <ButtonRow flex>
+        <Col flex className="lcars-gray">
+            <Row flex>
                 <Frame
                     flex={0.75}
                     top={30}
@@ -62,16 +62,16 @@ function Page() {
                             width={184}
                             style={{ alignSelf: "flex-end", zIndex: 2 }}
                         >
-                            <ButtonRow flex>
+                            <Row flex>
                                 <Gauge />
                                 <Gauge />
                                 <Gauge />
-                            </ButtonRow>
+                            </Row>
                         </Gap>
                         <Gap height={10} />
                         <Filler height={100} medium />
                         <Filler height={75} medium />
-                        <ButtonCol>
+                        <Col>
                             <Button light>Engage</Button>
                             <Button dark>Engage</Button>
                             <Gap height={30} />
@@ -82,7 +82,7 @@ function Page() {
                             <Button bright>Engage</Button>
                             <Button dim>Engage</Button>
                             <Button light>Engage</Button>
-                        </ButtonCol>
+                        </Col>
                         <Filler flex medium />
                     </Right>
                     <Frame
@@ -104,7 +104,7 @@ function Page() {
                             <Filler height={75} medium>
                                 803
                             </Filler>
-                            <ButtonCol>
+                            <Col>
                                 <Button light>Engage</Button>
                                 <Button light>Engage</Button>
                                 <Gap height={30} />
@@ -115,7 +115,7 @@ function Page() {
                                 <Button light>Engage</Button>
                                 <Button dim>Engage</Button>
                                 <Button bright>Engage</Button>
-                            </ButtonCol>
+                            </Col>
                             <Filler flex medium />
                         </Right>
                         <Frame
@@ -126,8 +126,8 @@ function Page() {
                             dark
                             padding={50}
                         >
-                            <ButtonCol flex>
-                                <ButtonRow flex>
+                            <Col flex>
+                                <Row flex>
                                     <Frame
                                         flex
                                         left={40}
@@ -147,12 +147,12 @@ function Page() {
                                         </Grid>
                                     </Frame>
                                     <Gap width={170} />
-                                </ButtonRow>
-                                <ButtonRow height={50}>
+                                </Row>
+                                <Row height={50}>
                                     <Gap height={50} flex />
                                     <Filler width={150}>3765</Filler>
-                                </ButtonRow>
-                                <ButtonRow flex>
+                                </Row>
+                                <Row flex>
                                     <Frame
                                         flex
                                         left={40}
@@ -166,7 +166,7 @@ function Page() {
                                         <Grid flex rows={7} cols={7} dim />
                                     </Frame>
                                     <Gap width={20} />
-                                    <ButtonCol>
+                                    <Col>
                                         <Gap flex />
                                         <Frame
                                             width={150}
@@ -184,7 +184,7 @@ function Page() {
                                         <Filler flex bright />
                                         <Filler flex bright />
                                     </Left> */}
-                                            <ButtonRow
+                                            <Row
                                                 flex
                                                 style={{
                                                     background:
@@ -192,7 +192,7 @@ function Page() {
                                                 }}
                                             />
                                         </Frame>
-                                        <ButtonRow height={25}>
+                                        <Row height={25}>
                                             <Button flex dim>
                                                 Engage
                                             </Button>
@@ -200,8 +200,8 @@ function Page() {
                                                 Engage
                                             </Button>
                                             <Cap />
-                                        </ButtonRow>
-                                        <ButtonRow height={25}>
+                                        </Row>
+                                        <Row height={25}>
                                             <Button flex dim>
                                                 Engage
                                             </Button>
@@ -209,12 +209,12 @@ function Page() {
                                                 Engage
                                             </Button>
                                             <Cap />
-                                        </ButtonRow>
+                                        </Row>
                                         <Gap flex />
-                                    </ButtonCol>
-                                </ButtonRow>
+                                    </Col>
+                                </Row>
                                 <Gap height={50} />
-                                <ButtonRow flex>
+                                <Row flex>
                                     <Frame
                                         flex
                                         left={40}
@@ -227,8 +227,8 @@ function Page() {
                                         <Grid flex rows={7} cols={7} />
                                     </Frame>
                                     <Gap width={170} />
-                                </ButtonRow>
-                            </ButtonCol>
+                                </Row>
+                            </Col>
                         </Frame>
                     </Frame>
                 </Frame>
@@ -250,7 +250,7 @@ function Page() {
                         <Gap height={10} />
                         <Filler height={100} medium />
                         <Filler height={75} dark />
-                        <ButtonCol>
+                        <Col>
                             <Button light>Engage</Button>
                             <Button light>Engage</Button>
                             <Gap height={30} />
@@ -261,7 +261,7 @@ function Page() {
                             <Button light>Engage</Button>
                             <Button dim>Engage</Button>
                             <Button bright>Engage</Button>
-                        </ButtonCol>
+                        </Col>
                         <Filler flex medium />
                     </Left>
                     <Frame
@@ -281,7 +281,7 @@ function Page() {
                             <Filler height={75} dark />
                             <Filler flex dark />
                         </Left>
-                        <ButtonRow height={130}>
+                        <Row height={130}>
                             <Gap flex />
                             <Frame
                                 top={5}
@@ -297,7 +297,7 @@ function Page() {
                                     <Filler height={30} medium />
                                     <Filler flex dim />
                                 </Left>
-                                <ButtonRow
+                                <Row
                                     flex
                                     style={{
                                         background:
@@ -306,11 +306,11 @@ function Page() {
                                     }}
                                 >
                                     <Grid rows={7} cols={7} flex dark />
-                                </ButtonRow>
+                                </Row>
                             </Frame>
-                        </ButtonRow>
+                        </Row>
                         <Gap height={20} />
-                        <ButtonRow flex>
+                        <Row flex>
                             <Composite
                                 flex
                                 height={300}
@@ -340,7 +340,15 @@ function Page() {
                                 </Cell>
 
                                 <Cell cell="B2">
-                                    <ButtonRow flex>
+                                    <Row flex color="var(--blue)">
+                                        <Button flex>01</Button>
+                                        <Button flex>02</Button>
+                                        <Button flex>03</Button>
+                                        <Button flex>04</Button>
+                                        <Button flex>05</Button>
+                                        <Button flex>06</Button>
+                                    </Row>
+                                    <Row height={24}>
                                         <Button flex outline>
                                             01
                                         </Button>
@@ -349,24 +357,14 @@ function Page() {
                                         <Button flex>04</Button>
                                         <Button flex>05</Button>
                                         <Button flex>06</Button>
-                                    </ButtonRow>
-                                    <ButtonRow height={24}>
-                                        <Button flex outline>
-                                            01
-                                        </Button>
-                                        <Button flex>02</Button>
-                                        <Button flex>03</Button>
-                                        <Button flex>04</Button>
-                                        <Button flex>05</Button>
-                                        <Button flex>06</Button>
-                                    </ButtonRow>
+                                    </Row>
                                 </Cell>
                                 <Cell
                                     cell="C1"
                                     end="C2"
                                     padding={"0 0 24px 24px"}
                                 >
-                                    <ButtonRow dim flex>
+                                    <Row dim flex>
                                         <Bar
                                             value={50}
                                             steps={20}
@@ -385,16 +383,16 @@ function Page() {
                                             type="square"
                                             flex
                                         />
-                                    </ButtonRow>
+                                    </Row>
                                 </Cell>
                                 <Cell cell="C3">
                                     <Filler width={120} />
                                     <Filler flex bright />
                                 </Cell>
                             </Composite>
-                        </ButtonRow>
+                        </Row>
                         <Gap height={20} />
-                        <ButtonRow flex={2}>
+                        <Row flex={2}>
                             <Frame
                                 top={15}
                                 right={100}
@@ -418,12 +416,12 @@ function Page() {
                                 <Grid rows={7} cols={7} flex />
                                 Composite curves
                             </Frame>
-                        </ButtonRow>
+                        </Row>
                         <Gap height={50} />
                     </Frame>
                 </Frame>
-            </ButtonRow>
-            <ButtonRow>
+            </Row>
+            <Row>
                 <Filler width={10} bright />
                 <Button rounded width={100} dim>
                     789536-5
@@ -432,7 +430,7 @@ function Page() {
                     789536-5
                 </Button>
                 <Gap width={75} />
-                <ButtonRow>
+                <Row>
                     <Button width={75} dim>
                         789536-5
                     </Button>
@@ -440,9 +438,9 @@ function Page() {
                     <Button width={75}>789536-5</Button>
                     <Filler width={10} />
                     <Cap wide />
-                </ButtonRow>
+                </Row>
                 <Gap width={75} />
-                <ButtonRow>
+                <Row>
                     <Button width={75} dim>
                         789536-5
                     </Button>
@@ -450,7 +448,7 @@ function Page() {
                     <Button width={75}>789536-5</Button>
                     <Filler width={10} />
                     <Cap wide />
-                </ButtonRow>
+                </Row>
                 <Gap width={75} />
                 <Button rounded width={100}>
                     789536-5
@@ -458,8 +456,8 @@ function Page() {
                 <Button rounded width={75} dim>
                     789536-5
                 </Button>
-            </ButtonRow>
-        </ButtonCol>
+            </Row>
+        </Col>
     );
 }
 

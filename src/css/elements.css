@@ -21,7 +21,7 @@
     box-sizing: border-box;
 }
 
-.lcars-buttonrow {
+.lcars-row {
     display: flex;
     /* align-items: center; */
     gap: 4px;
@@ -29,7 +29,7 @@
     --local-direction: row;
 }
 
-.lcars-buttoncol {
+.lcars-col {
     display: flex;
     flex-direction: column;
     gap: 4px;

@@ -47,7 +47,7 @@ export function Top({ children, startSpace, endSpace }: SideProps) {
     };
     if (cell) return <Cell cell={cell}>{children}</Cell>;
     return (
-        <div className="lcars-frametop lcars-buttonrow" style={style}>
+        <div className="lcars-frametop lcars-row" style={style}>
             {children}
         </div>
     );
@@ -60,7 +60,7 @@ export function Right({ children, startSpace, endSpace }: SideProps) {
     };
     if (cell) return <Cell cell={cell}>{children}</Cell>;
     return (
-        <div className="lcars-frameright lcars-buttoncol" style={style}>
+        <div className="lcars-frameright lcars-col" style={style}>
             {children}
         </div>
     );
@@ -71,7 +71,7 @@ export function Bottom({ children, startSpace, endSpace }: SideProps) {
         "--end-space": endSpace && `${endSpace}px`,
     };
     return (
-        <div className="lcars-framebottom lcars-buttonrow" style={style}>
+        <div className="lcars-framebottom lcars-row" style={style}>
             {children}
         </div>
     );
@@ -84,7 +84,7 @@ export function Left({ children, startSpace, endSpace }: SideProps) {
     };
     if (cell) return <Cell cell={cell}>{children}</Cell>;
     return (
-        <div className="lcars-frameleft lcars-buttoncol" style={style}>
+        <div className="lcars-frameleft lcars-col" style={style}>
             {children}
         </div>
     );
@@ -115,7 +115,7 @@ export function BottomRight({ color, ...props }: CornerProps) {
     );
 }
 export function Art({ children }) {
-    return <div className="lcars-frameart buttoncol">{children}</div>;
+    return <div className="lcars-frameart lcars-col">{children}</div>;
 }
 
 // new approach for generic composite curves

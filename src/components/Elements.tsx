@@ -89,7 +89,7 @@ export function Button(props: ButtonProps) {
     );
 }
 
-export function ButtonRow(props: FillerProps) {
+export function Row(props: FillerProps) {
     let { children } = props;
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
@@ -100,15 +100,12 @@ export function ButtonRow(props: FillerProps) {
         ...style,
     };
     return (
-        <div
-            className={classNames("lcars-buttonrow", className)}
-            style={divStyle}
-        >
+        <div className={classNames("lcars-row", className)} style={divStyle}>
             {children}
         </div>
     );
 }
-export function ButtonCol(props: FillerProps) {
+export function Col(props: FillerProps) {
     let { children } = props;
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
@@ -121,10 +118,7 @@ export function ButtonCol(props: FillerProps) {
         ...style,
     };
     return (
-        <div
-            className={classNames("lcars-buttoncol", className)}
-            style={divStyle}
-        >
+        <div className={classNames("lcars-col", className)} style={divStyle}>
             {children}
         </div>
     );
