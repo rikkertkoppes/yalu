@@ -50,7 +50,7 @@
 
 .lcars-button {
     background-color: var(--button-color, var(--light));
-    color: black;
+    color: var(--text-on-color, black);
     padding: 8px;
     cursor: pointer;
     text-transform: uppercase;

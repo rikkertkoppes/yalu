@@ -22,7 +22,7 @@
 
 body {
     background: var(--bkg);
-    color: white;
+    color: var(--text-color);
 }
 
 .flex {

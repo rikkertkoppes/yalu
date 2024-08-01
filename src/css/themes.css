@@ -5,6 +5,9 @@
 
 .lcars-reset, 
 :root {
+    --text-color: white;
+    --text-on-color: black;
+
     --lcars-gray: #234;
     --lcars-white: #fff;
     --lcars-black: #000;
@@ -45,10 +48,15 @@
     --signal: #E9452A;
     --signal2: #FF846D;
     --bright: var(--lcars-pale-canary);
+    --text-on-bright: var(--lcars-black);
     --light: var(--lcars-golden-tanoi);
+    --text-on-light: var(--lcars-black);
     --medium: var(--lcars-neon-carrot);
+    --text-on-medium: var(--lcars-black);
     --dim: var(--lcars-red-damask);
+    --text-on-dim: var(--lcars-black);
     --dark: var(--lcars-rust);
+    --text-on-dark: var(--lcars-white);
 
     --scroll-track: black;
     --scroll-button: var(--light);
@@ -197,3 +205,20 @@
     --scroll-button: var(--light);
     --scroll-thumb: var(--medium);
 }
+
+.lcars-gray {
+    /* colors adjusted for waveshare screen */
+    --signal: #E9452A;
+    --signal2: #FF846D;
+    --blue: #2E6F90;
+    --bright: #E9452A;
+    --light: #9FA3B6;
+    --medium: #6F738E;
+    --dim:#525A6D;
+    --dark: #2D3949;
+
+    --scroll-track: black;
+    --scroll-button: var(--light);
+    --scroll-thumb: var(--medium);
+}
+

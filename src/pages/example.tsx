@@ -89,7 +89,7 @@ function Page() {
                             <Button dim>Engage</Button>
                             <Button dim>Engage</Button>
                             <Button bright>Engage</Button>
-                            <Button dim>Engage</Button>
+                            <Button dark>Engage</Button>
                             <Button light>Engage</Button>
                         </Col>
                         <Filler flex medium />
@@ -115,15 +115,15 @@ function Page() {
                             </Filler>
                             <Col>
                                 <Button light>Engage</Button>
-                                <Button light>Engage</Button>
+                                <Button dark>Engage</Button>
                                 <Gap height={30} />
+                                <Button dark>Engage</Button>
                                 <Button light>Engage</Button>
+                                <Button light>Engage</Button>
+                                <Button dark>Engage</Button>
                                 <Button light>Engage</Button>
                                 <Button dim>Engage</Button>
                                 <Button light>Engage</Button>
-                                <Button light>Engage</Button>
-                                <Button dim>Engage</Button>
-                                <Button bright>Engage</Button>
                             </Col>
                             <Filler flex medium />
                         </Right>
@@ -281,10 +281,10 @@ function Page() {
                             <Gap height={30} />
                             <Button light>Engage</Button>
                             <Button light>Engage</Button>
-                            <Button dim>Engage</Button>
+                            <Button dark>Engage</Button>
                             <Button light>Engage</Button>
                             <Button light>Engage</Button>
-                            <Button dim>Engage</Button>
+                            <Button dark>Engage</Button>
                             <Button bright>Engage</Button>
                         </Col>
                         <Filler flex medium />
@@ -352,16 +352,20 @@ function Page() {
                                     <Filler width={75} />
                                     <Filler flex bright />
                                 </Cell>
-                                <Cell cell="A2">
-                                    <Grid rows={10} cols={7} flex dark />
-                                </Cell>
-                                <Cell cell="A2">
-                                    <Graph
-                                        values={[2, 3, 2, 5, 6, 4, 7, 2]}
-                                        flex
-                                        max={10}
-                                        light
-                                    />
+                                <Cell
+                                    cell="A2"
+                                    end="A3"
+                                    padding={"24px 24px 0 0 "}
+                                >
+                                    <Stack flex>
+                                        <Grid rows={10} cols={7} flex dark />
+                                        <Graph
+                                            values={[2, 3, 2, 5, 6, 4, 7, 2]}
+                                            flex
+                                            max={10}
+                                            light
+                                        />
+                                    </Stack>
                                 </Cell>
 
                                 <Cell cell="B2">
