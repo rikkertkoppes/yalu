@@ -81,16 +81,16 @@ function Page() {
                         <Filler height={100} medium />
                         <Filler height={75} medium />
                         <Col>
-                            <Button light>Engage</Button>
-                            <Button dark>Engage</Button>
+                            <Button light>LCARSLad</Button>
+                            <Button dark>LCARSLad</Button>
                             <Gap height={30} />
-                            <Button dim>Engage</Button>
-                            <Button bright>Engage</Button>
-                            <Button dim>Engage</Button>
-                            <Button dim>Engage</Button>
-                            <Button bright>Engage</Button>
-                            <Button dark>Engage</Button>
-                            <Button light>Engage</Button>
+                            <Button dim>LCARSLad</Button>
+                            <Button bright>LCARSLad</Button>
+                            <Button dim>LCARSLad</Button>
+                            <Button dim>LCARSLad</Button>
+                            <Button bright>LCARSLad</Button>
+                            <Button dark>LCARSLad</Button>
+                            <Button light>LCARSLad</Button>
                         </Col>
                         <Filler flex medium />
                     </Right>
@@ -114,16 +114,16 @@ function Page() {
                                 803
                             </Filler>
                             <Col>
-                                <Button light>Engage</Button>
-                                <Button dark>Engage</Button>
+                                <Button light>Check</Button>
+                                <Button dark>Check</Button>
                                 <Gap height={30} />
-                                <Button dark>Engage</Button>
-                                <Button light>Engage</Button>
-                                <Button light>Engage</Button>
-                                <Button dark>Engage</Button>
-                                <Button light>Engage</Button>
-                                <Button dim>Engage</Button>
-                                <Button light>Engage</Button>
+                                <Button dark>Check</Button>
+                                <Button light>Check</Button>
+                                <Button light>Check</Button>
+                                <Button dark>Check</Button>
+                                <Button light>Check</Button>
+                                <Button dim>Check</Button>
+                                <Button light>Check</Button>
                             </Col>
                             <Filler flex medium />
                         </Right>
@@ -149,10 +149,14 @@ function Page() {
                                         <Grid flex rows={7} cols={7}>
                                             This example is based on the
                                             excellent work of LCARSLad London.
-                                            Make sure to see his work on
-                                            [Instagram](https://www.instagram.com/lcarslad/)
-                                            and [X /
-                                            Twitter](https://twitter.com/lcarslad)
+                                            Make sure to see his work on{" "}
+                                            <a href="https://www.instagram.com/lcarslad/">
+                                                Instagram
+                                            </a>{" "}
+                                            and{" "}
+                                            <a href="https://twitter.com/lcarslad">
+                                                Twitter
+                                            </a>
                                         </Grid>
                                     </Frame>
                                     <Gap width={170} />
@@ -276,16 +280,16 @@ function Page() {
                         <Filler height={100} medium />
                         <Filler height={75} dark />
                         <Col>
-                            <Button light>Engage</Button>
-                            <Button light>Engage</Button>
+                            <Button light>London</Button>
+                            <Button light>London</Button>
                             <Gap height={30} />
-                            <Button light>Engage</Button>
-                            <Button light>Engage</Button>
-                            <Button dark>Engage</Button>
-                            <Button light>Engage</Button>
-                            <Button light>Engage</Button>
-                            <Button dark>Engage</Button>
-                            <Button bright>Engage</Button>
+                            <Button light>London</Button>
+                            <Button light>London</Button>
+                            <Button dark>London</Button>
+                            <Button light>London</Button>
+                            <Button light>London</Button>
+                            <Button dark>London</Button>
+                            <Button bright>London</Button>
                         </Col>
                         <Filler flex medium />
                     </Left>
