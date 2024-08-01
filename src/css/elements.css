@@ -123,3 +123,67 @@
 .lcars-graph * {
     vector-effect: non-scaling-stroke;
 }
+
+
+.lcars-bar {
+    display: flex;
+    flex-direction: row;
+    min-height: 16px;
+    min-width: 16px;
+    justify-self: stretch;
+}
+.lcars-bar.v {
+    flex-direction: column-reverse;
+}
+
+.lcars-bar.lcars-blob > div {
+    background-color: var(--fill);
+    background: 
+        radial-gradient(
+            ellipse at center, 
+            var(--fill) 0%,
+            var(--fill) 30%,
+            var(--edge) 90%
+        )
+    ;
+    background-size: var(--step) 100% ;
+}
+.lcars-bar.lcars-blob.v > div {
+    background-size: 100% var(--step);
+}
+
+.lcars-bar.lcars-flat > div {
+    background-color: var(--fill);
+}
+
+.lcars-bar.lcars-square > div {
+    background-color: var(--fill);
+    --a: 90deg;
+    background: 
+        linear-gradient(var(--a), 
+            transparent 0%, 
+            transparent 10%,
+            var(--fill) 10%, 
+            var(--fill) 90%, 
+            transparent 90%,
+            transparent 100%
+        );
+    background-size: var(--step) 100%;
+}
+.lcars-bar.lcars-square.v > div {
+    --a: 180deg;
+    background-size: 100% var(--step);
+}
+
+.lcars-bar > div:first-child {
+    --fill: var(--color);
+    --edge: transparent;
+    background-position: bottom left;
+}
+
+.lcars-bar > div:last-child {
+    --fill: var(--dark);
+    --edge: transparent;
+    background-position: top right;
+}
+

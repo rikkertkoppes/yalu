@@ -240,3 +240,42 @@ export function Graph(props: GraphProps) {
         </svg>
     );
 }
+
+interface BarProps extends CommonProps {
+    value: number;
+    height?: number;
+    type?: "blob" | "flat" | "square";
+    color?: string;
+    label?: string;
+    direction?: "v" | "h";
+    steps?: number;
+}
+export function Bar(props: BarProps) {
+    let { value, type = "blob", direction = "v", steps } = props;
+    let { style, className } = getStyleProps(props);
+
+    let bf = value / 100; // bar fraction
+    let nf = 1 - bf; // no bar fraction
+
+    let v = direction === "v";
+    steps = steps ?? (v ? 10 : 20);
+    let dim = v ? "height" : "width";
+    let bs = `${100 * bf}%`;
+    let ns = `${100 * nf}%`;
+    let bt = `${100 / steps / bf}%`;
+    let nt = `${100 / steps / nf}%`;
+    return (
+        <div
+            className={classNames(
+                "lcars-bar",
+                direction,
+                "lcars-" + type,
+                className
+            )}
+            style={style}
+        >
+            <div style={{ [dim]: bs, "--step": bt } as any} />
+            <div style={{ [dim]: ns, "--step": nt } as any} />
+        </div>
+    );
+}

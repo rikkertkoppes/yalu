@@ -14,6 +14,7 @@ import {
     Art,
     Cell,
     Graph,
+    Bar,
 } from "../components";
 
 export function Gauge() {
@@ -316,11 +317,11 @@ function Page() {
                                 bright
                                 ri={24}
                                 def={`
-                        g   *   400 200
-                        20  *   *   .
-                        *   .   *   .
-                        20  .   *   *
-                    `}
+                                    g   *   400 200
+                                    20  *   *   .
+                                    *   .   *   .
+                                    20  .   *   *
+                                `}
                             >
                                 <Cell cell="A1">
                                     <Filler width={75} />
@@ -358,6 +359,32 @@ function Page() {
                                         <Button flex>04</Button>
                                         <Button flex>05</Button>
                                         <Button flex>06</Button>
+                                    </ButtonRow>
+                                </Cell>
+                                <Cell
+                                    cell="C1"
+                                    end="C2"
+                                    padding={"0 0 24px 24px"}
+                                >
+                                    <ButtonRow dim flex>
+                                        <Bar
+                                            value={50}
+                                            steps={20}
+                                            type="square"
+                                            flex
+                                        />
+                                        <Bar
+                                            value={50}
+                                            steps={20}
+                                            type="square"
+                                            flex
+                                        />
+                                        <Bar
+                                            value={77}
+                                            steps={20}
+                                            type="square"
+                                            flex
+                                        />
                                     </ButtonRow>
                                 </Cell>
                                 <Cell cell="C3">
