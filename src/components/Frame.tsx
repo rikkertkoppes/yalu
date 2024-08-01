@@ -400,6 +400,7 @@ export function Composite(props: CompositeProps) {
             >
                 {g.cells.map((c) => (
                     <Joint
+                        key={c.cell}
                         type={c.type.toLowerCase()}
                         row={c.row + 1}
                         col={c.col + 1}
@@ -411,6 +412,7 @@ export function Composite(props: CompositeProps) {
                     g.cells.map((c) => {
                         return (
                             <div
+                                key={c.cell}
                                 style={{
                                     gridRow: c.row + 1,
                                     gridColumn: c.col + 1,
