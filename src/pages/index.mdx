@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from '../pageComponents/layout';
+import Layout from "../pageComponents/layout";
 import { Top, Button, Cap, Filler, Frame, Left } from "../components";
 
 # Frames
@@ -9,20 +9,23 @@ Start with a frame and specify the sides that should be visible:
 ```
 <Frame></Frame>
 ```
+
 <Frame></Frame>
 
 Width is 100% by default and height as small as needed, just like a `<div>` element. You can add optional `width` and `height` attributes, a custom `className` or `style` to adjust this. You can also specify which borders to show. Content goes inside the frame:
 
-```            
+```
 <Frame top left={150} bottom={4} height={400}>
     Content here
 </Frame>
 ```
+
 <Frame top left={150} bottom={4} height={400}>
     Content here
 </Frame>
 
 To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<Right>` and `<Bottom>` elements together with `<Button>` and `<Filler>` elements
+
 ```
 <Frame left top bottom height={400}>
     <Left>
@@ -32,6 +35,7 @@ To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<
     content here
 </Frame>
 ```
+
 <Frame left top bottom height={400}>
     <Left>
         <Button>Engage</Button>
@@ -39,14 +43,7 @@ To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<
     </Left>
     content here
 </Frame>
-<Frame
-    left={100}
-    top={4}
-    height={400}
-    className="lcars-gray"
-    ro={20}
-    ri={16}
->
+<Frame left={100} top={4} height={400} className="lcars-gray" ro={20} ri={16}>
     <Left>
         <Button outline>Engage</Button>
         <Filler flex />
@@ -57,14 +54,7 @@ To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<
         </Frame>
     </Frame>
 </Frame>
-<Frame
-    left={100}
-    top={4}
-    height={400}
-    className="lcars-gray"
-    ro={20}
-    ri={16}
->
+<Frame left={100} top={4} height={400} className="lcars-gray" ro={20} ri={16}>
     <Left>
         <Button>Engage</Button>
         <Filler flex />
@@ -76,6 +66,6 @@ To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<
     </Frame>
 </Frame>
 
-export default function({children}) {
+export default function ({ children }) {
     return <Layout title="Frames">{children}</Layout>;
 }

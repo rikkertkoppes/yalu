@@ -220,6 +220,7 @@
     place-items: stretch;
     place-content: start;
     overflow: hidden;
+    flex-shrink: 0;
 }
 .lcars-joint {
     /* min-width: var(--ro); */
