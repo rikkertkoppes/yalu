@@ -89,50 +89,40 @@ export function Button(props: ButtonProps) {
     );
 }
 
-export function ButtonRow({
-    children,
-    className,
-    flex,
-    height,
-    width,
-    color,
-    style = {},
-}: FillerProps) {
+export function ButtonRow(props: FillerProps) {
+    let { children } = props;
+    let { style, className } = getStyleProps(props);
+    let { width, height } = style;
     let divStyle: any = {
         "--local-height": (height && `${height}px`) || "auto",
         "--local-width": width && `${width}px`,
-        "--button-color": color,
+        "--button-color": style["--color"],
         ...style,
     };
     return (
         <div
-            className={classNames("lcars-buttonrow", className, { flex })}
+            className={classNames("lcars-buttonrow", className)}
             style={divStyle}
         >
             {children}
         </div>
     );
 }
-export function ButtonCol({
-    children,
-    className,
-    flex,
-    height,
-    width,
-    color,
-    style = {},
-}: FillerProps) {
+export function ButtonCol(props: FillerProps) {
+    let { children } = props;
+    let { style, className } = getStyleProps(props);
+    let { width, height } = style;
     let divStyle: any = {
         height: height && `${height}px`,
         width: width && `${width}px`,
         // "--local-height": height && `${height}px`,
         "--local-width": width && `${width}px`,
-        "--button-color": color,
+        "--button-color": style["--color"],
         ...style,
     };
     return (
         <div
-            className={classNames("lcars-buttoncol", className, { flex })}
+            className={classNames("lcars-buttoncol", className)}
             style={divStyle}
         >
             {children}
@@ -279,3 +269,15 @@ export function Bar(props: BarProps) {
         </div>
     );
 }
+
+/**
+ * TODO: array
+ * cols and rows as props
+ * render with grid
+ * when renderchild given, render child with cell rc as arguments
+ * otherwise, render the children (expect cells, or fill up the grid)
+ */
+
+/**
+ * TODO: axis: use array helper and min and max per axis
+ */
