@@ -26,30 +26,18 @@ export function Filler(props: FillerProps) {
     );
 }
 
-export function Cutout({
-    children,
-    className,
-    flex,
-    width,
-    height,
-    color,
-    offset,
-    style = {},
-}: FillerProps) {
+export function Cutout(props: FillerProps) {
+    let { children, offset } = props;
     let wait = Math.random();
+    let { style, className } = getStyleProps(props);
     let divStyle: any = {
-        width,
-        height,
-        "--color": color,
         "--boot-wait": `${wait}s`,
+        "--local-height": style.height && `${style.height}px`,
         transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
         ...style,
     };
     return (
-        <div
-            className={classNames("lcars-cutout", className, { flex })}
-            style={divStyle}
-        >
+        <div className={classNames("lcars-cutout", className)} style={divStyle}>
             {children}
         </div>
     );
