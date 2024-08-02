@@ -216,9 +216,11 @@ interface GraphProps extends CommonProps {
     max?: number;
     strokeWidth?: number;
     children?: React.ReactNode;
+    dashed?: boolean;
+    dotted?: boolean;
 }
 export function Graph(props: GraphProps) {
-    let { values, min, max, strokeWidth = 1, children } = props;
+    let { values, min, max, strokeWidth = 1, dashed, dotted, children } = props;
     let { style, className } = getStyleProps(props);
     let divStyle: any = {
         "--sw": strokeWidth && `${strokeWidth}px`,
@@ -235,7 +237,7 @@ export function Graph(props: GraphProps) {
         .join(" ");
     return (
         <svg
-            className={classNames("lcars-graph", className)}
+            className={classNames("lcars-graph", className, { dashed, dotted })}
             style={divStyle}
             viewBox="0 0 100 100"
             preserveAspectRatio="none"

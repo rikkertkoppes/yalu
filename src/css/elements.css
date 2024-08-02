@@ -150,6 +150,13 @@
     display: block;
     vector-effect: non-scaling-stroke;
 }
+.lcars-graph.dashed * {
+    stroke-dasharray: 5px 5px;
+}
+.lcars-graph.dotted * {
+    stroke-dasharray: 0 calc(2 * var(--sw));
+    stroke-linecap: round;
+}
 .lcars-graph * {
     vector-effect: non-scaling-stroke;
 }
