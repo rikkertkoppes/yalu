@@ -19,13 +19,36 @@ import {
     Array,
     Bottom,
     Cutout,
+    Top,
 } from "../components";
 
-function randomLengthNumber(length: number) {
+/** random number */
+function rn(length: number);
+function rn(minLength: number, maxLength: number);
+function rn(a: number, b?: number) {
+    let [min, max] = [a, a];
+    if (b !== undefined) [min, max] = [a, b];
     let s = "";
-    let n = 1 + Math.floor(Math.random() * length);
+    let n = min + Math.floor(Math.random() * (1 + max - min));
     while (n--) s += Math.floor(Math.random() * 10);
-    return parseInt(s, 10);
+    return <span suppressHydrationWarning>{s}</span>;
+}
+
+/** random string */
+function rs(length: number);
+function rs(minLength: number, maxLength: number);
+function rs(a: number, b?: number) {
+    let [min, max] = [a, a];
+    if (b !== undefined) [min, max] = [a, b];
+    let s = "";
+    let n = min + Math.floor(Math.random() * (max - min));
+    while (n--) s += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    return <span suppressHydrationWarning>{s}</span>;
+}
+
+/** random element from array */
+function ra<T>(array: T[]) {
+    return array[Math.floor(Math.random() * array.length)];
 }
 
 interface GaugeProps {
@@ -35,10 +58,10 @@ export function Gauge({ color }: GaugeProps) {
     return (
         <Col flex>
             <Button height={24} color={color}>
-                27-423
+                {rn(2)}-{rn(3)}
             </Button>
             <Row flex>
-                <Frame top={3} right={3} bottom={3} flex ro={0} ri={0}>
+                <Frame top={3} right={3} bottom={5} flex ro={0} ri={0}>
                     <Right>
                         <Filler height={50} />
                         <Filler flex />
@@ -46,8 +69,8 @@ export function Gauge({ color }: GaugeProps) {
                 </Frame>
                 <Frame
                     top={3}
-                    left={3}
-                    bottom={3}
+                    left={1}
+                    bottom={5}
                     flex
                     ro={0}
                     ri={0}
@@ -67,13 +90,32 @@ function Page() {
             <Row flex>
                 <Frame
                     flex={0.75}
-                    top={30}
+                    top={36}
                     right={95}
                     bottom={0}
                     ro={60}
                     ri={40}
-                    padding={4}
+                    padding={"4px 4px 4px 0px"}
                 >
+                    <Top>
+                        <Filler flex medium>
+                            <Cutout width={300}>
+                                <Row height={20}>
+                                    <Button rounded="right" dim>
+                                        8-XX
+                                    </Button>
+                                    <Button rounded>8-042</Button>
+                                    <Button rounded dim>
+                                        8-302
+                                    </Button>
+                                    <Button rounded>8-205</Button>
+                                    <Button rounded dim>
+                                        8-000
+                                    </Button>
+                                </Row>
+                            </Cutout>
+                        </Filler>
+                    </Top>
                     <Right>
                         <Filler height={116} medium />
                         <Gap
@@ -114,13 +156,13 @@ function Page() {
                         padding={"20px 20px 75px 0"}
                     >
                         <Right>
-                            <Filler height={107} medium />
-                            <Filler height={200} medium />
+                            <Filler height={107} dim />
+                            <Filler height={200} dim />
                             <Gap height={10} />
-                            <Filler height={100} medium br>
+                            <Filler height={100} dim br>
                                 427
                             </Filler>
-                            <Filler height={75} medium br>
+                            <Filler height={75} dim br>
                                 803
                             </Filler>
                             <Col>
@@ -135,7 +177,7 @@ function Page() {
                                 <Button dim>Check</Button>
                                 <Button light>Check</Button>
                             </Col>
-                            <Filler flex medium />
+                            <Filler flex dim />
                         </Right>
                         <Bottom>
                             <Filler width={50} />
@@ -146,7 +188,7 @@ function Page() {
                                             <Col width={50}>
                                                 <Filler bright />
                                                 <Button br flex>
-                                                    woop
+                                                    {rs(2)}-{rs(3)}
                                                 </Button>
                                             </Col>
                                         )}
@@ -157,12 +199,16 @@ function Page() {
                         </Bottom>
                         <Frame
                             flex
-                            top={5}
+                            top={15}
                             right={35}
                             bottom={20}
                             dark
                             padding={50}
                         >
+                            <Top>
+                                <Gap width={300} />
+                                <Filler flex dark />
+                            </Top>
                             <Col flex>
                                 <Row flex>
                                     <Frame
@@ -269,12 +315,20 @@ function Page() {
                                     >
                                         <Stack flex>
                                             <Grid rows={7} cols={7} />
+                                            <Graph values={[0, 1]} dashed />
+                                            <Graph
+                                                values={[0, 1]}
+                                                max={1.5}
+                                                dashed
+                                            />
                                             <Graph
                                                 values={[
                                                     2, 3, 2, 5, 6, 4, 7, 2,
                                                 ]}
                                                 max={10}
                                                 light
+                                                dotted
+                                                strokeWidth={2}
                                             />
                                             <Graph
                                                 values={[
@@ -282,10 +336,52 @@ function Page() {
                                                 ]}
                                                 max={10}
                                                 bright
+                                                dashed
                                             />
                                         </Stack>
                                     </Frame>
-                                    <Gap width={170} />
+                                    <Gap width={20} />
+                                    <Col width={150}>
+                                        <Row height={20}>
+                                            <Filler width={20} />
+                                            <Button flex dark>
+                                                42-2
+                                            </Button>
+                                        </Row>
+                                        <Gap height={40} />
+                                        <Frame
+                                            flex
+                                            right={15}
+                                            bottom={5}
+                                            ro={20}
+                                            ri={10}
+                                            padding={10}
+                                        >
+                                            <Right>
+                                                <Filler height={25} light />
+                                                <Filler flex />
+                                            </Right>
+                                            <Array rows={5} flex gap={4}>
+                                                {({ r }) => (
+                                                    <Row flex height={20}>
+                                                        <Filler bright />
+                                                        <Filler dim />
+                                                        <Button flex light>
+                                                            {rn(3, 5)}
+                                                        </Button>
+                                                        <Gap
+                                                            flex
+                                                            color="var(--blue)"
+                                                            cr
+                                                        >
+                                                            {rn(1, 3)}
+                                                        </Gap>
+                                                        <Filler bright />
+                                                    </Row>
+                                                )}
+                                            </Array>
+                                        </Frame>
+                                    </Col>
                                 </Row>
                             </Col>
                         </Frame>
@@ -404,22 +500,36 @@ function Page() {
 
                                 <Cell cell="B2">
                                     <Row flex color="var(--blue)">
-                                        <Button flex>01</Button>
-                                        <Button flex>02</Button>
-                                        <Button flex>03</Button>
-                                        <Button flex>04</Button>
-                                        <Button flex>05</Button>
-                                        <Button flex>06</Button>
-                                    </Row>
-                                    <Row height={24}>
-                                        <Button flex outline>
+                                        <Button flex tc>
                                             01
                                         </Button>
-                                        <Button flex>02</Button>
-                                        <Button flex>03</Button>
-                                        <Button flex>04</Button>
-                                        <Button flex>05</Button>
-                                        <Button flex>06</Button>
+                                        <Button flex tc>
+                                            02
+                                        </Button>
+                                        <Button flex tc>
+                                            03
+                                        </Button>
+                                        <Button flex tc>
+                                            04
+                                        </Button>
+                                        <Button flex tc>
+                                            05
+                                        </Button>
+                                        <Button flex tc>
+                                            06
+                                        </Button>
+                                    </Row>
+                                    <Row height={24}>
+                                        <Button flex bright>
+                                            95-257
+                                        </Button>
+                                        <Button flex bright>
+                                            95-332
+                                        </Button>
+                                        <Button flex>95-401</Button>
+                                        <Button flex>95-534</Button>
+                                        <Button flex>95-693</Button>
+                                        <Button flex>95-835</Button>
                                     </Row>
                                 </Cell>
                                 <Cell
@@ -428,24 +538,42 @@ function Page() {
                                     padding={"0 0 24px 24px"}
                                 >
                                     <Row dim flex>
-                                        <Bar
-                                            value={50}
-                                            steps={20}
-                                            type="square"
-                                            flex
-                                        />
-                                        <Bar
-                                            value={50}
-                                            steps={20}
-                                            type="square"
-                                            flex
-                                        />
-                                        <Bar
-                                            value={77}
-                                            steps={20}
-                                            type="square"
-                                            flex
-                                        />
+                                        <Col width={40} gap={2}>
+                                            <Cap height={12} r={8} dark />
+                                            <Bar
+                                                value={65}
+                                                steps={20}
+                                                type="square"
+                                                flex
+                                            />
+                                            <Cap height={20} bright r={8} cc>
+                                                {rn(2)}-{rn(3)}
+                                            </Cap>
+                                        </Col>
+                                        <Col width={40} gap={2}>
+                                            <Cap height={12} r={8} dark />
+                                            <Bar
+                                                value={50}
+                                                steps={20}
+                                                type="square"
+                                                flex
+                                            />
+                                            <Cap height={20} bright r={8} cc>
+                                                {rn(2)}-{rn(3)}
+                                            </Cap>
+                                        </Col>
+                                        <Col width={40} gap={2}>
+                                            <Cap height={12} r={8} dark />
+                                            <Bar
+                                                value={77}
+                                                steps={20}
+                                                type="square"
+                                                flex
+                                            />
+                                            <Cap height={20} bright r={8} cc>
+                                                {rn(2)}-{rn(3)}
+                                            </Cap>
+                                        </Col>
                                     </Row>
                                 </Cell>
                                 <Cell cell="C3">
@@ -455,37 +583,128 @@ function Page() {
                             </Composite>
                         </Row>
                         <Gap height={20} />
-                        <Row flex={2}>
+                        <Row height={200}>
                             <Frame
-                                top={15}
-                                right={100}
-                                flex
-                                height={300}
-                                bright
-                                padding={20}
-                                style={{
-                                    transform:
-                                        "perspective(100px) rotateX(2deg)",
-                                    transformOrigin: "bottom left",
-                                }}
+                                bottom={5}
+                                ri={0}
+                                ro={0}
+                                dark
+                                width={100}
+                                padding={4}
                             >
-                                <Right>
-                                    <Button outline>845-56</Button>
-                                    <Button outline>845-56</Button>
-                                    <Button outline>845-56</Button>
-                                    <Button outline>845-56</Button>
-                                    <Filler flex />
-                                </Right>
-                                <Stack flex>
-                                    {/* <Grid rows={7} cols={7} /> */}
-                                    <Array rows={7} cols={7}>
-                                        {({ r, c }) => (
-                                            <div suppressHydrationWarning>
-                                                {randomLengthNumber(7)}
-                                            </div>
-                                        )}
-                                    </Array>
-                                </Stack>
+                                <Array rows={6} gap={4}>
+                                    {({ r }) => {
+                                        let c = () =>
+                                            ra([
+                                                "var(--dark)",
+                                                "var(--dim)",
+                                                "var(--medium)",
+                                                "var(--bright)",
+                                                "var(--light)",
+                                            ]);
+                                        return (
+                                            <Row flex height={20}>
+                                                <Button flex dim color={c()}>
+                                                    {rn(2)}-{rn(3)}
+                                                </Button>
+                                                <Gap width={20} cr>
+                                                    {rn(0, 2)}
+                                                </Gap>
+                                                <Filler width={5} color={c()} />
+                                            </Row>
+                                        );
+                                    }}
+                                </Array>
+                            </Frame>
+                            <Frame
+                                left={10}
+                                top={20}
+                                bottom={5}
+                                ri={0}
+                                ro={0}
+                                dark
+                                width={300}
+                            >
+                                <Top>
+                                    <Filler flex cr dark>
+                                        HEISENBERG COMPENSATORS
+                                    </Filler>
+                                </Top>
+                                <Array rows={10} flex gap={4}>
+                                    {({ r }) => {
+                                        let color = [
+                                            "var(--medium)",
+                                            "var(--blue)",
+                                            "var(--light)",
+                                        ][[0, 1, 0, 0, 0, 2, 0, 1, 0][r]];
+                                        return (
+                                            <Row flex cr height={11}>
+                                                <Array cols={4} flex>
+                                                    {() => (
+                                                        <Gap
+                                                            flex
+                                                            cr
+                                                            color={color}
+                                                        >
+                                                            {rn(1, 9)}
+                                                        </Gap>
+                                                    )}
+                                                </Array>
+                                                <Gap width={20} />
+                                                <Filler
+                                                    width={20}
+                                                    height={4}
+                                                    color={color}
+                                                />
+                                            </Row>
+                                        );
+                                    }}
+                                </Array>
+                            </Frame>
+                            <Row width={150} gap={20}>
+                                <Gauge color="var(--dim)" />
+                                <Gauge color="var(--medium)" />
+                            </Row>
+                            <Frame
+                                top={24}
+                                bottom={5}
+                                right={40}
+                                ri={0}
+                                ro={0}
+                                dark
+                                width={200}
+                                padding={4}
+                            >
+                                <Array rows={6} gap={4}>
+                                    {({ r }) => {
+                                        let c = () =>
+                                            ra([
+                                                "var(--dark)",
+                                                "var(--dim)",
+                                                "var(--medium)",
+                                                "var(--bright)",
+                                                "var(--light)",
+                                            ]);
+                                        return (
+                                            <Row flex height={20}>
+                                                <Button rounded color={c()}>
+                                                    {rn(2)}-{rn(3)}
+                                                </Button>
+                                                <Button
+                                                    rounded="left"
+                                                    color={c()}
+                                                />
+                                                <Button flex color={c()}>
+                                                    {rn(2)}-{rn(3)}
+                                                </Button>
+                                                <Gap width={20} cr dim>
+                                                    {rn(0, 2)}
+                                                </Gap>
+                                                <Filler width={5} color={c()} />
+                                            </Row>
+                                        );
+                                    }}
+                                </Array>
                             </Frame>
                         </Row>
                         <Gap height={50} />
