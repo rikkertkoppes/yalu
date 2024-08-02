@@ -152,15 +152,28 @@ export function Gap(props: FillerProps) {
     let { children, offset } = props;
     let { style, className } = getStyleProps(props);
     let { height } = style;
+    let ref = React.useRef<HTMLSpanElement>(null);
     let divStyle: any = {
         "--text-color": style["--color"],
         "--local-height": height && `${height}px`,
         transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
         ...style,
     };
+    React.useLayoutEffect(() => {
+        if (ref.current && ref.current.parentElement) {
+            let { height } = ref.current.parentElement.getBoundingClientRect();
+            ref.current.style.setProperty("--local-height", `${height}px`);
+        }
+    });
+    let content =
+        typeof children === "string" ? (
+            <span ref={ref}>{children}</span>
+        ) : (
+            children
+        );
     return (
         <div className={classNames("lcars-gap h", className)} style={divStyle}>
-            {children}
+            {content}
         </div>
     );
 }
