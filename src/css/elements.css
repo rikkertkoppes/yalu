@@ -146,7 +146,8 @@
 .lcars-grid {
     box-sizing: border-box;
     --sw: 1px;
-    background-size: calc(calc(100% - var(--sw)) / var(--cols)) calc(calc(100% - var(--sw)) / var(--rows));
+    --s: calc(100% - var(--sw));
+    background-size: calc(var(--s) / var(--cols)) calc(var(--s) / var(--rows));
     background-image:
         linear-gradient(to right, var(--color) var(--sw), transparent var(--sw)),
         linear-gradient(to bottom, var(--color) var(--sw), transparent var(--sw));
@@ -213,7 +214,7 @@
             transparent 0%, 
             transparent 10%,
             var(--fill) 10%, 
-            var(--fill) 90%, 
+            var(--fill) 90%,
             transparent 90%,
             transparent 100%
         );
