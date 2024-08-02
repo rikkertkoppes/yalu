@@ -285,21 +285,22 @@ export function Bar(props: BarProps) {
     );
 }
 
+type ArrayRenderFunction = (rc: { r: number; c: number }) => React.ReactNode;
 interface ArrayProps extends CommonProps {
     rows?: number;
     cols?: number;
-    children?:
-        | React.ReactNode
-        | ((rc: { r: number; c: number }) => React.ReactNode);
+    children?: React.ReactNode | ArrayRenderFunction;
+    gap?: number;
 }
 export function Array(props: ArrayProps) {
     let { children, rows = 1, cols = 1 } = props;
     let { style, className } = getStyleProps(props);
+    let divStyle: any = {
+        gap: props.gap && `${props.gap}px`,
+        ...style,
+    };
     if (typeof children === "function") {
-        let renderChild = children as (rc: {
-            r: number;
-            c: number;
-        }) => React.ReactNode;
+        let renderChild = children;
         let cells: React.ReactNode[] = [];
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
@@ -311,6 +312,7 @@ export function Array(props: ArrayProps) {
                             gridColumn: c + 1,
                             display: "flex",
                             justifyContent: "space-evenly",
+                            alignItems: "stretch",
                         }}
                     >
                         {renderChild({ r, c })}
@@ -318,14 +320,10 @@ export function Array(props: ArrayProps) {
                 );
             }
         }
-        return (
-            <div className={classNames("lcars-array", className)} style={style}>
-                {cells}
-            </div>
-        );
+        children = cells;
     }
     return (
-        <div className={classNames("lcars-array", className)} style={style}>
+        <div className={classNames("lcars-array", className)} style={divStyle}>
             {children}
         </div>
     );
