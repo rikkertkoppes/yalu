@@ -54,35 +54,24 @@ function ra<T>(array: T[]) {
 interface GaugeProps {
     color?: string;
 }
-export function Gauge({ color }: GaugeProps) {
-    return (
-        <Col flex>
-            <Button height={24} color={color}>
-                {rn(2)}-{rn(3)}
-            </Button>
-            <Row flex>
-                <Frame top={3} right={3} bottom={5} flex ro={0} ri={0}>
-                    <Right>
-                        <Filler height={50} />
-                        <Filler flex />
-                    </Right>
-                </Frame>
-                <Frame
-                    top={3}
-                    left={1}
-                    bottom={5}
-                    flex
-                    ro={0}
-                    ri={0}
-                    dim
-                    padding={4}
-                >
-                    <Grid flex rows={7} strokeWidth={1} />
-                </Frame>
-            </Row>
-        </Col>
-    );
-}
+const Gauge = ({ color }: GaugeProps) => (
+    <Col flex>
+        <Button height={24} color={color}>
+            {rn(2)}-{rn(3)}
+        </Button>
+        <Row flex>
+            <Frame t={3} r={3} b={5} flex ro={0} ri={0}>
+                <Right>
+                    <Filler height={50} />
+                    <Filler flex />
+                </Right>
+            </Frame>
+            <Frame t={3} l={1} b={5} flex ro={0} ri={0} dim padding={4}>
+                <Grid flex rows={7} strokeWidth={1} />
+            </Frame>
+        </Row>
+    </Col>
+);
 
 function Page() {
     return (
@@ -90,9 +79,9 @@ function Page() {
             <Row flex>
                 <Frame
                     flex={0.75}
-                    top={36}
-                    right={95}
-                    bottom={0}
+                    t={36}
+                    r={95}
+                    b={0}
                     ro={60}
                     ri={40}
                     padding={"4px 4px 4px 0px"}
@@ -148,9 +137,9 @@ function Page() {
                     </Right>
                     <Frame
                         flex
-                        top={5}
-                        right={80}
-                        bottom={20}
+                        t={5}
+                        r={80}
+                        b={20}
                         dim
                         ro={36}
                         padding={"20px 20px 75px 0"}
@@ -197,14 +186,7 @@ function Page() {
                             </Filler>
                             <Filler width={150} />
                         </Bottom>
-                        <Frame
-                            flex
-                            top={15}
-                            right={35}
-                            bottom={20}
-                            dark
-                            padding={50}
-                        >
+                        <Frame flex t={15} r={35} b={20} dark padding={50}>
                             <Top>
                                 <Gap width={300} />
                                 <Filler flex dark />
@@ -213,8 +195,8 @@ function Page() {
                                 <Row flex>
                                     <Frame
                                         flex
-                                        left={40}
-                                        bottom={10}
+                                        l={40}
+                                        b={10}
                                         dark
                                         ro={32}
                                         ri={12}
@@ -244,9 +226,9 @@ function Page() {
                                 <Row flex>
                                     <Frame
                                         flex
-                                        left={40}
-                                        top={20}
-                                        bottom={10}
+                                        l={40}
+                                        t={20}
+                                        b={10}
                                         dark
                                         ro={32}
                                         ri={12}
@@ -260,10 +242,10 @@ function Page() {
                                         <Frame
                                             width={150}
                                             height={80}
-                                            top={4}
-                                            right={4}
-                                            bottom={4}
-                                            left={30}
+                                            t={4}
+                                            r={4}
+                                            b={4}
+                                            l={30}
                                             bright
                                             ro={0}
                                             ri={0}
@@ -306,8 +288,8 @@ function Page() {
                                 <Row flex>
                                     <Frame
                                         flex
-                                        left={40}
-                                        top={20}
+                                        l={40}
+                                        t={20}
                                         dark
                                         ro={32}
                                         ri={12}
@@ -351,8 +333,8 @@ function Page() {
                                         <Gap height={40} />
                                         <Frame
                                             flex
-                                            right={15}
-                                            bottom={5}
+                                            r={15}
+                                            b={5}
                                             ro={20}
                                             ri={10}
                                             padding={10}
@@ -388,15 +370,7 @@ function Page() {
                     </Frame>
                 </Frame>
                 <Gap width={20} />
-                <Frame
-                    flex
-                    top={30}
-                    left={75}
-                    bottom
-                    ro={60}
-                    ri={40}
-                    padding={20}
-                >
+                <Frame flex t={30} l={75} b ro={60} ri={40} padding={20}>
                     <Left>
                         <Filler height={116} medium />
                         <Gap height={200} width={75}>
@@ -419,15 +393,7 @@ function Page() {
                         </Col>
                         <Filler flex medium />
                     </Left>
-                    <Frame
-                        flex
-                        top={30}
-                        left={35}
-                        bottom
-                        dark
-                        ro={36}
-                        padding={20}
-                    >
+                    <Frame flex t={30} l={35} b dark ro={36} padding={20}>
                         <Left>
                             <Filler height={66} dark />
                             <Filler height={200} dark />
@@ -439,8 +405,8 @@ function Page() {
                         <Row height={130}>
                             <Gap flex />
                             <Frame
-                                top={5}
-                                left={20}
+                                t={5}
+                                l={20}
                                 flex
                                 dim
                                 ro={20}
@@ -585,7 +551,7 @@ function Page() {
                         <Gap height={20} />
                         <Row height={200}>
                             <Frame
-                                bottom={5}
+                                b={5}
                                 ri={0}
                                 ro={0}
                                 dark
@@ -617,9 +583,9 @@ function Page() {
                                 </Array>
                             </Frame>
                             <Frame
-                                left={10}
-                                top={20}
-                                bottom={5}
+                                l={10}
+                                t={20}
+                                b={5}
                                 ri={0}
                                 ro={0}
                                 dark
@@ -666,9 +632,9 @@ function Page() {
                                 <Gauge color="var(--medium)" />
                             </Row>
                             <Frame
-                                top={24}
-                                bottom={5}
-                                right={40}
+                                t={24}
+                                b={5}
+                                r={40}
                                 ri={0}
                                 ro={0}
                                 dark

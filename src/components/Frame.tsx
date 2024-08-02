@@ -25,10 +25,10 @@ function isN(n: any): n is number {
 
 interface FrameProps extends CommonProps {
     children?: React.ReactNode;
-    top?: boolean | number;
-    right?: boolean | number;
-    bottom?: boolean | number;
-    left?: boolean | number;
+    t?: boolean | number;
+    r?: boolean | number;
+    b?: boolean | number;
+    l?: boolean | number;
     padding?: string | number;
     ri?: number;
     ro?: number;
@@ -441,8 +441,8 @@ function createDef(
     if (r) def += ` ${s(right, 80)}`;
 
     // row definitions
-    if (t) def += `/${s(top, 16)}  ${c(l, t)}   ${c(t)}    ${c(r, t)}`;
-    def += `/*   ${c(l)}      .          ${c(r)}`;
+    if (t) def += `/${s(top, 16)}     ${c(l, t)}   ${c(t)}    ${c(r, t)}`;
+    def += `       /*                 ${c(l)}      .          ${c(r)}`;
     if (b) def += `/${s(bottom, 16)}  ${c(l, b)}   ${c(b)}    ${c(r, b)}`;
 
     let content = (l ? "B" : "A") + (t ? "2" : "1");
@@ -451,20 +451,18 @@ function createDef(
 }
 
 export function Frame(props: FrameProps) {
-    let { children, top, right, bottom, left, padding, ...compositeProps } =
-        props;
-    let noSides = [top, right, bottom, left].every((s) => s === undefined);
+    let { children, t, r, b, l, padding, ...compositeProps } = props;
+    let noSides = [t, r, b, l].every((s) => s === undefined);
     if (noSides) {
-        top = right = bottom = left = true;
+        t = r = b = l = true;
     }
-    let { def, content } = createDef(top, right, bottom, left);
-    console.log(def);
+    let { def, content } = createDef(t, r, b, l);
     let childElements = new Array<React.ReactNode>().concat(children);
     let specials = childElements.filter(isSpecial);
     let regulars = childElements.filter((c) => !specials.includes(c));
 
     let padString = isN(padding)
-        ? [top, right, bottom, left]
+        ? [t, r, b, l]
               // repeat padding for the side if present, otherwise 0
               .map((s) => (s || isN(s) ? `${padding}px` : "0"))
               .join(" ")

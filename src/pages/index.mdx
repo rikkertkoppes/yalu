@@ -12,22 +12,22 @@ Start with a frame and specify the sides that should be visible:
 
 <Frame></Frame>
 
-Width is 100% by default and height as small as needed, just like a `<div>` element. You can add optional `width` and `height` attributes, a custom `className` or `style` to adjust this. You can also specify which borders to show. Content goes inside the frame:
+Width is 100% by default and height as small as needed, just like a `<div>` element. You can add optional `width` and `height` attributes, a custom `className` or `style` to adjust this. You can also specify which borders to show (`t`, `l`, `r`, `b` for top, left, right, bottom). Content goes inside the frame:
 
 ```
-<Frame top left={150} bottom={4} height={400}>
+<Frame t l={150} b={4} height={400}>
     Content here
 </Frame>
 ```
 
-<Frame top left={150} bottom={4} height={400}>
+<Frame t l={150} b={4} height={400}>
     Content here
 </Frame>
 
 To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<Right>` and `<Bottom>` elements together with `<Button>` and `<Filler>` elements
 
 ```
-<Frame left top bottom height={400}>
+<Frame l t b height={400}>
     <Left>
         <Button>Engage</Button>
         <Filler flex />
@@ -36,31 +36,31 @@ To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<
 </Frame>
 ```
 
-<Frame left top bottom height={400}>
+<Frame l t b height={400}>
     <Left>
         <Button>Engage</Button>
         <Filler flex />
     </Left>
     content here
 </Frame>
-<Frame left={100} top={4} height={400} className="lcars-gray" ro={20} ri={16}>
+<Frame l={100} t={4} height={400} className="lcars-gray" ro={20} ri={16}>
     <Left>
         <Button outline>Engage</Button>
         <Filler flex />
     </Left>
-    <Frame left={2} top={2} ri={12} ro={12} flex>
-        <Frame right={24} bottom={12} flex ri={48} ro={64}>
+    <Frame l={2} t={2} ri={12} ro={12} flex>
+        <Frame r={24} b={12} flex ri={48} ro={64}>
             content here
         </Frame>
     </Frame>
 </Frame>
-<Frame left={100} top={4} height={400} className="lcars-gray" ro={20} ri={16}>
+<Frame l={100} t={4} height={400} className="lcars-gray" ro={20} ri={16}>
     <Left>
         <Button>Engage</Button>
         <Filler flex />
     </Left>
-    <Frame left={2} top={2} ri={12} ro={12} flex>
-        <Frame right={24} bottom={12} flex ri={48} ro={64}>
+    <Frame l={2} t={2} ri={12} ro={12} flex>
+        <Frame r={24} b={12} flex ri={48} ro={64}>
             content here
         </Frame>
     </Frame>
