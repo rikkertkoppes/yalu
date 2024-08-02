@@ -145,26 +145,18 @@ export function Stack(props: FillerProps) {
     );
 }
 
-export function Gap({
-    children,
-    className,
-    flex,
-    width,
-    height,
-    offset,
-    style = {},
-}: FillerProps) {
+export function Gap(props: FillerProps) {
+    let { children, offset } = props;
+    let { style, className } = getStyleProps(props);
+    let { height } = style;
     let divStyle: any = {
-        height: height && `${height}px`,
-        width: width && `${width}px`,
+        "--text-color": style["--color"],
+        "--local-height": height && `${height}px`,
         transform: offset && `translate(${offset[0]}px, ${offset[1]}px)`,
         ...style,
     };
     return (
-        <div
-            className={classNames("lcars-gap", className, { flex })}
-            style={divStyle}
-        >
+        <div className={classNames("lcars-gap h", className)} style={divStyle}>
             {children}
         </div>
     );
