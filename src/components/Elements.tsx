@@ -17,7 +17,10 @@ export function Filler(props: FillerProps) {
         ...style,
     };
     return (
-        <div className={classNames("lcars-filler", className)} style={divStyle}>
+        <div
+            className={classNames("lcars-filler h", className)}
+            style={divStyle}
+        >
             {children}
         </div>
     );
@@ -70,6 +73,7 @@ export function Button(props: ButtonProps) {
     let wait = Math.random();
     let { style, className } = getStyleProps(props);
     let divStyle: any = {
+        "--local-height": style.height && `${style.height}px`,
         "--button-color": style["--color"],
         "--boot-wait": `${wait}s`,
         ...style,
@@ -88,7 +92,7 @@ export function Button(props: ButtonProps) {
     }
     return (
         <div
-            className={classNames("lcars-button", className, roundclass, {
+            className={classNames("lcars-button h", className, roundclass, {
                 selected,
                 outline,
             })}
@@ -111,7 +115,7 @@ export function Row(props: FillerProps) {
         ...style,
     };
     return (
-        <div className={classNames("lcars-row", className)} style={divStyle}>
+        <div className={classNames("lcars-row h", className)} style={divStyle}>
             {children}
         </div>
     );
@@ -129,7 +133,7 @@ export function Col(props: FillerProps) {
         ...style,
     };
     return (
-        <div className={classNames("lcars-col", className)} style={divStyle}>
+        <div className={classNames("lcars-col v", className)} style={divStyle}>
             {children}
         </div>
     );
@@ -317,6 +321,8 @@ export function Array(props: ArrayProps) {
                         style={{
                             gridRow: r + 1,
                             gridColumn: c + 1,
+                            display: "flex",
+                            justifyContent: "space-evenly",
                         }}
                     >
                         {renderChild({ r, c })}

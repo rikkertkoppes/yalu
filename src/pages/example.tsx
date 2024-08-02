@@ -17,6 +17,8 @@ import {
     Bar,
     Stack,
     Array,
+    Bottom,
+    Cutout,
 } from "../components";
 
 function randomLengthNumber(length: number) {
@@ -26,28 +28,36 @@ function randomLengthNumber(length: number) {
     return parseInt(s, 10);
 }
 
-export function Gauge() {
+interface GaugeProps {
+    color?: string;
+}
+export function Gauge({ color }: GaugeProps) {
     return (
-        <Row flex>
-            <Frame top={3} right={3} bottom={3} flex ro={0} ri={0}>
-                <Right>
-                    <Filler height={50} />
-                    <Filler flex />
-                </Right>
-            </Frame>
-            <Frame
-                top={3}
-                left={3}
-                bottom={3}
-                flex
-                ro={0}
-                ri={0}
-                dim
-                padding={4}
-            >
-                <Grid flex rows={7} strokeWidth={3} />
-            </Frame>
-        </Row>
+        <Col flex>
+            <Button height={24} color={color}>
+                27-423
+            </Button>
+            <Row flex>
+                <Frame top={3} right={3} bottom={3} flex ro={0} ri={0}>
+                    <Right>
+                        <Filler height={50} />
+                        <Filler flex />
+                    </Right>
+                </Frame>
+                <Frame
+                    top={3}
+                    left={3}
+                    bottom={3}
+                    flex
+                    ro={0}
+                    ri={0}
+                    dim
+                    padding={4}
+                >
+                    <Grid flex rows={7} strokeWidth={1} />
+                </Frame>
+            </Row>
+        </Col>
     );
 }
 
@@ -68,13 +78,13 @@ function Page() {
                         <Filler height={116} medium />
                         <Gap
                             height={200}
-                            width={184}
+                            width={179}
                             style={{ alignSelf: "flex-end", zIndex: 2 }}
                         >
                             <Row flex>
-                                <Gauge />
-                                <Gauge />
-                                <Gauge />
+                                <Gauge color="var(--dim)" />
+                                <Gauge color="var(--bright)" />
+                                <Gauge color="var(--bright)" />
                             </Row>
                         </Gap>
                         <Gap height={10} />
@@ -101,16 +111,16 @@ function Page() {
                         bottom={20}
                         dim
                         ro={36}
-                        padding={20}
+                        padding={"20px 20px 75px 0"}
                     >
                         <Right>
                             <Filler height={107} medium />
                             <Filler height={200} medium />
                             <Gap height={10} />
-                            <Filler height={100} medium>
+                            <Filler height={100} medium br>
                                 427
                             </Filler>
-                            <Filler height={75} medium>
+                            <Filler height={75} medium br>
                                 803
                             </Filler>
                             <Col>
@@ -127,6 +137,24 @@ function Page() {
                             </Col>
                             <Filler flex medium />
                         </Right>
+                        <Bottom>
+                            <Filler width={50} />
+                            <Filler flex br>
+                                <Cutout offset={[0, 8]} flex height={64}>
+                                    <Array cols={6} flex>
+                                        {() => (
+                                            <Col width={50}>
+                                                <Filler bright />
+                                                <Button br flex>
+                                                    woop
+                                                </Button>
+                                            </Col>
+                                        )}
+                                    </Array>
+                                </Cutout>
+                            </Filler>
+                            <Filler width={150} />
+                        </Bottom>
                         <Frame
                             flex
                             top={5}
@@ -163,7 +191,9 @@ function Page() {
                                 </Row>
                                 <Row height={50}>
                                     <Gap height={50} flex />
-                                    <Filler width={150}>3765</Filler>
+                                    <Filler width={150} br>
+                                        3765
+                                    </Filler>
                                 </Row>
                                 <Row flex>
                                     <Frame
@@ -462,9 +492,10 @@ function Page() {
                     </Frame>
                 </Frame>
             </Row>
-            <Row>
+            <Gap height={50} />
+            <Row height={24}>
                 <Filler width={10} bright />
-                <Button rounded width={100} dim>
+                <Button rounded width={100} dark>
                     789536-5
                 </Button>
                 <Button rounded width={75}>
@@ -497,6 +528,7 @@ function Page() {
                 <Button rounded width={75} dim>
                     789536-5
                 </Button>
+                <Gap flex />
             </Row>
         </Col>
     );

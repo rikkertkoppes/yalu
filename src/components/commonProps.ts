@@ -4,19 +4,39 @@ let shades = ["dark", "dim", "medium", "light", "bright"] as const;
 type Shades = (typeof shades)[number];
 
 type ShadeProps = { [S in Shades]?: boolean };
-export interface LayoutProps {
+
+let contentPositions = [
+    "tl",
+    "tc",
+    "tr",
+    "cl",
+    "cc",
+    "cr",
+    "bl",
+    "bc",
+    "br",
+] as const;
+type ContentPositions = (typeof contentPositions)[number];
+type ContentProps = {
+    [C in ContentPositions]?: boolean;
+} & {
+    content?: ContentPositions;
+};
+
+export type LayoutProps = {
     width?: number;
     height?: number;
     flex?: boolean | number;
-}
+};
 
-export interface StyleProps extends ShadeProps {
-    color?: string;
-    style?: React.CSSProperties;
-    className?: string;
-}
+export type StyleProps = ShadeProps &
+    ContentProps & {
+        color?: string;
+        style?: React.CSSProperties;
+        className?: string;
+    };
 
-export interface CommonProps extends LayoutProps, StyleProps {}
+export type CommonProps = LayoutProps & StyleProps;
 
 function isN(n: any): n is number {
     return typeof n === "number";
@@ -32,6 +52,13 @@ function getColor(props: CommonProps) {
     };
 }
 
+function getContentClass(props: ContentProps) {
+    return classNames(
+        props.content,
+        Object.fromEntries(contentPositions.map((pos) => [pos, props[pos]]))
+    );
+}
+
 export function getStyleProps(props: CommonProps) {
     let { flex, width, height, className } = props;
     let { color, textColor = "" } = getColor(props);
@@ -45,6 +72,6 @@ export function getStyleProps(props: CommonProps) {
     };
     return {
         style: style,
-        className: classNames(className, { flex }),
+        className: classNames(className, { flex }, getContentClass(props)),
     };
 }

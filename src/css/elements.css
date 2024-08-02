@@ -8,6 +8,7 @@
     box-shadow: var(--shadow);
     font-family: var(--button-font-family);
     box-sizing: border-box;
+    display: flex;
 }
 
 .lcars-cutout {
@@ -19,6 +20,7 @@
     /* min-height: 16px; */
     box-shadow: var(--shadow);
     box-sizing: border-box;
+    display: flex;
 }
 
 .lcars-row {
@@ -27,6 +29,8 @@
     gap: 4px;
     min-height: var(--local-height);
     --local-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
 
 .lcars-col {
@@ -51,10 +55,10 @@
 .lcars-button {
     background-color: var(--button-color, var(--light));
     color: var(--text-on-color, black);
-    padding: 8px;
+    padding: 4px;
     cursor: pointer;
     text-transform: uppercase;
-    font-size: 21px;
+    font-size: calc(0.6 * var(--local-height));
     text-align: right;
     box-shadow: var(--shadow);
     /* font-weight: bold; */
@@ -213,4 +217,75 @@
     display: grid;
     grid-auto-rows: 1fr;
     grid-auto-columns: 1fr;
+}
+
+/** content positioning */
+.h {
+    flex-direction: row;
+}
+.v {
+    flex-direction: column;
+}
+.h.tl,
+.v.tl {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.h.tc {
+    align-items: flex-start;
+    justify-content: center;
+}
+.v.tc {
+    justify-content: flex-start;
+    align-items: center;
+}
+.h.tr {
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.v.tr {
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.h.cl {
+    align-items: center;
+    justify-content: flex-start;
+}
+.v.cl {
+    justify-content: center;
+    align-items: flex-start;
+}
+.h.cc,
+.v.cc {
+    justify-content: center;
+    align-items: center;
+}
+.h.cr {
+    align-items: center;
+    justify-content: flex-end;
+}
+.v.cr {
+    justify-content: center;
+    align-items: flex-end;
+}
+.h.bl {
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.v.bl {
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.h.bc {
+    align-items: flex-end;
+    justify-content: center;
+}
+.v.bc {
+    justify-content: flex-end;
+    align-items: center;
+}
+.h.br,
+.v.br {
+    justify-content: flex-end;
+    align-items: flex-end;
 }

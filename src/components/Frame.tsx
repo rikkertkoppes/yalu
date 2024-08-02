@@ -29,9 +29,10 @@ interface FrameProps extends CommonProps {
     right?: boolean | number;
     bottom?: boolean | number;
     left?: boolean | number;
-    padding?: number;
+    padding?: string | number;
     ri?: number;
     ro?: number;
+    dev?: boolean;
 }
 
 interface SideProps {
@@ -66,10 +67,12 @@ export function Right({ children, startSpace, endSpace }: SideProps) {
     );
 }
 export function Bottom({ children, startSpace, endSpace }: SideProps) {
+    let cell = useSideCell("bottom");
     let style: any = {
         "--start-space": startSpace && `${startSpace}px`,
         "--end-space": endSpace && `${endSpace}px`,
     };
+    if (cell) return <Cell cell={cell}>{children}</Cell>;
     return (
         <div className="lcars-framebottom lcars-row" style={style}>
             {children}
@@ -460,14 +463,12 @@ export function Frame(props: FrameProps) {
     let specials = childElements.filter(isSpecial);
     let regulars = childElements.filter((c) => !specials.includes(c));
 
-    let padString = [top, right, bottom, left]
-        .map((s) => {
-            if (s || isN(s)) {
-                return isN(padding) ? `${padding}px` : padding;
-            }
-            return "0";
-        })
-        .join(" ");
+    let padString = isN(padding)
+        ? [top, right, bottom, left]
+              // repeat padding for the side if present, otherwise 0
+              .map((s) => (s || isN(s) ? `${padding}px` : "0"))
+              .join(" ")
+        : padding;
     return (
         <Composite def={def} {...compositeProps}>
             {specials}
