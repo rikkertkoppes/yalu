@@ -3,7 +3,7 @@
     font-size: 12px;
     padding: 4px;
     background-color: var(--color);
-    color: black;
+    color: var(--text-on-color, black);
     /* min-height: 16px; */
     box-shadow: var(--shadow);
     font-family: var(--button-font-family);
