@@ -207,7 +207,7 @@
 }
 
 .lcars-gray {
-    /* colors adjusted for waveshare screen */
+    /* colors adjusted for lcarslad */
     --signal: #E9452A;
     --signal2: #FF846D;
     --blue: #2E6F90;
@@ -216,6 +216,7 @@
     --medium: #6F738E;
     --dim:#525A6D;
     --dark: #2D3949;
+    --text-on-dark: var(--light);
 
     --scroll-track: black;
     --scroll-button: var(--light);
