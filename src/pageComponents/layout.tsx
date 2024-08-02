@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Frame, Top, Filler, Cap, Left, Button } from "../components";
+import { Frame, Top, Filler, Cap, Left, Button, Gap } from "../components";
 
 export default function Layout({ children, title }) {
     return (
         <Frame flex padding={20} l={150} t={40} className="lcars-gray">
             <Top>
                 <Filler flex />
-                {title}
+                <Gap bright>{title}</Gap>
                 <Cap wide />
             </Top>
             <Left>
@@ -21,7 +21,7 @@ export default function Layout({ children, title }) {
                 </Link>
                 <Filler flex />
             </Left>
-            <div className="lcars-reset">{children}</div>
+            <div className="lcars-reset lcars-boot">{children}</div>
         </Frame>
     );
 }
