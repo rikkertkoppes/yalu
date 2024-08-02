@@ -49,7 +49,7 @@ export interface ButtonProps extends CommonProps {
     onClick?: (e: React.MouseEvent) => void;
     outline?: boolean;
     rounded?: boolean | "left" | "right";
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 export function Button(props: ButtonProps) {
     let {
