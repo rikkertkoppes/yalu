@@ -123,29 +123,35 @@
     width: calc(var(--local-height) / 2);
     background-color: var(--button-color, var(--dim));
     box-shadow: var(--shadow);
+    color: var(--text-on-color, black);
+    font-size: min(1rem, calc(0.7 * var(--local-height)));
+    font-family: var(--button-font-family);
+    display: flex;
+    padding: 4px;
+    box-sizing: border-box;
 }
 .lcars-cap.wide {
     width: var(--local-height);
 }
 .h > .lcars-cap:first-child {
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
+    border-top-left-radius: var(--r, 100px);
+    border-bottom-left-radius: var(--r, 100px);
 }
 .h > .lcars-cap:last-child {
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
+    border-top-right-radius: var(--r, 100px);
+    border-bottom-right-radius: var(--r, 100px);
 }
 .v > .lcars-cap {
     width: var(--local-width);
     height: 16px;
 }
 .v > .lcars-cap:first-child {
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
+    border-top-left-radius: var(--r, 100px);
+    border-top-right-radius: var(--r, 100px);
 }
 .v > .lcars-cap:last-child {
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: var(--r, 100px);
+    border-bottom-right-radius: var(--r, 100px);
 }
 
 .lcars-grid {

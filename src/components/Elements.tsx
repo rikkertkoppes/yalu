@@ -180,19 +180,26 @@ export function Gap(props: FillerProps) {
 
 interface CapProps extends CommonProps {
     wide?: boolean;
+    children?: React.ReactNode;
+    r?: number;
 }
 export function Cap(props: CapProps) {
-    let { wide, color } = props;
+    let { wide, children } = props;
     let { style, className } = getStyleProps(props);
+    let { height } = style;
     let divStyle: any = {
-        "--color": color,
+        "--button-color": style["--color"],
+        "--local-height": height && `${height}px`,
+        "--r": props.r && `${props.r}px`,
         ...style,
     };
     return (
         <div
-            className={classNames("lcars-cap", className, { wide })}
+            className={classNames("lcars-cap h", className, { wide })}
             style={divStyle}
-        ></div>
+        >
+            {children}
+        </div>
     );
 }
 
