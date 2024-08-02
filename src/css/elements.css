@@ -102,7 +102,11 @@
     font-size: 21px;
     /* min-height: 16px; */
     text-transform: uppercase;
+    font-family: var(--button-font-family);
+    font-size: calc(1.4 * var(--local-height));
+    /* font-size: 100%; */
     background: var(--bkg);
+    color: var(--text-color);
     text-align: right;
     align-self: center;
     display: flex;
