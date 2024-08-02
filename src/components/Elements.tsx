@@ -5,6 +5,7 @@ import { CommonProps, getStyleProps } from "./commonProps";
 interface FillerProps extends CommonProps {
     offset?: [number, number];
     children?: React.ReactNode;
+    gap?: number;
 }
 
 export function Filler(props: FillerProps) {
@@ -93,13 +94,14 @@ export function Button(props: ButtonProps) {
 }
 
 export function Row(props: FillerProps) {
-    let { children } = props;
+    let { gap, children } = props;
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
     let divStyle: any = {
         "--local-height": (height && `${height}px`) || (props.flex && "auto"),
         "--local-width": width && `${width}px`,
         "--button-color": style["--color"],
+        gap: gap && `${gap}px`,
         ...style,
     };
     return (
@@ -109,7 +111,7 @@ export function Row(props: FillerProps) {
     );
 }
 export function Col(props: FillerProps) {
-    let { children } = props;
+    let { gap, children } = props;
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
     let divStyle: any = {
@@ -118,6 +120,7 @@ export function Col(props: FillerProps) {
         // "--local-height": height && `${height}px`,
         "--local-width": width && `${width}px`,
         "--button-color": style["--color"],
+        gap: gap && `${gap}px`,
         ...style,
     };
     return (
