@@ -58,10 +58,10 @@
     padding: 4px;
     cursor: pointer;
     text-transform: uppercase;
-    font-size: calc(0.6 * var(--local-height));
     text-align: right;
     box-shadow: var(--shadow);
     /* font-weight: bold; */
+    font-size: min(1rem, calc(0.7 * var(--local-height)));
     font-family: var(--button-font-family);
     box-sizing: border-box;
     white-space: nowrap;
