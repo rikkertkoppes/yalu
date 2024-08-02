@@ -303,25 +303,48 @@ export function Bar(props: BarProps) {
     );
 }
 
-type ArrayRenderFunction = (rc: { r: number; c: number }) => React.ReactNode;
-interface ArrayProps extends CommonProps {
-    rows?: number;
-    cols?: number;
-    children?: React.ReactNode | ArrayRenderFunction;
+/** create an array with numbers from 0 to n */
+function range(n: number) {
+    return Array(n)
+        .fill(0)
+        .map((_, i) => i);
+}
+
+type ArrayRenderFunction<R, C> = (rc: {
+    r: R;
+    c: C;
+    rowIndex: number;
+    colIndex: number;
+}) => React.ReactNode;
+interface ArrayProps<R extends number | any[], C extends number | any[]>
+    extends CommonProps {
+    rows?: R;
+    cols?: C;
+    children?:
+        | React.ReactNode
+        | ArrayRenderFunction<
+              R extends Array<infer I> ? I : number,
+              C extends Array<infer I> ? I : number
+          >;
     gap?: number;
 }
-export function Array(props: ArrayProps) {
+function ArrayView<R extends number | any[], C extends number | any[]>(
+    props: ArrayProps<R, C>
+) {
     let { children, rows = 1, cols = 1 } = props;
     let { style, className } = getStyleProps(props);
     let divStyle: any = {
         gap: props.gap && `${props.gap}px`,
         ...style,
     };
+    let rs: any[] = Array.isArray(rows) ? rows : range(rows);
+    let cs: any[] = Array.isArray(cols) ? cols : range(cols);
+
     if (typeof children === "function") {
         let renderChild = children;
         let cells: React.ReactNode[] = [];
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
+        for (let r = 0; r < rs.length; r++) {
+            for (let c = 0; c < cs.length; c++) {
                 cells.push(
                     <div
                         key={`${r}-${c}`}
@@ -333,7 +356,12 @@ export function Array(props: ArrayProps) {
                             alignItems: "stretch",
                         }}
                     >
-                        {renderChild({ r, c })}
+                        {renderChild({
+                            r: rs[r],
+                            c: cs[c],
+                            rowIndex: r,
+                            colIndex: c,
+                        })}
                     </div>
                 );
             }
@@ -346,6 +374,8 @@ export function Array(props: ArrayProps) {
         </div>
     );
 }
+
+export { ArrayView as Array };
 
 /**
  * TODO: axis: use array helper and min and max per axis
