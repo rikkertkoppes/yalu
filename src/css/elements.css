@@ -95,7 +95,7 @@
     color: var(--button-color, var(--light, currentColor));
     border: 2px solid var(--button-color, var(--light));
     border-radius: 2px;
-    padding: 6px;
+    padding: 2px;
 }
 
 .lcars-gap {
