@@ -122,12 +122,24 @@
 .lcars-cap.wide {
     width: var(--local-height);
 }
-.lcars-cap:first-child {
+.h > .lcars-cap:first-child {
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
 }
-.lcars-cap:last-child {
+.h > .lcars-cap:last-child {
     border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+.v > .lcars-cap {
+    width: var(--local-width);
+    height: 16px;
+}
+.v > .lcars-cap:first-child {
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
+.v > .lcars-cap:last-child {
+    border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
 }
 

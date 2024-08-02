@@ -162,19 +162,19 @@ export function Gap(props: FillerProps) {
     );
 }
 
-interface CapProps {
+interface CapProps extends CommonProps {
     wide?: boolean;
-    color?: string;
-    style?: React.CSSProperties;
 }
-export function Cap({ wide, color, style = {} }: CapProps) {
+export function Cap(props: CapProps) {
+    let { wide, color } = props;
+    let { style, className } = getStyleProps(props);
     let divStyle: any = {
         "--color": color,
         ...style,
     };
     return (
         <div
-            className={classNames("lcars-cap", { wide })}
+            className={classNames("lcars-cap", className, { wide })}
             style={divStyle}
         ></div>
     );
