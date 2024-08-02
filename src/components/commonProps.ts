@@ -44,7 +44,17 @@ function isN(n: any): n is number {
 
 /** gets the brightest shade defined in the props */
 function getColor(props: CommonProps) {
-    if (props.color) return { color: props.color };
+    if (props.color)
+        return {
+            color: props.color,
+            textColor: {
+                "var(--dark)": "var(--text-on-dark)",
+                "var(--dim)": "var(--text-on-dim)",
+                "var(--medium)": "var(--text-on-medium)",
+                "var(--light)": "var(--text-on-light)",
+                "var(--bright)": "var(--text-on-bright)",
+            }[props.color],
+        };
     let shade = shades.findLast((shade) => props[shade]);
     return {
         color: shade ? `var(--${shade})` : "",
