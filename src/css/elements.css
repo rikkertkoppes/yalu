@@ -1,5 +1,6 @@
 .lcars-filler {
     --color: var(--dim);
+    --text-on-color: var(--text-on-dim);
     font-size: 12px;
     padding: 4px;
     background-color: var(--color);
