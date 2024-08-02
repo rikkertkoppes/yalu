@@ -265,22 +265,23 @@ export function Graph(props: GraphProps) {
 
 interface BarProps extends CommonProps {
     value: number;
-    height?: number;
     type?: "blob" | "flat" | "square";
-    color?: string;
     label?: string;
     direction?: "v" | "h";
     steps?: number;
 }
 export function Bar(props: BarProps) {
     let { value, type = "blob", direction = "v", steps } = props;
+    let v = direction === "v";
+    steps = steps ?? (v ? 10 : 20);
     let { style, className } = getStyleProps(props);
+    let divStyle = {
+        ...style,
+    };
 
     let bf = value / 100; // bar fraction
     let nf = 1 - bf; // no bar fraction
 
-    let v = direction === "v";
-    steps = steps ?? (v ? 10 : 20);
     let dim = v ? "height" : "width";
     let bs = `${100 * bf}%`;
     let ns = `${100 * nf}%`;
@@ -294,7 +295,7 @@ export function Bar(props: BarProps) {
                 "lcars-" + type,
                 className
             )}
-            style={style}
+            style={divStyle}
         >
             <div style={{ [dim]: bs, "--step": bt } as any} />
             <div style={{ [dim]: ns, "--step": nt } as any} />
