@@ -233,14 +233,14 @@
     justify-content: center;
 }
 /** top row */
+/** top left corner joint */
 .lcars-ss {
     border-top-left-radius: var(--ro);
-    /* width: calc(var(--ri) + var(--w, var(--bl)));
-    height: calc(var(--ri) + var(--h, var(--bt))); */
     mask: var(--mask-image) 0% 0%/200% 200% no-repeat;
     margin-right: var(--nri);
     margin-bottom: var(--nri);
 }
+/** top middle t joint */
 .lcars-sm {
     /* width: calc(var(--ri) + var(--w, var(--bm)) + var(--ri));
     height: calc(var(--ri) + var(--h, var(--bt))); */
@@ -253,6 +253,7 @@
     margin-bottom: var(--nri);
     margin-left: var(--nri);
 }
+/** top right corner joint */
 .lcars-se {
     border-top-right-radius: var(--ro);
     /* width: calc(var(--ri) + var(--w, var(--br)));
@@ -262,15 +263,20 @@
     margin-left: var(--nri);
 }
 /** middle row */
+/** middle left t joint */
 .lcars-ms {
     /* width: calc(var(--ri) + var(--w, var(--bl)));
     height: calc(var(--ri) + var(--h, var(--bm)) + var(--ri)); */
     mask: 
         var(--mask-image) 0% 100%/200% 200% no-repeat,
         var(--mask-image) 0% 0%/200% 200% no-repeat
-    ;
+        ;
     mask-composite: intersect;
-}
+    margin-bottom: var(--nri);
+    margin-top: var(--nri);
+    margin-right: var(--nri);
+    }
+/** middle middle star joint */
 .lcars-mm {
     /* width: calc(var(--ri) + var(--w, var(--bm)) + var(--ri));
     height: calc(var(--ri) + var(--h, var(--bm)) + var(--ri)); */
@@ -281,7 +287,12 @@
         var(--mask-image) 0% 0%/200% 200% no-repeat
     ;
     mask-composite: intersect;
+    margin-bottom: var(--nri);
+    margin-top: var(--nri);
+    margin-left: var(--nri);
+    margin-right: var(--nri);
 }
+/** middle right t joint */
 .lcars-me {
     /* width: calc(var(--ri) + var(--w, var(--br)));
     height: calc(var(--ri) + var(--h, var(--bm)) + var(--ri)); */
@@ -290,8 +301,12 @@
         var(--mask-image) 100% 100%/200% 200% no-repeat
     ;
     mask-composite: intersect;
+    margin-bottom: var(--nri);
+    margin-top: var(--nri);
+    margin-left: var(--nri);
 }
 /** bottom row */
+/** bottom left corner joint */
 .lcars-es {
     border-bottom-left-radius: var(--ro);
     /* width: calc(var(--ri) + var(--w, var(--bl)));
@@ -300,6 +315,7 @@
     margin-top: var(--nri);
     margin-right: var(--nri);
 }
+/** bottom middle t joint */
 .lcars-em {
     /* width: calc(var(--ri) + var(--w, var(--bm)) + var(--ri));
     height: calc(var(--ri) + var(--h, var(--bb))); */
@@ -312,6 +328,7 @@
     margin-left: var(--nri);
     margin-right: var(--nri);
 }
+/** bottom right corner joint */
 .lcars-ee {
     border-bottom-right-radius: var(--ro);
     /* width: calc(var(--ri) + var(--w, var(--br)));
