@@ -369,7 +369,6 @@ export function Composite(props: CompositeProps) {
         minHeight: style.height,
         "--ri": isN(ri) && `${ri}px`,
         "--ro": isN(ro) && `${ro}px`,
-        gap: dev ? "2px" : "0px",
         gridTemplateColumns: g.cols,
         gridTemplateRows: g.rows,
         ...style,
@@ -392,6 +391,10 @@ export function Composite(props: CompositeProps) {
                 {children}
                 {dev &&
                     g.cells.map((c) => {
+                        let brw =
+                            c.col === g.cols.split(" ").length - 1 ? 1 : 0;
+                        let bbw =
+                            c.row === g.rows.split(" ").length - 1 ? 1 : 0;
                         return (
                             <div
                                 key={c.cell}
@@ -403,6 +406,9 @@ export function Composite(props: CompositeProps) {
                                     justifyContent: "center",
                                     zIndex: 1000,
                                     pointerEvents: "none",
+                                    border: "1px dashed white",
+                                    borderRightWidth: brw,
+                                    borderBottomWidth: bbw,
                                 }}
                             >
                                 {c.cell}
