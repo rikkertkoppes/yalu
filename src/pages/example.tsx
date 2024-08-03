@@ -20,7 +20,11 @@ import {
     Bottom,
     Cutout,
     Top,
+    Axes,
+    Connector,
 } from "../components";
+import * as SVG from "../components/svg";
+import { Repeat, circle } from "../components/core";
 
 /** random number */
 function rn(length: number);
@@ -72,6 +76,53 @@ const Gauge = ({ color }: GaugeProps) => (
         </Row>
     </Col>
 );
+
+function Pad() {
+    let col = (i: number) =>
+        i === 1 || i === 3 ? "var(--blue)" : "var(--bright)";
+    return (
+        <Row height={170}>
+            <svg viewBox="-100 -100 200 200">
+                <circle r="20" fill="var(--blue)" />
+                <Repeat items={circle(6, 45, -90)}>
+                    {({ x, y }, i) => (
+                        <SVG.Regular
+                            id={`hex-${i}`}
+                            cx={x}
+                            cy={y}
+                            p={6}
+                            r={20}
+                            fill={col(i)}
+                        />
+                    )}
+                </Repeat>
+            </svg>
+            <Array rows={6} width={75}>
+                {({ r }) => {
+                    let c: any = r >= 3 ? "bl" : "tl";
+                    return (
+                        <>
+                            <Button
+                                id={`btn-${r}`}
+                                height={20}
+                                flex
+                                color={col(r)}
+                            >
+                                0{r + 1}
+                            </Button>
+                            <Connector
+                                from={`btn-${r}`}
+                                to={`hex-${r}`}
+                                fromCorner={c}
+                                color={col(r)}
+                            />
+                        </>
+                    );
+                }}
+            </Array>
+        </Row>
+    );
+}
 
 function Page() {
     return (
@@ -453,15 +504,7 @@ function Page() {
                                     end="A3"
                                     padding={"24px 24px 0 0 "}
                                 >
-                                    <Stack flex>
-                                        <Grid rows={10} cols={7} flex dark />
-                                        <Graph
-                                            values={[2, 3, 2, 5, 6, 4, 7, 2]}
-                                            flex
-                                            max={10}
-                                            light
-                                        />
-                                    </Stack>
+                                    <Pad />
                                 </Cell>
 
                                 <Cell cell="B2">

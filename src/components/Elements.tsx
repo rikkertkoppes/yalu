@@ -45,6 +45,7 @@ export function Cutout(props: FillerProps) {
 }
 
 export interface ButtonProps extends CommonProps {
+    id?: string;
     selected?: boolean;
     onClick?: (e: React.MouseEvent) => void;
     outline?: boolean;
@@ -53,6 +54,7 @@ export interface ButtonProps extends CommonProps {
 }
 export function Button(props: ButtonProps) {
     let {
+        id,
         children,
         selected,
         onClick,
@@ -81,6 +83,7 @@ export function Button(props: ButtonProps) {
     }
     return (
         <div
+            id={id}
             className={classNames("lcars-button h", className, roundclass, {
                 selected,
                 outline,
@@ -380,3 +383,75 @@ export { ArrayView as Array };
 /**
  * TODO: axis: use array helper and min and max per axis
  */
+type Corner = "tl" | "tc" | "tr" | "cl" | "cc" | "cr" | "bl" | "bc" | "br";
+interface ConnectorProps {
+    from: string;
+    to: string;
+    fromCorner?: Corner;
+    toCorner?: Corner;
+    strokeWidth?: number;
+    direction?: "vh" | "hv";
+    children?: React.ReactNode;
+    color?: string;
+}
+
+function getPosition(el: HTMLElement, corner: Corner) {
+    let bb = el.getBoundingClientRect();
+    switch (corner) {
+        case "tl":
+            return [bb.left, bb.top];
+        case "tc":
+            return [bb.left + bb.width / 2, bb.top];
+        case "tr":
+            return [bb.right, bb.top];
+        case "cl":
+            return [bb.left, bb.top + bb.height / 2];
+        case "cc":
+            return [bb.left + bb.width / 2, bb.top + bb.height / 2];
+        case "cr":
+            return [bb.right, bb.top + bb.height / 2];
+        case "bl":
+            return [bb.left, bb.bottom];
+        case "bc":
+            return [bb.left + bb.width / 2, bb.bottom];
+        case "br":
+            return [bb.right, bb.bottom];
+    }
+}
+
+export function Connector(props: ConnectorProps) {
+    let {
+        fromCorner = "cc",
+        toCorner = "cc",
+        color = "var(--color)",
+        strokeWidth: sw = 1,
+    } = props;
+    let [shape, setShape] = React.useState<React.ReactNode>(null);
+    React.useEffect(() => {
+        let fromEl = document.getElementById(props.from);
+        let toEl = document.getElementById(props.to);
+        if (!fromEl || !toEl) return;
+        let from = getPosition(fromEl, fromCorner);
+        let to = getPosition(toEl, toCorner);
+        let pos = [Math.min(from[0], to[0]), Math.min(from[1], to[1])];
+        let size = [Math.abs(from[0] - to[0]), Math.abs(from[1] - to[1])];
+        let h = from[0] < to[0] ? "Right" : "Left";
+        let v = from[1] < to[1] ? "Top" : "Bottom";
+        setShape(
+            <div
+                style={{
+                    position: "fixed",
+                    border: `${sw}px solid transparent`,
+                    left: pos[0],
+                    top: pos[1],
+                    width: size[0],
+                    height: size[1],
+                    [`border${h}Color`]: color,
+                    [`border${v}Color`]: color,
+                    boxSizing: "border-box",
+                }}
+            ></div>
+        );
+    }, []);
+    return <>{shape}</>;
+}
