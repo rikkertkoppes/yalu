@@ -1,25 +1,24 @@
 import React from "react";
-import { circle } from "./core";
+import { ngon } from "./core";
 
-interface RegularProps extends React.SVGProps<SVGPolygonElement> {
+interface NGonProps extends React.SVGProps<SVGPolygonElement> {
+    n: number;
     cx?: number;
     cy?: number;
     r?: number;
     a?: number;
-
-    p: number;
     q?: number;
 }
-export function Regular({
-    p,
+export function NGon({
+    n,
     q = 1,
     cx = 0,
     cy = 0,
     a = 0,
     r = 0,
     ...props
-}: RegularProps) {
-    let points = circle(p, r, a)
+}: NGonProps) {
+    let points = ngon(n, r, a)
         .map(({ x, y }) => `${cx + x},${cy + y}`)
         .join(" ");
 

@@ -24,7 +24,7 @@ import {
     Connector,
 } from "../components";
 import * as SVG from "../components/svg";
-import { Repeat, circle } from "../components/core";
+import { Repeat, ngon } from "../components/core";
 
 /** random number */
 function rn(length: number);
@@ -84,13 +84,13 @@ function Pad() {
         <Row height={170}>
             <svg viewBox="-100 -100 200 200">
                 <circle r="20" fill="var(--blue)" />
-                <Repeat items={circle(6, 45, -90)}>
+                <Repeat items={ngon(6, 45, -90)}>
                     {({ x, y }, i) => (
-                        <SVG.Regular
+                        <SVG.NGon
                             id={`hex-${i}`}
                             cx={x}
                             cy={y}
-                            p={6}
+                            n={6}
                             r={20}
                             fill={col(i)}
                         />

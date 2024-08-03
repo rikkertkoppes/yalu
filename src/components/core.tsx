@@ -34,7 +34,7 @@ export function Repeat<I extends number | any[]>({
     );
 }
 
-export function circle(sides: number, radius: number, rotation: number = 0) {
+export function ngon(sides: number, radius: number, rotation: number = 0) {
     let ar = (Math.PI * rotation) / 180;
     return range(sides).map((_, i) => {
         let a = (2 * Math.PI * i) / sides + ar;
