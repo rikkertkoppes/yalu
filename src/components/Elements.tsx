@@ -168,12 +168,11 @@ export function Gap(props: FillerProps) {
             ref.current.style.setProperty("--local-height", `${height}px`);
         }
     });
-    let content =
-        typeof children === "string" ? (
-            <span ref={ref}>{children}</span>
-        ) : (
-            children
-        );
+    let content = ["string", "number"].includes(typeof children) ? (
+        <span ref={ref}>{children}</span>
+    ) : (
+        children
+    );
     return (
         <div className={classNames("lcars-gap h", className)} style={divStyle}>
             {content}
