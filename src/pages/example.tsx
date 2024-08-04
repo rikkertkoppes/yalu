@@ -117,6 +117,7 @@ function Pad() {
                                 color={col(r)}
                                 direction="hv"
                                 r={8}
+                                strokeWidth={2}
                             />
                         </>
                     );

@@ -448,23 +448,23 @@ export function Connector(props: ConnectorProps) {
             !useTop && useRight ? radius : "0",
             !useTop && !useRight ? radius : "0",
         ].join(" ");
-        let borderColor = [
-            useTop ? color : "transparent",
-            useRight ? color : "transparent",
-            useTop ? "transparent" : color,
-            useRight ? "transparent" : color,
+        let borderWidth = [
+            useTop ? `${sw}px` : 0,
+            useRight ? `${sw}px` : 0,
+            useTop ? 0 : `${sw}px`,
+            useRight ? 0 : `${sw}px`,
         ].join(" ");
         setShape(
             <div
                 className="lcars-connector"
                 style={{
-                    borderWidth: `${sw}px`,
                     left: pos[0],
                     top: pos[1],
                     width: size[0],
                     height: size[1],
-                    borderColor,
+                    borderColor: color,
                     borderRadius,
+                    borderWidth,
                 }}
             ></div>
         );
