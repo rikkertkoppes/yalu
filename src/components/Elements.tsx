@@ -424,9 +424,11 @@ export function Connector(props: ConnectorProps) {
         toCorner = "cc",
         color = "var(--color)",
         strokeWidth: sw = 1,
+        direction = "vh",
     } = props;
     let [shape, setShape] = React.useState<React.ReactNode>(null);
-    React.useEffect(() => {
+
+    const reposition = () => {
         let fromEl = document.getElementById(props.from);
         let toEl = document.getElementById(props.to);
         if (!fromEl || !toEl) return;
@@ -434,8 +436,15 @@ export function Connector(props: ConnectorProps) {
         let to = getPosition(toEl, toCorner);
         let pos = [Math.min(from[0], to[0]), Math.min(from[1], to[1])];
         let size = [Math.abs(from[0] - to[0]), Math.abs(from[1] - to[1])];
-        let h = from[0] < to[0] ? "Right" : "Left";
-        let v = from[1] < to[1] ? "Top" : "Bottom";
+        let vh = direction === "vh";
+        let useRight = vh !== from[0] < to[0];
+        let useTop = vh !== from[1] < to[1];
+        let border = [
+            useTop ? color : "transparent",
+            useRight ? color : "transparent",
+            useTop ? "transparent" : color,
+            useRight ? "transparent" : color,
+        ];
         setShape(
             <div
                 style={{
@@ -445,12 +454,17 @@ export function Connector(props: ConnectorProps) {
                     top: pos[1],
                     width: size[0],
                     height: size[1],
-                    [`border${h}Color`]: color,
-                    [`border${v}Color`]: color,
+                    borderColor: border.join(" "),
                     boxSizing: "border-box",
                 }}
             ></div>
         );
-    }, []);
+    };
+
+    React.useEffect(() => {
+        reposition();
+        window.addEventListener("resize", reposition);
+        return () => window.removeEventListener("resize", reposition);
+    }, [fromCorner, toCorner, props.from, props.to]);
     return <>{shape}</>;
 }

@@ -115,6 +115,7 @@ function Pad() {
                                 to={`hex-${r}`}
                                 fromCorner={c}
                                 color={col(r)}
+                                direction="hv"
                             />
                         </>
                     );
