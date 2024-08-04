@@ -23,76 +23,6 @@ function isN(n: any): n is number {
     return typeof n === "number";
 }
 
-interface FrameProps extends CommonProps {
-    children?: React.ReactNode;
-    t?: boolean | number;
-    r?: boolean | number;
-    b?: boolean | number;
-    l?: boolean | number;
-    padding?: string | number;
-    ri?: number;
-    ro?: number;
-    dev?: boolean;
-}
-
-interface SideProps {
-    children?: React.ReactNode;
-    startSpace?: number;
-    endSpace?: number;
-}
-export function Top({ children, startSpace, endSpace }: SideProps) {
-    let cell = useSideCell("top");
-    let style: any = {
-        "--start-space": startSpace && `${startSpace}px`,
-        "--end-space": endSpace && `${endSpace}px`,
-    };
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
-    return (
-        <div className="lcars-frametop lcars-row" style={style}>
-            {children}
-        </div>
-    );
-}
-export function Right({ children, startSpace, endSpace }: SideProps) {
-    let cell = useSideCell("right");
-    let style: any = {
-        "--start-space": startSpace && `${startSpace}px`,
-        "--end-space": endSpace && `${endSpace}px`,
-    };
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
-    return (
-        <div className="lcars-frameright lcars-col" style={style}>
-            {children}
-        </div>
-    );
-}
-export function Bottom({ children, startSpace, endSpace }: SideProps) {
-    let cell = useSideCell("bottom");
-    let style: any = {
-        "--start-space": startSpace && `${startSpace}px`,
-        "--end-space": endSpace && `${endSpace}px`,
-    };
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
-    return (
-        <div className="lcars-framebottom lcars-row" style={style}>
-            {children}
-        </div>
-    );
-}
-export function Left({ children, startSpace, endSpace }: SideProps) {
-    let cell = useSideCell("left");
-    let style: any = {
-        "--start-space": startSpace && `${startSpace}px`,
-        "--end-space": endSpace && `${endSpace}px`,
-    };
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
-    return (
-        <div className="lcars-frameleft lcars-col" style={style}>
-            {children}
-        </div>
-    );
-}
-
 interface CornerProps extends React.HTMLAttributes<HTMLDivElement> {
     color?: string;
 }
@@ -358,7 +288,7 @@ interface CompositeProps extends CommonProps {
     children?: React.ReactNode;
 }
 
-export function Composite(props: CompositeProps) {
+function Composite(props: CompositeProps) {
     let { def = "", dev = false, ri, ro, children } = props;
     let g = parseDef(def);
 
@@ -456,8 +386,29 @@ function createDef(
     return { def, content };
 }
 
+interface FrameProps extends CommonProps {
+    children?: React.ReactNode;
+    t?: boolean | number;
+    r?: boolean | number;
+    b?: boolean | number;
+    l?: boolean | number;
+    padding?: string | number;
+    ri?: number;
+    ro?: number;
+    dev?: boolean;
+    def?: string;
+}
+
 export function Frame(props: FrameProps) {
-    let { children, t, r, b, l, padding, ...compositeProps } = props;
+    let { def: cdef, children, t, r, b, l, padding, ...compositeProps } = props;
+    if (cdef) {
+        return (
+            <Composite def={cdef} {...compositeProps}>
+                {children}
+            </Composite>
+        );
+    }
+
     let noSides = [t, r, b, l].every((s) => s === undefined);
     if (noSides) {
         t = r = b = l = true;
@@ -481,4 +432,30 @@ export function Frame(props: FrameProps) {
             </Cell>
         </Composite>
     );
+}
+
+interface SideProps {
+    children?: React.ReactNode;
+    startSpace?: number;
+    endSpace?: number;
+}
+export function Top({ children, startSpace, endSpace }: SideProps) {
+    let cell = useSideCell("top");
+    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    return null;
+}
+export function Right({ children, startSpace, endSpace }: SideProps) {
+    let cell = useSideCell("right");
+    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    return null;
+}
+export function Bottom({ children, startSpace, endSpace }: SideProps) {
+    let cell = useSideCell("bottom");
+    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    return null;
+}
+export function Left({ children, startSpace, endSpace }: SideProps) {
+    let cell = useSideCell("left");
+    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    return null;
 }

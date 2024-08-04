@@ -10,7 +10,6 @@ import {
     Right,
     Gap,
     Grid,
-    Composite,
     Art,
     Cell,
     Graph,
@@ -483,7 +482,7 @@ function Page() {
                         </Row>
                         <Gap height={20} />
                         <Row flex>
-                            <Composite
+                            <Frame
                                 flex
                                 height={300}
                                 bright
@@ -589,7 +588,7 @@ function Page() {
                                     <Filler width={120} />
                                     <Filler flex bright />
                                 </Cell>
-                            </Composite>
+                            </Frame>
                         </Row>
                         <Gap height={20} />
                         <Row height={200}>
