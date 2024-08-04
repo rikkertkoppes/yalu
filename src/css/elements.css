@@ -326,3 +326,9 @@
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+.lcars-connector {
+    position: fixed;
+    border: 0px solid transparent;
+    box-sizing: border-box;
+}

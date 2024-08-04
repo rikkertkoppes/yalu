@@ -392,6 +392,7 @@ interface ConnectorProps {
     direction?: "vh" | "hv";
     children?: React.ReactNode;
     color?: string;
+    r?: number;
 }
 
 function getPosition(el: HTMLElement, corner: Corner) {
@@ -425,6 +426,7 @@ export function Connector(props: ConnectorProps) {
         color = "var(--color)",
         strokeWidth: sw = 1,
         direction = "vh",
+        r = 0,
     } = props;
     let [shape, setShape] = React.useState<React.ReactNode>(null);
 
@@ -439,23 +441,30 @@ export function Connector(props: ConnectorProps) {
         let vh = direction === "vh";
         let useRight = vh !== from[0] < to[0];
         let useTop = vh !== from[1] < to[1];
-        let border = [
+        let radius = `${r}px`;
+        let borderRadius = [
+            useTop && !useRight ? radius : "0",
+            useTop && useRight ? radius : "0",
+            !useTop && useRight ? radius : "0",
+            !useTop && !useRight ? radius : "0",
+        ].join(" ");
+        let borderColor = [
             useTop ? color : "transparent",
             useRight ? color : "transparent",
             useTop ? "transparent" : color,
             useRight ? "transparent" : color,
-        ];
+        ].join(" ");
         setShape(
             <div
+                className="lcars-connector"
                 style={{
-                    position: "fixed",
-                    border: `${sw}px solid transparent`,
+                    borderWidth: `${sw}px`,
                     left: pos[0],
                     top: pos[1],
                     width: size[0],
                     height: size[1],
-                    borderColor: border.join(" "),
-                    boxSizing: "border-box",
+                    borderColor,
+                    borderRadius,
                 }}
             ></div>
         );

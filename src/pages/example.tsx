@@ -116,6 +116,7 @@ function Pad() {
                                 fromCorner={c}
                                 color={col(r)}
                                 direction="hv"
+                                r={8}
                             />
                         </>
                     );
