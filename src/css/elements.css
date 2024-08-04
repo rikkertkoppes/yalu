@@ -39,6 +39,8 @@
     flex-direction: column;
     gap: 4px;
     --local-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
 .lcars-stack {
     position: relative;

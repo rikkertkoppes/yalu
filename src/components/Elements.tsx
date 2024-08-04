@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { CommonProps, getStyleProps } from "./commonProps";
+import { Repeat, RepeatRenderFunction } from "./core";
 
 interface FillerProps extends CommonProps {
     offset?: [number, number];
@@ -96,7 +97,12 @@ export function Button(props: ButtonProps) {
     );
 }
 
-export function Row(props: FillerProps) {
+interface RowColProps extends Omit<FillerProps, "children"> {
+    repeat?: number | any[];
+    children?: React.ReactNode | RepeatRenderFunction<any>;
+}
+
+export function Row(props: RowColProps) {
     let { gap, children } = props;
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
@@ -109,11 +115,11 @@ export function Row(props: FillerProps) {
     };
     return (
         <div className={classNames("lcars-row h", className)} style={divStyle}>
-            {children}
+            <Repeat items={props.repeat}>{children}</Repeat>
         </div>
     );
 }
-export function Col(props: FillerProps) {
+export function Col(props: RowColProps) {
     let { gap, children } = props;
     let { style, className } = getStyleProps(props);
     let { width, height } = style;
@@ -128,7 +134,7 @@ export function Col(props: FillerProps) {
     };
     return (
         <div className={classNames("lcars-col v", className)} style={divStyle}>
-            {children}
+            <Repeat items={props.repeat}>{children}</Repeat>
         </div>
     );
 }

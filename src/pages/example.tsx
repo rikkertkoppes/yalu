@@ -16,7 +16,6 @@ import {
     Graph,
     Bar,
     Stack,
-    Array,
     Bottom,
     Cutout,
     Top,
@@ -53,6 +52,11 @@ function rs(a: number, b?: number) {
 /** random element from array */
 function ra<T>(array: T[]) {
     return array[Math.floor(Math.random() * array.length)];
+}
+
+/** random color */
+function rc() {
+    return `var(--${ra(["dark", "dim", "medium", "bright", "light"])})`;
 }
 
 interface GaugeProps {
@@ -97,17 +101,12 @@ function Pad() {
                     )}
                 </Repeat>
             </svg>
-            <Array rows={6} width={75}>
-                {({ r }) => {
+            <Col repeat={6} width={75} height={170}>
+                {(r) => {
                     let c: any = r >= 3 ? "bl" : "tl";
                     return (
                         <>
-                            <Button
-                                id={`btn-${r}`}
-                                height={20}
-                                flex
-                                color={col(r)}
-                            >
+                            <Button id={`btn-${r}`} height={20} color={col(r)}>
                                 0{r + 1}
                             </Button>
                             <Connector
@@ -122,7 +121,7 @@ function Pad() {
                         </>
                     );
                 }}
-            </Array>
+            </Col>
         </Row>
     );
 }
@@ -226,16 +225,14 @@ function Page() {
                             <Filler width={50} />
                             <Filler flex br>
                                 <Cutout offset={[0, 8]} flex height={64}>
-                                    <Array cols={6} flex>
-                                        {() => (
-                                            <Col width={50}>
-                                                <Filler bright />
-                                                <Button br flex>
-                                                    {rs(2)}-{rs(3)}
-                                                </Button>
-                                            </Col>
-                                        )}
-                                    </Array>
+                                    <Row repeat={6} flex gap={10}>
+                                        <Col flex>
+                                            <Filler bright />
+                                            <Button br flex>
+                                                {rs(2)}-{rs(3)}
+                                            </Button>
+                                        </Col>
+                                    </Row>
                                 </Cutout>
                             </Filler>
                             <Filler width={150} />
@@ -397,9 +394,9 @@ function Page() {
                                                 <Filler height={25} light />
                                                 <Filler flex />
                                             </Right>
-                                            <Array rows={5} flex gap={4}>
-                                                {({ r }) => (
-                                                    <Row flex height={20}>
+                                            <Col repeat={5} flex>
+                                                {() => (
+                                                    <Row height={20}>
                                                         <Filler bright />
                                                         <Filler dim />
                                                         <Button flex light>
@@ -415,7 +412,7 @@ function Page() {
                                                         <Filler bright />
                                                     </Row>
                                                 )}
-                                            </Array>
+                                            </Col>
                                         </Frame>
                                     </Col>
                                 </Row>
@@ -604,29 +601,19 @@ function Page() {
                                 width={100}
                                 padding={4}
                             >
-                                <Array rows={6} gap={4}>
-                                    {({ r }) => {
-                                        let c = () =>
-                                            ra([
-                                                "var(--dark)",
-                                                "var(--dim)",
-                                                "var(--medium)",
-                                                "var(--bright)",
-                                                "var(--light)",
-                                            ]);
-                                        return (
-                                            <Row flex height={20}>
-                                                <Button flex dim color={c()}>
-                                                    {rn(2)}-{rn(3)}
-                                                </Button>
-                                                <Gap width={20} cr>
-                                                    {rn(0, 2)}
-                                                </Gap>
-                                                <Filler width={5} color={c()} />
-                                            </Row>
-                                        );
-                                    }}
-                                </Array>
+                                <Col repeat={6} gap={4}>
+                                    {() => (
+                                        <Row flex height={20}>
+                                            <Button flex color={rc()}>
+                                                {rn(2)}-{rn(3)}
+                                            </Button>
+                                            <Gap width={20} cr>
+                                                {rn(0, 2)}
+                                            </Gap>
+                                            <Filler width={5} color={rc()} />
+                                        </Row>
+                                    )}
+                                </Col>
                             </Frame>
                             <Frame
                                 l={10}
@@ -642,8 +629,8 @@ function Page() {
                                         HEISENBERG COMPENSATORS
                                     </Filler>
                                 </Top>
-                                <Array rows={10} flex gap={4}>
-                                    {({ r }) => {
+                                <Col repeat={10} flex gap={4}>
+                                    {(r) => {
                                         let color = [
                                             "var(--medium)",
                                             "var(--blue)",
@@ -651,7 +638,7 @@ function Page() {
                                         ][[0, 1, 0, 0, 0, 2, 0, 1, 0][r]];
                                         return (
                                             <Row flex cr height={11}>
-                                                <Array cols={4} flex>
+                                                <Repeat items={4}>
                                                     {() => (
                                                         <Gap
                                                             flex
@@ -661,7 +648,7 @@ function Page() {
                                                             {rn(1, 9)}
                                                         </Gap>
                                                     )}
-                                                </Array>
+                                                </Repeat>
                                                 <Gap width={20} />
                                                 <Filler
                                                     width={20}
@@ -671,7 +658,7 @@ function Page() {
                                             </Row>
                                         );
                                     }}
-                                </Array>
+                                </Col>
                             </Frame>
                             <Row width={150} gap={20}>
                                 <Gauge color="var(--dim)" />
@@ -687,36 +674,26 @@ function Page() {
                                 width={200}
                                 padding={4}
                             >
-                                <Array rows={6} gap={4}>
-                                    {({ r }) => {
-                                        let c = () =>
-                                            ra([
-                                                "var(--dark)",
-                                                "var(--dim)",
-                                                "var(--medium)",
-                                                "var(--bright)",
-                                                "var(--light)",
-                                            ]);
-                                        return (
-                                            <Row flex height={20}>
-                                                <Button rounded color={c()}>
-                                                    {rn(2)}-{rn(3)}
-                                                </Button>
-                                                <Button
-                                                    rounded="left"
-                                                    color={c()}
-                                                />
-                                                <Button flex color={c()}>
-                                                    {rn(2)}-{rn(3)}
-                                                </Button>
-                                                <Gap width={20} cr dim>
-                                                    {rn(0, 2)}
-                                                </Gap>
-                                                <Filler width={5} color={c()} />
-                                            </Row>
-                                        );
-                                    }}
-                                </Array>
+                                <Col repeat={6} gap={4}>
+                                    {() => (
+                                        <Row flex height={20}>
+                                            <Button rounded color={rc()}>
+                                                {rn(2)}-{rn(3)}
+                                            </Button>
+                                            <Button
+                                                rounded="left"
+                                                color={rc()}
+                                            />
+                                            <Button flex color={rc()}>
+                                                {rn(2)}-{rn(3)}
+                                            </Button>
+                                            <Gap width={20} cr dim>
+                                                {rn(0, 2)}
+                                            </Gap>
+                                            <Filler width={5} color={rc()} />
+                                        </Row>
+                                    )}
+                                </Col>
                             </Frame>
                         </Row>
                         <Gap height={50} />
