@@ -13,7 +13,9 @@
     --boot-wait: 0s;
     --local-height: 32px;
     --local-width: 32px;
-    --button-font-family: 'Swiss 911';
+    --button-font-family: 'Swiss 911 Ultra Compressed BT';
+    --font-scale-adjust: 1.38;
+    --font-v-adjust: 0.04em;
 }
 
 .lcars-reset {
