@@ -5,3 +5,6 @@ node_modules/
 .npmrc
 .vscode
 next.config.js
+mdx-components.tsx
+next-env.d.ts
+rollup.config.js
