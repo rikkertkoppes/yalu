@@ -120,6 +120,7 @@ interface CellDef {
 function parseDef(def: string): CellDef {
     let lines = def
         .trim()
+        .replace(/-/g, "*")
         .split(/[\n/]/)
         .map((r) => r.trim());
     let grid = lines.map((r) => r.split(/\s+/).map((c) => c.trim()));
