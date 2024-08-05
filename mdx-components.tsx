@@ -1,3 +1,4 @@
+import React from "react";
 import type { MDXComponents } from "mdx/types";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { railscasts } from "react-syntax-highlighter/dist/cjs/styles/hljs";
@@ -8,11 +9,9 @@ import { railscasts } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 // components from other libraries, and more.
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
-    console.log("use custom mdx components");
     return {
         // Allows customizing built-in components, e.g. to add styling.
         pre: ({ children, ...props }) => {
-            console.log(SyntaxHighlighter.supportedLanguages);
             if (typeof children === "object")
                 children = (children as any).props.children;
             return (

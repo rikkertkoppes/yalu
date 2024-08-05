@@ -12,6 +12,7 @@
         "watch": "tsc -w --project tsconfig-pack.json",
         "build:ts": "tsc --project tsconfig-pack.json",
         "build": "npm run rollup",
+        "pages": "next build",
         "rollup": "rm -rf dist && rollup -c",
         "prepare": "npm run rollup",
         "dev": "next dev"

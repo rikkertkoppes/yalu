@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../pageComponents/layout";
 import {
     Row,
@@ -18,7 +19,6 @@ import {
     Bottom,
     Cutout,
     Top,
-    Axes,
     Connector,
 } from "../components";
 import * as SVG from "../components/svg";

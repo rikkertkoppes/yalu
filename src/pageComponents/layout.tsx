@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { Frame, Top, Filler, Cap, Left, Button, Gap } from "../components";
 
