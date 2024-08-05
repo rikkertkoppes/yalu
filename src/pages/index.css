@@ -48,3 +48,10 @@ code {
 pre code {
     color: white;
 }
+
+.lcars-row.example {
+    margin: 100px 0px;
+    gap: 20px;
+    align-items: start;
+    justify-content: start;
+}
