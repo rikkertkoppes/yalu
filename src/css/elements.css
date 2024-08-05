@@ -278,6 +278,14 @@
     justify-content: flex-start;
     align-items: center;
 }
+.h.tf {
+    align-items: flex-start;
+    justify-content: stretch;
+}
+.v.tf {
+    justify-content: flex-start;
+    align-items: stretch;
+}
 .h.tr {
     align-items: flex-start;
     justify-content: flex-end;
@@ -294,6 +302,14 @@
     justify-content: center;
     align-items: flex-start;
 }
+.h.fl {
+    align-items: stretch;
+    justify-content: flex-start;
+}
+.v.fl {
+    justify-content: stretch;
+    align-items: flex-start;
+}
 .h.cc,
 .v.cc {
     justify-content: center;
@@ -305,6 +321,14 @@
 }
 .v.cr {
     justify-content: center;
+    align-items: flex-end;
+}
+.h.fr {
+    align-items: stretch;
+    justify-content: flex-end;
+}
+.v.fr {
+    justify-content: stretch;
     align-items: flex-end;
 }
 .h.bl {
@@ -322,6 +346,14 @@
 .v.bc {
     justify-content: flex-end;
     align-items: center;
+}
+.h.bf {
+    align-items: flex-end;
+    justify-content: stretch;
+}
+.v.bf {
+    justify-content: flex-end;
+    align-items: stretch;
 }
 .h.br,
 .v.br {

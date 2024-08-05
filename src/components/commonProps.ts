@@ -8,16 +8,20 @@ type ShadeProps = { [S in Shades]?: boolean };
 let contentPositions = [
     "tl",
     "tc",
+    "tf",
     "tr",
     "cl",
+    "fl",
     "cc",
     "cr",
+    "fr",
     "bl",
     "bc",
+    "bf",
     "br",
 ] as const;
 type ContentPositions = (typeof contentPositions)[number];
-type ContentProps = {
+export type ContentProps = {
     [C in ContentPositions]?: boolean;
 } & {
     content?: ContentPositions;
@@ -62,7 +66,7 @@ function getColor(props: CommonProps) {
     };
 }
 
-function getContentClass(props: ContentProps) {
+export function getContentClass(props: ContentProps) {
     return classNames(
         props.content,
         Object.fromEntries(contentPositions.map((pos) => [pos, props[pos]]))
