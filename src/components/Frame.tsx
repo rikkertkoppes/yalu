@@ -1,6 +1,11 @@
 import React from "react";
 import classNames from "classnames";
-import { CommonProps, getStyleProps } from "./commonProps";
+import {
+    CommonProps,
+    ContentProps,
+    getContentClass,
+    getStyleProps,
+} from "./commonProps";
 
 function isSpecial(node: React.ReactNode) {
     if (!React.isValidElement(node)) return false;
@@ -21,34 +26,6 @@ function isSpecial(node: React.ReactNode) {
 
 function isN(n: any): n is number {
     return typeof n === "number";
-}
-
-interface CornerProps extends React.HTMLAttributes<HTMLDivElement> {
-    color?: string;
-}
-
-export function TopLeft({ color, ...props }: CornerProps) {
-    let style: any = { "--color": color };
-    return <div className="lcars-frametopleft" style={style} {...props}></div>;
-}
-export function TopRight({ color, ...props }: CornerProps) {
-    let style: any = { "--color": color };
-    return <div className="lcars-frametopright" style={style} {...props}></div>;
-}
-export function BottomLeft({ color, ...props }: CornerProps) {
-    let style: any = { "--color": color };
-    return (
-        <div className="lcars-framebottomleft" style={style} {...props}></div>
-    );
-}
-export function BottomRight({ color, ...props }: CornerProps) {
-    let style: any = { "--color": color };
-    return (
-        <div className="lcars-framebottomright" style={style} {...props}></div>
-    );
-}
-export function Art({ children }) {
-    return <div className="lcars-frameart lcars-col">{children}</div>;
 }
 
 // new approach for generic composite curves
@@ -246,16 +223,23 @@ function useSideCell(side: string) {
             return "";
     }
 }
-interface CellProps {
-    cell: string;
+interface CellProps extends ContentProps {
+    start: string;
     end?: string;
     children?: React.ReactNode;
     padding?: number | string;
     className?: string;
 }
-export function Cell({ cell, end, children, padding, className }: CellProps) {
-    let type = useCellType(cell);
-    let [rs, cs] = A1toRC(cell);
+export function Cell({
+    start,
+    end,
+    children,
+    padding,
+    className,
+    ...contentProps
+}: CellProps) {
+    let type = useCellType(start);
+    let [rs, cs] = A1toRC(start);
     let [rp, cp] = [1, 1]; // spans
     if (end) {
         let [re, ce] = A1toRC(end);
@@ -271,7 +255,8 @@ export function Cell({ cell, end, children, padding, className }: CellProps) {
     className = classNames(
         "lcars-cell",
         `lcars-${type.toLowerCase()}`,
-        className
+        className,
+        getContentClass(contentProps)
     );
     return (
         <div className={className} style={divStyle}>
@@ -427,35 +412,104 @@ export function Frame(props: FrameProps) {
     return (
         <Composite def={def} {...compositeProps}>
             {specials}
-            <Cell cell={content} padding={padding && padString}>
+            <Cell start={content} padding={padding && padString}>
                 {regulars}
             </Cell>
         </Composite>
     );
 }
 
-interface SideProps {
+/** specials */
+interface SideProps extends ContentProps {
     children?: React.ReactNode;
     startSpace?: number;
     endSpace?: number;
 }
-export function Top({ children, startSpace, endSpace }: SideProps) {
+export function Top({
+    children,
+    startSpace,
+    endSpace,
+    ...cellProps
+}: SideProps) {
     let cell = useSideCell("top");
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    if (cell)
+        return (
+            <Cell start={cell} {...cellProps} className="h top">
+                {children}
+            </Cell>
+        );
     return null;
 }
-export function Right({ children, startSpace, endSpace }: SideProps) {
+export function Right({
+    children,
+    startSpace,
+    endSpace,
+    ...cellProps
+}: SideProps) {
     let cell = useSideCell("right");
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    if (cell)
+        return (
+            <Cell start={cell} {...cellProps} className="v right">
+                {children}
+            </Cell>
+        );
     return null;
 }
-export function Bottom({ children, startSpace, endSpace }: SideProps) {
+export function Bottom({
+    children,
+    startSpace,
+    endSpace,
+    ...cellProps
+}: SideProps) {
     let cell = useSideCell("bottom");
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    if (cell)
+        return (
+            <Cell start={cell} {...cellProps} className="h bottom">
+                {children}
+            </Cell>
+        );
     return null;
 }
-export function Left({ children, startSpace, endSpace }: SideProps) {
+export function Left({
+    children,
+    startSpace,
+    endSpace,
+    ...cellProps
+}: SideProps) {
     let cell = useSideCell("left");
-    if (cell) return <Cell cell={cell}>{children}</Cell>;
+    if (cell)
+        return (
+            <Cell start={cell} {...cellProps} className="v left">
+                {children}
+            </Cell>
+        );
     return null;
+}
+
+interface CornerProps extends React.HTMLAttributes<HTMLDivElement> {
+    color?: string;
+}
+
+export function TopLeft({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return <div className="lcars-frametopleft" style={style} {...props}></div>;
+}
+export function TopRight({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return <div className="lcars-frametopright" style={style} {...props}></div>;
+}
+export function BottomLeft({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return (
+        <div className="lcars-framebottomleft" style={style} {...props}></div>
+    );
+}
+export function BottomRight({ color, ...props }: CornerProps) {
+    let style: any = { "--color": color };
+    return (
+        <div className="lcars-framebottomright" style={style} {...props}></div>
+    );
+}
+export function Art({ children }) {
+    return <div className="lcars-frameart lcars-col">{children}</div>;
 }
