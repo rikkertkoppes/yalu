@@ -1,28 +1,128 @@
 import React from "react";
 import Layout from "../pageComponents/layout";
-import { Top, Button, Cap, Filler, Frame, Left } from "../components";
+import {
+    Top,
+    Button,
+    Cap,
+    Filler,
+    Frame,
+    Left,
+    Cell,
+    Row,
+} from "../components";
 
 # Frames
 
-Start with a frame and specify the sides that should be visible:
+Start with a frame, it has some defaults for side dimensions, color and rounded corners:
 
-```
+<Row tl gap={20}>
+    ```
+    <Frame></Frame>
+    ```
+</Row>
+
 <Frame></Frame>
-```
 
-<Frame></Frame>
+Width is 100% by default and height as small as needed, just like a `<div>` element. You can add optional `width` and `height` properties, a custom `className` or `style` to adjust this. You can also specify which borders to show (`t`, `l`, `r`, `b` for top, left, right, bottom), the size is optional. You can also specify inner and outer radii. Content goes inside the frame:
 
-Width is 100% by default and height as small as needed, just like a `<div>` element. You can add optional `width` and `height` attributes, a custom `className` or `style` to adjust this. You can also specify which borders to show (`t`, `l`, `r`, `b` for top, left, right, bottom). Content goes inside the frame:
+<Row tl gap={20}>
+    ```
+    <Frame t l={150} b={4} height={400} width={500} ri={40} ro={50}>
+        Content here
+    </Frame>
+    ```
 
-```
-<Frame t l={150} b={4} height={400}>
-    Content here
-</Frame>
-```
+    <Frame t l={150} b={4} height={400} width={500} ri={40} ro={50}>
+        Content here
+    </Frame>
 
-<Frame t l={150} b={4} height={400}>
-    Content here
-</Frame>
+</Row>
+
+However, these are all quite boring rectangular frames. You can create a more intricate shape by using the `def` property to create a completely custom shape. Let me show you first and explain it after:
+
+<Row tl gap={20}>
+    ```
+    <Frame
+        def={`
+            g   20  -   100 -   20
+            20  *   *   *   *   *
+            -   *   .   .   .   *
+            20  *   *   *   .   *
+            -   *   .   *   .   *
+            20  *   *   *   *   *
+        `}
+        height={400}
+        width={500}
+        dev
+    ></Frame>
+    ```
+
+    <Frame
+        def={`
+            g   20  -   100 -   20
+            20  *   *   *   *   *
+            -   *   .   .   .   *
+            20  *   *   *   .   *
+            -   *   .   *   .   *
+            20  *   *   *   *   *
+        `}
+        height={400}
+        width={500}
+        dev
+    ></Frame>
+
+</Row>
+
+The `def` property is a text string that defines the shape of the frame. It starts with the letter 'g', followed by the column widths, where the '-' or '\*' character specifies a column should stretch to the available width. The following lines start with the row height, again where '-' or '\*' specifies a row should stretch to the available height. Next, for each cell, a '\*' specifies that cell should be filled with the frame border and a '.' specifies that cell should be empty.
+
+Separating each line by a newline (and using backtick string delimiters) makes the definition visually recognisable, but it is not needed, you could also use a '/' to separate the lines. There should be one or more spaces between all values.
+
+I also added the `dev` property to show the grid lines, which is useful for debugging your frame shape.
+
+Adding content is now a bit more involved, as we can have multiple cells where it could go. We use the cell coordinates to specify where the content should go:
+
+<Row tl gap={20}>
+    ```
+    <Frame
+        def={`
+            g   20  -   100 -   20
+            20  *   *   *   *   *
+            -   *   .   .   .   *
+            20  *   *   *   .   *
+            -   *   .   *   .   *
+            20  *   *   *   *   *
+        `}
+        height={400}
+        width={500}
+    >
+        <Cell start="B2" end="D2">
+            Some stuff here, note that it spans multiple cells in our frame.
+        </Cell>
+        <Cell start="B4">
+            Some stuff here, it only uses a single cell here.
+        </Cell>
+    </Frame>
+    ```
+    <Frame
+        def={`
+        g   20  -   100 -   20
+        20  *   *   *   *   *
+        -   *   .   .   .   *
+        20  *   *   *   .   *
+        -   *   .   *   .   *
+        20  *   *   *   *   *
+    `}
+        height={400}
+        width={500}
+    >
+        <Cell start="B2" end="D2">
+            Some stuff here, note that it spans multiple cells in our frame.
+        </Cell>
+        <Cell start="B4">
+            Some stuff here, it only uses a single cell here.
+        </Cell>
+    </Frame>
+</Row>
 
 To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<Right>` and `<Bottom>` elements together with `<Button>` and `<Filler>` elements
 

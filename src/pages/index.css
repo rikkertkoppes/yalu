@@ -35,3 +35,16 @@ a:has(.lcars-button),
 a .lcars-button {
     text-decoration: none;
 }
+
+.code {
+    color: var(--light);
+    width: 50%;
+    border-radius: 20px;
+    margin-top: 0;
+}
+code {
+    color: rgb(232, 191, 106);
+}
+pre code {
+    color: white;
+}

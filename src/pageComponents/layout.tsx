@@ -3,7 +3,13 @@ import { Frame, Top, Filler, Cap, Left, Button, Gap } from "../components";
 
 export default function Layout({ children, title }) {
     return (
-        <Frame flex padding={20} l={150} t={40} className="lcars-gray">
+        <Frame
+            flex
+            padding={"20px 20px 20px 20px"}
+            l={150}
+            t={40}
+            className="lcars-gray"
+        >
             <Top>
                 <Filler flex />
                 <Gap bright>{title}</Gap>
