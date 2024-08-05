@@ -9,23 +9,25 @@ import {
     Left,
     Cell,
     Row,
+    Gap,
 } from "../components";
 
 # Frames
 
+## Simple frames
+
 Start with a frame, it has some defaults for side dimensions, color and rounded corners:
 
-<Row tl gap={20}>
+<Row className="example">
     ```
     <Frame></Frame>
     ```
+    <Frame flex></Frame>
 </Row>
-
-<Frame></Frame>
 
 Width is 100% by default and height as small as needed, just like a `<div>` element. You can add optional `width` and `height` properties, a custom `className` or `style` to adjust this. You can also specify which borders to show (`t`, `l`, `r`, `b` for top, left, right, bottom), the size is optional. You can also specify inner and outer radii. Content goes inside the frame:
 
-<Row tl gap={20}>
+<Row className="example">
     ```
     <Frame t l={150} b={4} height={400} width={500} ri={40} ro={50}>
         Content here
@@ -38,9 +40,11 @@ Width is 100% by default and height as small as needed, just like a `<div>` elem
 
 </Row>
 
-However, these are all quite boring rectangular frames. You can create a more intricate shape by using the `def` property to create a completely custom shape. Let me show you first and explain it after:
+## Custom shapes
 
-<Row tl gap={20}>
+These are all quite boring rectangular frames. You can create a more intricate shape by using the `def` property to create a completely custom shape. Let me show you first and explain it after:
+
+<Row className="example">
     ```
     <Frame
         def={`
@@ -81,16 +85,16 @@ I also added the `dev` property to show the grid lines, which is useful for debu
 
 Adding content is now a bit more involved, as we can have multiple cells where it could go. We use the cell coordinates to specify where the content should go:
 
-<Row tl gap={20}>
+<Row className="example">
     ```
     <Frame
         def={`
-            g   20  -   100 -   20
+            g   150 -   4   -   4
             20  *   *   *   *   *
             -   *   .   .   .   *
-            20  *   *   *   .   *
+            4   *   *   *   .   *
             -   *   .   *   .   *
-            20  *   *   *   *   *
+            4   *   *   *   *   *
         `}
         height={400}
         width={500}
@@ -105,13 +109,13 @@ Adding content is now a bit more involved, as we can have multiple cells where i
     ```
     <Frame
         def={`
-        g   20  -   100 -   20
-        20  *   *   *   *   *
-        -   *   .   .   .   *
-        20  *   *   *   .   *
-        -   *   .   *   .   *
-        20  *   *   *   *   *
-    `}
+            g   150 -   4   -   4
+            20  *   *   *   *   *
+            -   *   .   .   .   *
+            4   *   *   *   .   *
+            -   *   .   *   .   *
+            4   *   *   *   *   *
+        `}
         height={400}
         width={500}
     >
@@ -124,47 +128,54 @@ Adding content is now a bit more involved, as we can have multiple cells where i
     </Frame>
 </Row>
 
+## Nested frames
+
+Ok, back to simple frames. You can already do quite a lot with them, like nesting them for additional effect:
+
+<Row className="example">
+    ```
+    <Frame l={100} t={24} height={400} ro={50} ri={40} flex padding={4}>
+        <Frame l={75} t={4} ro={36} ri={32} flex></Frame>
+    </Frame>
+    ```
+    <Frame l={100} t={24} height={400} ro={50} ri={40} flex padding={4}>
+        <Top fr>
+            <Filler flex />
+            <Gap>LCARS</Gap>
+            <Filler />
+        </Top>
+        <Left>
+            <Button outline rounded="right">
+                Engage
+            </Button>
+            <Filler flex />
+        </Left>
+        <Frame l={75} t={4} ro={36} ri={32} flex></Frame>
+    </Frame>
+</Row>
+
 To add buttons to a side of the frame, use the specialized `<Left>`, `<Top>`, `<Right>` and `<Bottom>` elements together with `<Button>` and `<Filler>` elements
 
-```
-<Frame l t b height={400}>
-    <Left>
-        <Button>Engage</Button>
-        <Filler flex />
-    </Left>
-    content here
-</Frame>
-```
+<Row className="example">
+    ```
+    <Frame l t b height={400}>
+        <Left>
+            <Button>Engage</Button>
+            <Filler flex />
+        </Left>
+        content here
+    </Frame>
+    ```
 
-<Frame l t b height={400}>
-    <Left>
-        <Button>Engage</Button>
-        <Filler flex />
-    </Left>
-    content here
-</Frame>
-<Frame l={100} t={4} height={400} className="lcars-gray" ro={20} ri={16}>
-    <Left>
-        <Button outline>Engage</Button>
-        <Filler flex />
-    </Left>
-    <Frame l={2} t={2} ri={12} ro={12} flex>
-        <Frame r={24} b={12} flex ri={48} ro={64}>
-            content here
-        </Frame>
+    <Frame l t b height={400} flex>
+        <Left>
+            <Button>Engage</Button>
+            <Filler flex />
+        </Left>
+        content here
     </Frame>
-</Frame>
-<Frame l={100} t={4} height={400} className="lcars-gray" ro={20} ri={16}>
-    <Left>
-        <Button>Engage</Button>
-        <Filler flex />
-    </Left>
-    <Frame l={2} t={2} ri={12} ro={12} flex>
-        <Frame r={24} b={12} flex ri={48} ro={64}>
-            content here
-        </Frame>
-    </Frame>
-</Frame>
+
+</Row>
 
 export default function ({ children }) {
     return <Layout title="Frames">{children}</Layout>;

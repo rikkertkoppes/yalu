@@ -1,0 +1,147 @@
+import React from "react";
+import Layout from "../pageComponents/layout";
+import {
+    Top,
+    Button,
+    Cap,
+    Filler,
+    Frame,
+    Left,
+    Cell,
+    Row,
+    Col,
+    Gap,
+} from "../components";
+
+# Layout
+
+## Rows and Cols
+
+Use a `<Row>` component to create a horizontal layout:
+
+<Row className="example">
+    ```
+    <Row>
+        <Button>Engage</Button>
+        <Button>Disengage</Button>
+    </Row>
+    ```
+    <Row>
+        <Button>Engage</Button>
+        <Button>Disengage</Button>
+        <Filler />
+    </Row>
+</Row>
+
+By using the `flex` attribute, the row will take up all available space. This attribute can be used on any component:
+
+<Row className="example">
+    ```
+    <Row flex>
+        <Button>Engage</Button>
+        <Button>Disengage</Button>
+        <Filler flex />
+    </Row>
+    ```
+    <Row flex>
+        <Button>Engage</Button>
+        <Button>Disengage</Button>
+        <Filler flex />
+    </Row>
+</Row>
+
+There are also columns. You can also use `width` and `height` attributes on rows and columns:
+
+<Row className="example">
+    ```
+    <Col width={200} height={100}>
+        <Button>Engage</Button>
+        <Button>Disengage</Button>
+        <Filler flex />
+    </Col>
+    ```
+    <Col width={200} height={100}>
+        <Button>Engage</Button>
+        <Button>Disengage</Button>
+        <Filler flex />
+    </Col>
+</Row>
+
+## Content positioning
+
+## Repeats
+
+The `repeat` attribute can be used to repeat the contents of a row or column a number of times:
+
+<Row className="example">
+    ```
+    <Col repeat={3}>
+        <Row>
+            <Button>Engage</Button>
+            <Button>Disengage</Button>
+            <Filler />
+        </Row>
+    </Col>
+    ```
+    <Col repeat={3}>
+        <Row>
+            <Button>Engage</Button>
+            <Button>Disengage</Button>
+            <Filler />
+        </Row>
+    </Col>
+</Row>
+
+This will create three rows with the same content. If you want to vary the content a bit, you can use a render function:
+
+<Row className="example">
+    ```
+    <Col repeat={3}>
+        {(index) => (
+            <Row>
+                <Button>Engage {index}</Button>
+                <Button>Disengage {index}</Button>
+                <Filler />
+            </Row>
+        )}
+    </Col>
+    ```
+    <Col repeat={3}>
+        {(index) => (
+            <Row>
+                <Button>Engage {index}</Button>
+                <Button>Disengage {index}</Button>
+                <Filler />
+            </Row>
+        )}
+    </Col>
+</Row>
+
+Instead of a number, you can also pass an array of values to the `repeat` attribute. In that case, the value will be passed into the render function. This can be used to quickly render arrays of data:
+
+<Row className="example">
+    ```
+    <Col repeat={["warp 1", "warp 2", "warp 3"]}>
+        {(value) => (
+            <Row>
+                <Button>Engage {value}</Button>
+                <Button>Disengage {value}</Button>
+                <Filler />
+            </Row>
+        )}
+    </Col>
+    ```
+    <Col repeat={["warp 1", "warp 2", "warp 3"]}>
+        {(value) => (
+            <Row>
+                <Button>Engage {value}</Button>
+                <Button>Disengage {value}</Button>
+                <Filler />
+            </Row>
+        )}
+    </Col>
+</Row>
+
+export default function ({ children }) {
+    return <Layout title="Layout">{children}</Layout>;
+}

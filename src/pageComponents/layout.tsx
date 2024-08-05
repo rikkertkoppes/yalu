@@ -20,8 +20,14 @@ export default function Layout({ children, title }) {
                 <Link href="/">
                     <Button>Frames</Button>
                 </Link>
+                <Link href="/layout">
+                    <Button>Layout</Button>
+                </Link>
                 <Link href="/buttons">
                     <Button>Buttons</Button>
+                </Link>
+                <Link href="/themes">
+                    <Button>Themes</Button>
                 </Link>
                 <Link href="/example">
                     <Button>Example</Button>
