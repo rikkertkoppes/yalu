@@ -494,19 +494,19 @@ function Page() {
                                     20  .   *   *
                                 `}
                             >
-                                <Cell cell="A1">
+                                <Cell start="A1">
                                     <Filler width={75} />
                                     <Filler flex bright />
                                 </Cell>
                                 <Cell
-                                    cell="A2"
+                                    start="A2"
                                     end="A3"
                                     padding={"24px 24px 0 0 "}
                                 >
                                     <Pad />
                                 </Cell>
 
-                                <Cell cell="B2">
+                                <Cell start="B2">
                                     <Row flex color="var(--blue)">
                                         <Button flex tc>
                                             01
@@ -541,7 +541,7 @@ function Page() {
                                     </Row>
                                 </Cell>
                                 <Cell
-                                    cell="C1"
+                                    start="C1"
                                     end="C2"
                                     padding={"0 0 24px 24px"}
                                 >
@@ -584,7 +584,7 @@ function Page() {
                                         </Col>
                                     </Row>
                                 </Cell>
-                                <Cell cell="C3">
+                                <Cell start="C3">
                                     <Filler width={120} />
                                     <Filler flex bright />
                                 </Cell>
